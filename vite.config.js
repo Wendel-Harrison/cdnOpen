@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -8,4 +9,19 @@ export default defineConfig({
 	  react(),
 	  tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  server: {
+    proxy: {
+      // Requisições para /api serão redirecionadas para sua API
+      '/api': {
+        target: 'http://201.17.21.186:3000', // O endereço da sua API
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''), // Remove /api do caminho final
+      },
+    }
+  }
 })
