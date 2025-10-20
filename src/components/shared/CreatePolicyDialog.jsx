@@ -6,7 +6,6 @@ import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
-import { defaultAllowedOrigins } from 'vite';
 
 const API_URL = '/api/policies';
 
@@ -20,7 +19,7 @@ function CreatePolicyDialog({ isOpen, onOpenChange, onPolicyCreated }) {
     max_ttl: 86400,
     forward_query_strings: false,
     forward_cookies: false,
-    forwarded_headers: '',
+    forwarded_headers: '', // Usaremos um Textarea com valores separados por vírgula
   };
   const [formData, setFormData] = useState(initialState);
 
@@ -64,8 +63,6 @@ function CreatePolicyDialog({ isOpen, onOpenChange, onPolicyCreated }) {
     }
   };
 
-  
-
   return (
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px]">
@@ -102,12 +99,12 @@ function CreatePolicyDialog({ isOpen, onOpenChange, onPolicyCreated }) {
           
           <div className="space-y-4">
             <div className="flex items-center justify-between rounded-lg border p-3 shadow-sm">
-              <Label htmlFor="forward_query_strings">Encaminhar Query Strings</Label>
-              <Switch id="forward_query_strings" checked={formData.forward_query_strings} onCheckedChange={(checked) => handleSwitchChange('forward_query_strings', checked)} />
+              <Label variant='primary' htmlFor="forward_query_strings">Encaminhar Query Strings</Label>
+              <Switch variant='primary' id="forward_query_strings airplane-mode" checked={formData.forward_query_strings} onCheckedChange={(checked) => handleSwitchChange('forward_query_strings', checked)} />
             </div>
             <div className="flex items-center justify-between rounded-lg border p-3 shadow-sm">
               <Label htmlFor="forward_cookies">Encaminhar Cookies</Label>
-              <Switch id="forward_cookies" checked={formData.forward_cookies} onCheckedChange={(checked) => handleSwitchChange('forward_cookies', checked)} />
+              <Switch variant="outline" id="forward_cookies" checked={formData.forward_cookies} onCheckedChange={(checked) => handleSwitchChange('forward_cookies', checked)} />
             </div>
           </div>
           
@@ -124,11 +121,11 @@ function CreatePolicyDialog({ isOpen, onOpenChange, onPolicyCreated }) {
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={() => onOpenChange(false)}>Cancelar</Button>
-          <Button onClick={handleSave}>Criar Política</Button>
+          <Button variant="outline" onClick={handleSave}>Criar Política</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
   );
 }
 
-export default CreatePolicyDialog
+export default CreatePolicyDialog;

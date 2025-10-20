@@ -1,0 +1,267 @@
+
+> cdn@0.0.0 dev
+> vite
+
+
+  VITE v7.1.9  ready in 448 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+
+> cdn@0.0.0 dev
+> vite --host
+
+
+  VITE v7.1.9  ready in 406 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://201.17.21.186:5173/
+  ➜  Network: http://10.127.254.87:5173/
+  ➜  Network: http://192.168.128.1:5173/
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:24:08 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:24:09 [vite] (client) hmr update /src/index.css, /src/App.css
+
+> cdn@0.0.0 dev
+> vite --host
+
+
+  VITE v7.1.9  ready in 388 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://201.17.21.186:5173/
+  ➜  Network: http://10.127.254.87:5173/
+  ➜  Network: http://192.168.128.1:5173/
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:24:43 [vite] (client) hmr update /src/index.css, /src/App.css
+14:24:43 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:24:44 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:24:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:24:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:24:53 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:24:53 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:24:54 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:24:54 [vite] (client) hmr update /src/index.css, /src/App.css
+14:24:55 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:24:55 [vite] (client) hmr update /src/index.css, /src/App.css
+14:24:55 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:24:58 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:24:58 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:24:58 [vite] (client) hmr update /src/index.css, /src/App.css
+14:24:58 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:24:58 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:24:58 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:27 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:27 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:27 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:27 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:29 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:29 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:29 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:29 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:29 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:29 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:29 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:29 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:25:29 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:25:30 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:30 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:30 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:30 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:31 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:31 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:31 [vite] (client) hmr update /src/index.css, /src/App.css
+14:25:31 [vite] http proxy error: /origins
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+14:25:31 [vite] http proxy error: /distributions
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:25:45 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:25:46 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+14:27:00 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+14:27:00 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:31 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:31 [vite] (client) hmr update /src/App.jsx, /src/index.css, /src/App.css
+15:49:31 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:32 [vite] (client) hmr update /src/App.jsx
+15:49:32 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:32 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:32 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:32 [vite] (client) Pre-transform error: Failed to resolve import "@radix-ui/react-switch" from "src/components/ui/switch.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /opt/cdn/cdn/src/components/ui/switch.jsx:2:33
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import * as React from "react";
+  3  |  import * as SwitchPrimitive from "@radix-ui/react-switch";
+     |                                    ^
+  4  |  import { cn } from "@/lib/utils";
+  5  |  function Switch({
+15:49:32 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:32 [vite] Internal server error: Failed to resolve import "@radix-ui/react-switch" from "src/components/ui/switch.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /opt/cdn/cdn/src/components/ui/switch.jsx:2:33
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import * as React from "react";
+  3  |  import * as SwitchPrimitive from "@radix-ui/react-switch";
+     |                                    ^
+  4  |  import { cn } from "@/lib/utils";
+  5  |  function Switch({
+      at TransformPluginContext._formatLog (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:31219:43)
+      at TransformPluginContext.error (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:31216:14)
+      at normalizeUrl (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:29699:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:29757:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:29725:4)
+      at async EnvironmentPluginContainer.transform (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:31018:14)
+      at async loadAndTransform (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:26143:26)
+      at async viteTransformMiddleware (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:27221:20)
+15:49:32 [vite] Internal server error: Failed to resolve import "@radix-ui/react-switch" from "src/components/ui/switch.jsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /opt/cdn/cdn/src/components/ui/switch.jsx:2:33
+  1  |  import { jsxDEV } from "react/jsx-dev-runtime";
+  2  |  import * as React from "react";
+  3  |  import * as SwitchPrimitive from "@radix-ui/react-switch";
+     |                                    ^
+  4  |  import { cn } from "@/lib/utils";
+  5  |  function Switch({
+      at TransformPluginContext._formatLog (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:31219:43)
+      at TransformPluginContext.error (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:31216:14)
+      at normalizeUrl (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:29699:18)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:29757:32
+      at async Promise.all (index 2)
+      at async TransformPluginContext.transform (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:29725:4)
+      at async EnvironmentPluginContainer.transform (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:31018:14)
+      at async loadAndTransform (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:26143:26)
+      at async viteTransformMiddleware (file:///opt/cdn/cdn/node_modules/vite/dist/node/chunks/dep-Chhhsdoe.js:27221:20)
+15:49:32 [vite] (client) hmr update /src/index.css, /src/App.css
+✘ [ERROR] Could not resolve "../pkg"
+
+    node_modules/lightningcss/node/index.js:17:27:
+      17 │   module.exports = require(`../pkg`);
+         ╵                            ~~~~~~~~
+
+15:49:33 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:33 [vite] (client) error while updating dependencies:
+Error: Error during dependency optimization:
+
+[31m✘ [41;31m[[41;97mERROR[41;31m][0m [1mCould not resolve "../pkg"[0m
+
+    node_modules/lightningcss/node/index.js:17:27:
+[37m      17 │   module.exports = require([32m`../pkg`[37m);
+         ╵                            [32m~~~~~~~~[0m
+
+
+    at failureErrorWithLog (/opt/cdn/cdn/node_modules/esbuild/lib/main.js:1467:15)
+    at /opt/cdn/cdn/node_modules/esbuild/lib/main.js:926:25
+    at /opt/cdn/cdn/node_modules/esbuild/lib/main.js:1345:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+15:49:33 [vite] (client) hmr update /src/index.css, /src/App.css
+15:49:49 [vite] (client) hmr update /src/components/shared/CreatePolicyDialog.jsx
+15:49:49 [vite] (client) hmr update /src/index.css, /src/App.css
+15:50:31 [vite] (client) hmr update /src/index.css, /src/App.css, /src/components/shared/CreatePolicyDialog.jsx
+15:50:31 [vite] (client) hmr update /src/index.css, /src/App.css
+15:56:00 [vite] (client) hmr update /src/index.css, /src/App.css
+15:56:00 [vite] (client) hmr update /src/index.css, /src/App.css
+16:03:47 [vite] (client) hmr update /src/index.css, /src/App.css
+16:03:47 [vite] (client) hmr update /src/App.jsx, /src/index.css, /src/App.css
+16:03:47 [vite] (client) hmr update /src/index.css, /src/App.css, /src/pages/PoliciesPage.jsx
+16:03:47 [vite] (client) hmr update /src/index.css, /src/App.css
+16:03:47 [vite] (client) hmr update /src/index.css, /src/App.css, /src/components/shared/CreatePolicyDialog.jsx
+16:03:47 [vite] (client) hmr update /src/index.css, /src/App.css, /src/components/ui/textarea.jsx
+16:03:47 [vite] (client) hmr update /src/index.css, /src/App.css
