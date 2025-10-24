@@ -82,11 +82,11 @@ function EditPolicyDialog({ isOpen, onOpenChange, policy, onSave }) {
           </Card>
             
           <div className="space-y-4">
-            <div className="flex items-center justify-between rounded-lg border p-3">
+            <div className="flex items-center justify-between rounded-lg border p-3 bg-gray-100">
               <Label>Encaminhar Query Strings</Label>
               <Switch checked={formData.forward_query_strings} onCheckedChange={(c) => handleSwitchChange('forward_query_strings', c)} />
             </div>
-            <div className="flex items-center justify-between rounded-lg border p-3">
+            <div className="flex items-center justify-between rounded-lg border p-3 bg-gray-100">
               <Label>Encaminhar Cookies</Label>
               <Switch checked={formData.forward_cookies} onCheckedChange={(c) => handleSwitchChange('forward_cookies', c)} />
             </div>

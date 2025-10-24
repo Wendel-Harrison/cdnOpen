@@ -204,9 +204,9 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
   return (
     <div className="space-y-6">
       <Tabs defaultValue="origins" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="origins">Origins</TabsTrigger>
-          <TabsTrigger value="behaviors">Behaviors</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-2 gap-3">
+          <TabsTrigger value="origins" className='py-2.5 cursor-pointer'>Origins</TabsTrigger>
+          <TabsTrigger value="behaviors" className='py-2.5 cursor-pointer' >Behaviors</TabsTrigger>
         </TabsList>
 
         <TabsContent value="origins" className="space-y-4">
@@ -259,7 +259,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                   />
                 </div>
                 <div>
-                  <Button onClick={handleAddOrigin} variant="secundary" className="w-full">Enviar</Button>
+                  <Button onClick={handleAddOrigin} variant="secondary" className="w-full">Enviar</Button>
                 </div>
               </div>
             </CardContent>

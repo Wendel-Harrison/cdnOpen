@@ -104,7 +104,7 @@ function DistributionsPage() {
         </CardHeader>
         <CardContent>
           <div>
-            <Label htmlFor="dist-name">Nome da Distribuição</Label>
+            <Label htmlFor="dist-name" className='mb-1'>Nome da Distribuição</Label>
             <div className="flex items-center justify-center gap-5">
               <div className="w-4/5">
                 <Input
@@ -115,7 +115,7 @@ function DistributionsPage() {
                 />
               </div>
               <div className="w-1/5">
-                <Button variant="primary" onClick={
+                <Button variant="secondary" onClick={
                   addDistribution
                   } className="w-full">
                   Adicionar
