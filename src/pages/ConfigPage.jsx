@@ -15,6 +15,8 @@ import { toast } from "sonner"
 import EditOriginDialog from '@/components/shared/EditOriginDialog'
 import { Edit, Trash2 } from 'lucide-react'
 
+import BehaviorsTab from '../components/shared/BehaviorsTab';
+
 
 function ConfigPage() {
 
@@ -32,6 +34,7 @@ function ConfigPage() {
     // ESTADOS PARA O DIALOG
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedOrigin, setSelectedOrigin] = useState(null);
+
 
    const [behaviors, setBehaviors] = useState([
     { id: 1, distribution_id: 1, path_pattern: '/videos/*', origin_id: 'stb-origin-1', cache_ttl: 86400, cache_policy: 'public', forward_query_strings: false, forward_cookies: false, priority: 0 },
@@ -275,10 +278,9 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                 <TableHeader>
                   <TableRow>
                     <TableHead>ID</TableHead>
-                    <TableHead>Distribution ID</TableHead>
-                    <TableHead>Origin ID</TableHead>
+                    <TableHead>Distribution</TableHead>
+                    <TableHead>Origin</TableHead>
                     <TableHead>Domínio</TableHead>
-                    <TableHead>Path Prefix</TableHead>
                     <TableHead>Protocolo</TableHead>
                     <TableHead>Porta</TableHead>
                     <TableHead className="text-right">Ações</TableHead>
@@ -298,18 +300,13 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        <Badge variant="secondary" className="px-4 py-1 ">
+                        <Badge variant="secondary" className="px-4 py-1 truncate">
                           {origin.origin_id}
                         </Badge>
                       </TableCell>
                       <TableCell>
                         <Badge variant="secondary" className="w-full py-1">
                           {origin.domain_name}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className="px-4 py-1">
-                          {origin.path_prefix}
                         </Badge>
                       </TableCell>
                       <TableCell>
@@ -368,63 +365,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
 
         {/* Behaviors Tab */}
         <TabsContent value="behaviors" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Adicionar Novo Behavior</CardTitle>
-              <CardDescription>Defina políticas de cache para diferentes tipos de conteúdo</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* Formulário para adicionar novo behavior */}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Behaviors Configurados</CardTitle>
-              <CardDescription>Políticas de cache aplicadas às distribuições</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>ID</TableHead>
-                    <TableHead>Distribution ID</TableHead>
-                    <TableHead>Path Pattern</TableHead>
-                    <TableHead>Origin ID</TableHead>
-                    <TableHead>TTL</TableHead>
-                    <TableHead>Política</TableHead>
-                    <TableHead>Prioridade</TableHead>
-                    <TableHead className="text-right">Ações</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {behaviors.map((behavior) => (
-                    <TableRow key={behavior.id} className="hover:bg-muted/50 transition-colors">
-                      <TableCell className="font-medium">{behavior.id}</TableCell>
-                      <TableCell>{behavior.distribution_id}</TableCell>
-                      <TableCell><code className="text-xs bg-muted px-2 py-1 rounded">{behavior.path_pattern}</code></TableCell>
-                      <TableCell>{behavior.origin_id}</TableCell>
-                      <TableCell>
-                        <Badge variant="outline">{behavior.cache_ttl}</Badge>
-                      </TableCell>
-                      <TableCell>{behavior.cache_policy}</TableCell>
-                      <TableCell>{behavior.priority}</TableCell>
-                      <TableCell className="text-right">
-                        <div className="flex justify-end gap-2">
-                          <Button variant="ghost" size="icon">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon">
-                            <Trash2 className="h-4 w-4 text-destructive" />
-                          </Button>
-                        </div>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
-          </Card>
+          <BehaviorsTab distributions={distributions} origins={origins} />
         </TabsContent>
       </Tabs>
     </div>

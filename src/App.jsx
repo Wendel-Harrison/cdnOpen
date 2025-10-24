@@ -9,7 +9,8 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.jsx'
 import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Server, Globe, Settings, TrendingUp, Plus, Trash2, Edit, LayoutDashboard, Users, Cog, Menu, X, Package, AlertTriangle } from 'lucide-react'
+import { Server, Globe, Settings, TrendingUp, Plus, Trash2, Edit, LayoutDashboard, Users, Cog, Menu, X, Package, AlertTriangle, AlignStartVertical } from 'lucide-react'
+
 import './App.css'
 import logo from "../public/Claro.png"
 import { SelectGroup } from '@radix-ui/react-select'
@@ -29,6 +30,8 @@ import {
 import DistributionsPage from './pages/DistributionsPage';
 import ConfigPage from './pages/ConfigPage'
 import PoliciesPage from './pages/PoliciesPage'
+import { ShieldCheck } from 'lucide-react'
+import CertificatesPage from './pages/CertificatesPage'
 
 
 // Página de Dashboard
@@ -214,11 +217,14 @@ function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()
 
   const menuItems = [
-    { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/distributions', icon: Package, label: 'Distribuições' },
     { path: '/config', icon: Cog, label: 'Configurações' },
     { path: '/policies', icon: Users, label: 'Politicas' },
+    { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
+    { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
+    { path: '/relatórios', icon: AlignStartVertical, label: 'Relatórios' },
     { path: '/users', icon: Users, label: 'Usuários' },
+    
   ]
 
   return (
@@ -255,34 +261,38 @@ function Sidebar({ isOpen, toggleSidebar }) {
           </div>
 
           {/* Menu Items */}
-          <nav className="flex-1 p-4 space-y-3">
-            {menuItems.map((item) => {
-              const Icon = item.icon
-              const isActive = location.pathname === item.path
-              
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => {
-                    if (window.innerWidth < 1024) {
-                      toggleSidebar()
-                    }
-                  }}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
-                    isActive 
-                      ? 'bg-destructive/80 !text-white' 
-                      : 'hover:bg-gray-200  hover:text-foreground !text-gray-800'
-                  }`}
-                >
-                  <Icon className="h-5 w-5" />
-                  <span className="font-medium">{item.label}</span>
-                </Link>
-              )
-            })}
-          </nav>
+          <nav className="flex flex-col h-full p-4">
+    {menuItems.map((item, index) => {
+      const Icon = item.icon;
+      const isActive = location.pathname === item.path;
+      
+      // Lógica para identificar o último item
+      const isLastItem = index === menuItems.length - 1;
 
-          {/* Footer */}
+      return (
+        <Link
+          key={item.path}
+          to={item.path}
+          onClick={() => {
+            if (window.innerWidth < 1024) {
+              toggleSidebar();
+            }
+          }}
+          className={`flex items-center gap-3 px-4 py-3 rounded-lg ${
+            isActive 
+              ? 'bg-destructive/80 !text-white'
+              : 'hover:bg-gray-200 hover:text-foreground !text-gray-800'
+          } ${
+            isLastItem ? 'mt-auto' : 'mb-3' // <--- A MÁGICA ACONTECE AQUI
+          }`}
+        >
+          <Icon className="h-5 w-5" />
+          <span className="font-medium">{item.label}</span>
+        </Link>
+      );
+    })}
+  </nav>
+
           <div className="p-4 border-t border-border">
             <div className="flex items-center gap-2 px-4 py-2">
               <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
@@ -308,7 +318,6 @@ function Layout({ children }) {
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
       <div className="lg:pl-64">
-        {/* Header */}
         <header className="sticky top-0 z-30 bg-card/80 backdrop-blur-sm border-b border-border">
           <div className="flex items-center justify-between p-4">
             <Button 
@@ -341,7 +350,6 @@ function Layout({ children }) {
   )
 }
 
-// App Principal
 function App() {
   return (
     <Router>
@@ -351,6 +359,7 @@ function App() {
           <Route path="/distributions" element={<DistributionsPage />} />
           <Route path="/config" element={<ConfigPage />} />
           <Route path="/policies" element={<PoliciesPage />} />
+          <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/users" element={<UsersPage />} />
         </Routes>
       </Layout>

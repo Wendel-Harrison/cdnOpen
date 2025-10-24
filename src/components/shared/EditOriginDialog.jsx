@@ -6,6 +6,7 @@ import { Label } from '@/components/ui/label.jsx'
 import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog"
 import { Plus } from 'lucide-react'
+import { Trash2 } from 'lucide-react'
 
 function EditOriginDialog({ isOpen, onOpenChange, origin, onSave }) {
   const [formData, setFormData] = useState(null);
@@ -106,7 +107,7 @@ function EditOriginDialog({ isOpen, onOpenChange, origin, onSave }) {
             </div>
           ))}
           <Button variant="outline" size="sm" onClick={handleAddHeader}>
-            <Plus className="mr-2 h-4 w-4" /> Adicionar Header
+            <Plus  className="mr-2 h-4 w-4" /> Adicionar Header
           </Button>
         </div>
 

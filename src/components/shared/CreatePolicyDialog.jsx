@@ -7,7 +7,7 @@ import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from 'sonner';
 
-const API_URL = '/api/policies';
+const API_URL = '/api/cache-policies';
 
 // Novo componente para o Dialog de criação de política
 function CreatePolicyDialog({ isOpen, onOpenChange, onPolicyCreated }) {
