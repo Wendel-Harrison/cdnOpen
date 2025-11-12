@@ -125,7 +125,7 @@ function BehaviorsTab({ distributions, origins }) {
             </SelectContent>
           </Select>
           {selectedDistId && (
-          <Button onClick={() => setIsCreateDialogOpen(true)}>
+          <Button onClick={() => setIsCreateDialogOpen(true)} className="cursor-pointer hover:bg-gray-600 hover:shadow">
             <Plus className="mr-2 h-4 w-4" /> Novo Behavior
           </Button>
         )}
@@ -173,10 +173,10 @@ function BehaviorsTab({ distributions, origins }) {
                           </TableCell>
                           <TableCell className="text-right">
                             <div className="flex justify-end gap-2">
-                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)}>
+                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)} className="cursor-pointer hover:bg-neutral-300 hover:shadow">
                                 <Edit className="h-4 w-4" />
                               </Button>
-                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToDelete(behavior)}>
+                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToDelete(behavior)} className="cursor-pointer hover:bg-red-300 hover:shadow">
                                 <Trash2 className="h-4 w-4 text-destructive" />
                               </Button>
                             </div>

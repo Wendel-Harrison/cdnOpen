@@ -30,6 +30,7 @@ import {
 import DistributionsPage from './pages/DistributionsPage';
 import ConfigPage from './pages/ConfigPage'
 import PoliciesPage from './pages/PoliciesPage'
+import UsersPage from './pages/UsersPage'
 import { ShieldCheck } from 'lucide-react'
 import CertificatesPage from './pages/CertificatesPage'
 
@@ -90,138 +91,138 @@ function DashboardPage() {
 }
 
 // Página de Usuários
-function UsersPage() {
-  const [users, setUsers] = useState([
-    { id: 1, name: 'João Silva', email: 'joao@example.com', role: 'admin', status: 'active' },
-    { id: 2, name: 'Maria Santos', email: 'maria@example.com', role: 'editor', status: 'active' },
-    { id: 3, name: 'Pedro Costa', email: 'pedro@example.com', role: 'viewer', status: 'inactive' }
-  ])
+// function UsersPage() {
+//   const [users, setUsers] = useState([
+//     { id: 1, name: 'João Silva', email: 'joao@example.com', role: 'admin', status: 'active' },
+//     { id: 2, name: 'Maria Santos', email: 'maria@example.com', role: 'editor', status: 'active' },
+//     { id: 3, name: 'Pedro Costa', email: 'pedro@example.com', role: 'viewer', status: 'inactive' }
+//   ])
 
-  const [newUser, setNewUser] = useState({ name: '', email: '', role: 'viewer', status: 'active' })
+//   const [newUser, setNewUser] = useState({ name: '', email: '', role: 'viewer', status: 'active' })
 
-  const addUser = () => {
-    if (newUser.name && newUser.email) {
-      setUsers([...users, { ...newUser, id: users.length + 1 }])
-      setNewUser({ name: '', email: '', role: 'viewer', status: 'active' })
-    }
-  }
+//   const addUser = () => {
+//     if (newUser.name && newUser.email) {
+//       setUsers([...users, { ...newUser, id: users.length + 1 }])
+//       setNewUser({ name: '', email: '', role: 'viewer', status: 'active' })
+//     }
+//   }
 
-  const deleteUser = (id) => {
-    setUsers(users.filter(u => u.id !== id))
-  }
+//   const deleteUser = (id) => {
+//     setUsers(users.filter(u => u.id !== id))
+//   }
 
-  return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Adicionar Novo Usuário</CardTitle>
-          <CardDescription>Crie um novo usuário para acessar o painel de administração</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-4">
-            <div className="space-y-2">
-              <Label htmlFor="user-name">Nome</Label>
-              <Input
-                id="user-name"
-                placeholder="Nome do usuário"
-                value={newUser.name}
-                onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="user-email">Email</Label>
-              <Input
-                id="user-email"
-                type="email"
-                placeholder="email@example.com"
-                value={newUser.email}
-                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="user-role">Função</Label>
-              <select
-                id="user-role"
-                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                value={newUser.role}
-                onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
-              >
-                <option value="admin">Administrador</option>
-                <option value="editor">Editor</option>
-                <option value="viewer">Visualizador</option>
-              </select>
-            </div>
-            <div className="flex items-end">
-              <Button onClick={addUser} className="w-full">
-                <Plus className="mr-2 h-4 w-4" />
-                Adicionar Usuário
-              </Button>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+//   return (
+//     <div className="space-y-6">
+//       <Card>
+//         <CardHeader>
+//           <CardTitle>Adicionar Novo Usuário</CardTitle>
+//           <CardDescription>Crie um novo usuário para acessar o painel de administração</CardDescription>
+//         </CardHeader>
+//         <CardContent>
+//           <div className="grid gap-4 md:grid-cols-4">
+//             <div className="space-y-2">
+//               <Label htmlFor="user-name">Nome</Label>
+//               <Input
+//                 id="user-name"
+//                 placeholder="Nome do usuário"
+//                 value={newUser.name}
+//                 onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+//               />
+//             </div>
+//             <div className="space-y-2">
+//               <Label htmlFor="user-email">Email</Label>
+//               <Input
+//                 id="user-email"
+//                 type="email"
+//                 placeholder="email@example.com"
+//                 value={newUser.email}
+//                 onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+//               />
+//             </div>
+//             <div className="space-y-2">
+//               <Label htmlFor="user-role">Função</Label>
+//               <select
+//                 id="user-role"
+//                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+//                 value={newUser.role}
+//                 onChange={(e) => setNewUser({ ...newUser, role: e.target.value })}
+//               >
+//                 <option value="admin">Administrador</option>
+//                 <option value="editor">Editor</option>
+//                 <option value="viewer">Visualizador</option>
+//               </select>
+//             </div>
+//             <div className="flex items-end">
+//               <Button onClick={addUser} className="w-full">
+//                 <Plus className="mr-2 h-4 w-4" />
+//                 Adicionar Usuário
+//               </Button>
+//             </div>
+//           </div>
+//         </CardContent>
+//       </Card>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Usuários Cadastrados</CardTitle>
-          <CardDescription>Lista de todos os usuários com acesso ao sistema</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>ID</TableHead>
-                <TableHead>Nome</TableHead>
-                <TableHead>Email</TableHead>
-                <TableHead>Função</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Ações</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {users.map((user) => (
-                <TableRow key={user.id} className="hover:bg-muted/50 transition-colors">
-                  <TableCell className="font-medium">{user.id}</TableCell>
-                  <TableCell>{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell>
-                    <Badge variant="outline">{user.role}</Badge>
-                  </TableCell>
-                  <TableCell>
-                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'}>
-                      {user.status}
-                    </Badge>
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <div className="flex justify-end gap-2">
-                      <Button variant="ghost" size="icon">
-                        <Edit className="h-4 w-4" />
-                      </Button>
-                      <Button variant="ghost" size="icon" onClick={() => deleteUser(user.id)}>
-                        <Trash2 className="h-4 w-4 text-destructive" />
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
+//       <Card>
+//         <CardHeader>
+//           <CardTitle>Usuários Cadastrados</CardTitle>
+//           <CardDescription>Lista de todos os usuários com acesso ao sistema</CardDescription>
+//         </CardHeader>
+//         <CardContent>
+//           <Table>
+//             <TableHeader>
+//               <TableRow>
+//                 <TableHead>ID</TableHead>
+//                 <TableHead>Nome</TableHead>
+//                 <TableHead>Email</TableHead>
+//                 <TableHead>Função</TableHead>
+//                 <TableHead>Status</TableHead>
+//                 <TableHead className="text-right">Ações</TableHead>
+//               </TableRow>
+//             </TableHeader>
+//             <TableBody>
+//               {users.map((user) => (
+//                 <TableRow key={user.id} className="hover:bg-muted/50 transition-colors">
+//                   <TableCell className="font-medium">{user.id}</TableCell>
+//                   <TableCell>{user.name}</TableCell>
+//                   <TableCell>{user.email}</TableCell>
+//                   <TableCell>
+//                     <Badge variant="outline">{user.role}</Badge>
+//                   </TableCell>
+//                   <TableCell>
+//                     <Badge variant={user.status === 'active' ? 'default' : 'secondary'}>
+//                       {user.status}
+//                     </Badge>
+//                   </TableCell>
+//                   <TableCell className="text-right">
+//                     <div className="flex justify-end gap-2">
+//                       <Button variant="ghost" size="icon">
+//                         <Edit className="h-4 w-4" />
+//                       </Button>
+//                       <Button variant="ghost" size="icon" onClick={() => deleteUser(user.id)}>
+//                         <Trash2 className="h-4 w-4 text-destructive" />
+//                       </Button>
+//                     </div>
+//                   </TableCell>
+//                 </TableRow>
+//               ))}
+//             </TableBody>
+//           </Table>
+//         </CardContent>
+//       </Card>
+//     </div>
+//   )
+// }
 
 // Componente de Sidebar
 function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()
 
   const menuItems = [
-    { path: '/distributions', icon: Package, label: 'Distribuições' },
+    { path: '/', icon: Package, label: 'Distribuições' },
     { path: '/config', icon: Cog, label: 'Configurações' },
     { path: '/policies', icon: Users, label: 'Politicas' },
-    { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
-    { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
+    // { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
+    { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/relatórios', icon: AlignStartVertical, label: 'Relatórios' },
     { path: '/users', icon: Users, label: 'Usuários' },
     
@@ -314,28 +315,28 @@ function Layout({ children }) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-100 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
-      <div className="lg:pl-64">
-        <header className="sticky top-0 z-30 bg-card/80 backdrop-blur-sm border-b border-border">
+      <div className="lg:pl-64 ">
+        <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-gradient-to-br from-gray-800 to-gray-950">
           <div className="flex items-center justify-between p-4">
             <Button 
               variant="ghost" 
-              size="icon" 
+              size="icon"
               className="lg:hidden"
               onClick={toggleSidebar}
             >
               <Menu className="h-5 w-5" />
             </Button>
             
-            <div className="flex-1 lg:ml-0 ml-4">
-              <h1 className="text-2xl font-bold">CDN Admin Dashboard</h1>
-              <p className="text-sm text-muted-foreground">Gerencie suas distribuições, origins e behaviors</p>
+            <div className="flex-1 ml-4">
+              <h2 className="text-4xl font-bold text-neutral-50">CDN Admin Dashboard</h2>
+              <p className="text-sm text-neutral-100">Gerencie suas distribuições, origins e behaviors</p>
             </div>
 
-            <Badge variant="outline" className="text-sm hidden sm:flex">
-              <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse" />
+            <Badge variant="outline" className="text-sm hidden sm:flex text-gray-950 bg-amber-50">
+              <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse " />
               Sistema Online
             </Badge>
           </div>
@@ -355,11 +356,11 @@ function App() {
     <Router>
       <Layout>
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/distributions" element={<DistributionsPage />} />
+          <Route path="/" element={<DistributionsPage />} />
           <Route path="/config" element={<ConfigPage />} />
           <Route path="/policies" element={<PoliciesPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/users" element={<UsersPage />} />
         </Routes>
       </Layout>

@@ -21,7 +21,7 @@ import BehaviorsTab from '../components/shared/BehaviorsTab';
 function ConfigPage() {
 
   const ORIGINS_API_URL = '/api/origins'; // Endpoint para buscar/criar origins
-  const DISTRIBUTIONS_API_URL = '/api/distributions'; // Endpoint para buscar as distributions
+  const DISTRIBUTIONS_API_URL = '/api/distributions/all';
 
   // Estados para dados, carregamento e erro
   const [origins, setOrigins] = useState([]);
@@ -34,13 +34,6 @@ function ConfigPage() {
     // ESTADOS PARA O DIALOG
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedOrigin, setSelectedOrigin] = useState(null);
-
-
-   const [behaviors, setBehaviors] = useState([
-    { id: 1, distribution_id: 1, path_pattern: '/videos/*', origin_id: 'stb-origin-1', cache_ttl: 86400, cache_policy: 'public', forward_query_strings: false, forward_cookies: false, priority: 0 },
-    { id: 2, distribution_id: 2, path_pattern: '/assets/images/*', origin_id: 'app-origin-1', cache_ttl: 3600, cache_policy: 'public', forward_query_strings: false, forward_cookies: false, priority: 0 },
-    { id: 3, distribution_id: 3, path_pattern: '/audio/*', origin_id: 'radio-origin-1', cache_ttl: 259200, cache_policy: 'public', forward_query_strings: false, forward_cookies: false, priority: 0 }
-  ])
 
   const handleSaveOrigin = async (updatedOrigin) => {
     try {
@@ -262,7 +255,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                   />
                 </div>
                 <div>
-                  <Button onClick={handleAddOrigin} variant="secondary" className="w-full">Enviar</Button>
+                  <Button onClick={handleAddOrigin} variant="secondary" className="w-full cursor-pointer hover:bg-neutral-300 hover:shadow">Enviar</Button>
                 </div>
               </div>
             </CardContent>
@@ -310,7 +303,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                         </Badge>
                       </TableCell>
                       <TableCell>
-                        <Badge variant="secondary" className="px-4 py-1">
+                        <Badge variant="secondary" className="px-4 py-1 uppercase w-20">
                           {origin.protocol}
                         </Badge>
                       </TableCell>
@@ -328,10 +321,11 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                               setSelectedOrigin(origin); // Guarda o origin clicado no estado
                               setIsDialogOpen(true);     // Abre o dialog
                             }}
+                            className="cursor-pointer hover:bg-neutral-300"
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" onClick={() => handleDeleteOrigin(origin.id, origin.origin_id)}>
+                          <Button variant="ghost" size="icon" onClick={() => handleDeleteOrigin(origin.id, origin.origin_id)} className="cursor-pointer hover:bg-red-300">
                             <Trash2 className="h-4 w-4 text-destructive" />
                           </Button>
                         </div>
