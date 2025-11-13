@@ -20,6 +20,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle
 } from "@/components/ui/alert-dialog";
+import { useAuth } from '@/context/AuthContext'
 
 function PoliciesPage() {
   // --- CACHE POLICIES ---
@@ -41,6 +42,11 @@ function PoliciesPage() {
   const [selectedOriginPolicy, setSelectedOriginPolicy] = useState(null);
   const [originPolicyToDelete, setOriginPolicyToDelete] = useState(null);
   const ORIGIN_API_URL = '/api/origin-policies';
+
+  const { user } = useAuth();
+
+  const isAdmin = user.role === 'admin';
+  const isViewer = user.role === 'viewer';
 
   // --- FETCH CACHE POLICIES ---
   const fetchCachePolicies = useCallback(async () => {
@@ -159,13 +165,15 @@ function PoliciesPage() {
               <CardDescription>Gerencie suas políticas de cache reutilizáveis.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button onClick={() => setIsCacheCreateOpen(true)}>
-                <Plus className="mr-1 h-4 w-4" /> Nova Política de Cache
-              </Button>
+              {!isViewer&& (
+                <Button onClick={() => setIsCacheCreateOpen(true)}>
+                  <Plus className="mr-1 h-4 w-4" /> Nova Política de Cache
+                </Button>
+              )}
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="mt-4">
             <CardHeader><CardTitle>Políticas Criadas</CardTitle></CardHeader>
             <CardContent>
               <Table className="table-fixed w-full">
@@ -244,13 +252,16 @@ function PoliciesPage() {
               <CardDescription>Gerencie suas políticas de requisição para a origem.</CardDescription>
             </CardHeader>
             <CardContent>
-              <Button onClick={() => setIsOriginCreateOpen(true)}>
-                <Plus className="mr-1 h-4 w-4" /> Nova Política de Origem
-              </Button>
+              {!isViewer && (
+                <Button onClick={() => setIsOriginCreateOpen(true)}>
+                  <Plus className="mr-1 h-4 w-4" /> Nova Política de Origem
+                </Button>
+              )}
+              
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="mt-4">
             <CardHeader><CardTitle>Políticas Criadas</CardTitle></CardHeader>
             <CardContent>
               <Table className="table-fixed w-full">

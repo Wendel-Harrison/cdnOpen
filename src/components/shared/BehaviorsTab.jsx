@@ -9,6 +9,7 @@ import { Edit, Plus, Trash2 } from 'lucide-react';
 import { toast } from "sonner";
 import { BehaviorFormDialog } from './BehaviorFormDialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '../ui/alert-dialog';
+import { useAuth } from '@/context/AuthContext';
 
 function BehaviorsTab({ distributions, origins }) {
   const [selectedDistId, setSelectedDistId] = useState('');
@@ -24,6 +25,11 @@ function BehaviorsTab({ distributions, origins }) {
   // Estados para os dados dos dropdowns
   const [cachePolicies, setCachePolicies] = useState([]);
   const [originPolicies, setOriginPolicies] = useState([]);
+
+  const { user } = useAuth();
+
+  const isAdmin = user.role === 'admin';
+  const isViewer = user.role === 'viewer';
 
   // Função para buscar os dados dos dropdowns (cache e origin policies)
   const fetchDropdownData = useCallback(async () => {
@@ -124,7 +130,7 @@ function BehaviorsTab({ distributions, origins }) {
               </SelectGroup>
             </SelectContent>
           </Select>
-          {selectedDistId && (
+          {selectedDistId && !isViewer && (
           <Button onClick={() => setIsCreateDialogOpen(true)} className="cursor-pointer hover:bg-gray-600 hover:shadow">
             <Plus className="mr-2 h-4 w-4" /> Novo Behavior
           </Button>
@@ -173,10 +179,10 @@ function BehaviorsTab({ distributions, origins }) {
                           </TableCell>
                           <TableCell className="text-right">
                             <div className="flex justify-end gap-2">
-                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)} className="cursor-pointer hover:bg-neutral-300 hover:shadow">
+                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)} className="cursor-pointer hover:bg-neutral-300 hover:shadow" disabled={isViewer}>
                                 <Edit className="h-4 w-4" />
                               </Button>
-                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToDelete(behavior)} className="cursor-pointer hover:bg-red-300 hover:shadow">
+                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToDelete(behavior)} className="cursor-pointer hover:bg-red-300 hover:shadow" disabled={isViewer}>
                                 <Trash2 className="h-4 w-4 text-destructive" />
                               </Button>
                             </div>

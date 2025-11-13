@@ -12,6 +12,8 @@ import EditDistributionDialog from '@/components/shared/EditDistributionDialog';
 import { toast } from "sonner"
 import { ChevronRight } from 'lucide-react'
 import { ChevronLeft } from 'lucide-react'
+import { useAuth } from '@/context/AuthContext'
+
 
 function DistributionsPage() {
 
@@ -29,6 +31,11 @@ function DistributionsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const LIMIT = 15; // Define o limite de itens por página
+
+  const { user } = useAuth();
+
+  const isAdmin = user.role === 'admin';
+  const isViewer = user.role === 'viewer';
 
   const fetchDistributions = useCallback(async (page) => {
     try {
@@ -152,34 +159,37 @@ function DistributionsPage() {
 
   return (
     <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Adicionar Nova Distribuição</CardTitle>
-          <CardDescription>Crie uma nova distribuição para servir seu conteúdo</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div>
-            <Label htmlFor="dist-name" className='mb-1'>Nome da Distribuição</Label>
-            <div className="flex items-center justify-center gap-5">
-              <div className="w-4/5">
-                <Input
-                  id="dist-name"
-                  placeholder="STB"
-                  value={newDistributionName}
-                  onChange={(e) => setNewDistributionName(e.target.value)}
-                />
-              </div>
-              <div className="w-1/5">
-                <Button variant="secondary" onClick={
-                  addDistribution
-                  } className="cursor-pointer hover:bg-neutral-300 w-full hover:shadow">
-                  Adicionar
-                </Button>
+      {!isViewer  && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Adicionar Nova Distribuição</CardTitle>
+            <CardDescription>Crie uma nova distribuição para servir seu conteúdo</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div>
+              <Label htmlFor="dist-name" className='mb-1'>Nome da Distribuição</Label>
+              <div className="flex items-center justify-center gap-5">
+                <div className="w-4/5">
+                  <Input
+                    id="dist-name"
+                    placeholder="STB"
+                    value={newDistributionName}
+                    onChange={(e) => setNewDistributionName(e.target.value)}
+                  />
+                </div>
+                <div className="w-1/5">
+                  <Button variant="secondary" onClick={
+                    addDistribution
+                    } className="cursor-pointer hover:bg-neutral-300 w-full hover:shadow">
+                    Adicionar
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      )}
+      
 
       <Card>
         <CardHeader>
@@ -254,10 +264,11 @@ function DistributionsPage() {
                             setIsEditDialogOpen(true);     
                           }}
                           className="cursor-pointer hover:bg-neutral-300"
+                          disabled={isViewer}
                         >
                           <Edit className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => deleteDistribution(dist.id)} className="cursor-pointer hover:bg-red-300">
+                        <Button variant="ghost" size="icon" onClick={() => deleteDistribution(dist.id)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
                           <Trash2 className="h-4 w-4 text-destructive" />
                         </Button>
                       </div>

@@ -16,6 +16,7 @@ import EditOriginDialog from '@/components/shared/EditOriginDialog'
 import { Edit, Trash2 } from 'lucide-react'
 
 import BehaviorsTab from '../components/shared/BehaviorsTab';
+import { useAuth } from '@/context/AuthContext'
 
 
 function ConfigPage() {
@@ -34,6 +35,11 @@ function ConfigPage() {
     // ESTADOS PARA O DIALOG
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedOrigin, setSelectedOrigin] = useState(null);
+
+  const { user } = useAuth();
+  
+    const isAdmin = user.role === 'admin';
+    const isViewer = user.role === 'viewer';
 
   const handleSaveOrigin = async (updatedOrigin) => {
     try {
@@ -206,60 +212,63 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
         </TabsList>
 
         <TabsContent value="origins" className="space-y-4">
-          <Card>
-            <CardHeader>
-              <CardTitle>Adicionar Novo Origin</CardTitle>
-              <CardDescription>Configure um novo servidor de origem para uma distribuição</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex items-end gap-6">
-                <div className="flex-1 gap-2 flex flex-col">
-                  <Label htmlFor="distribution_id">Distribuição</Label>
-                  <Select
-                    value={newOrigin.distribution_id ? newOrigin.distribution_id.toString() : ''}
-                    onValueChange={(value) => handleFormChange({ target: { name: 'distribution_id', value: value } })}
-                  >
-                    <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Selecione uma Distribuição" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectGroup>
-                        <SelectLabel>Distribuições</SelectLabel>
-                        {distributions.map(dist => (
-                          <SelectItem key={dist.id} value={dist.id.toString()}>
-                            {dist.name}
-                          </SelectItem>
-                        ))}
-                      </SelectGroup>
-                    </SelectContent>
-                  </Select>
+          {!isViewer && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Adicionar Novo Origin</CardTitle>
+                <CardDescription>Configure um novo servidor de origem para uma distribuição</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-end gap-6">
+                  <div className="flex-1 gap-2 flex flex-col">
+                    <Label htmlFor="distribution_id">Distribuição</Label>
+                    <Select
+                      value={newOrigin.distribution_id ? newOrigin.distribution_id.toString() : ''}
+                      onValueChange={(value) => handleFormChange({ target: { name: 'distribution_id', value: value } })}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Selecione uma Distribuição" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel>Distribuições</SelectLabel>
+                          {distributions.map(dist => (
+                            <SelectItem key={dist.id} value={dist.id.toString()}>
+                              {dist.name}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="flex-1 gap-2 flex flex-col">
+                    <Label htmlFor="origin_id">Nome do Origin</Label>
+                    <Input
+                      id="origin_id"
+                      name="origin_id"
+                      placeholder="ex: vos-cluster-lab"
+                      value={newOrigin.origin_id}
+                      onChange={handleFormChange}
+                    />
+                  </div>
+                  <div className="flex-2 gap-2 flex flex-col">
+                    <Label htmlFor="domain_name">Domínio do Origin</Label>
+                    <Input
+                      id="domain_name"
+                      name="domain_name"
+                      placeholder="cdn.stb.example.com"
+                      value={newOrigin.domain_name}
+                      onChange={handleFormChange}
+                    />
+                  </div>
+                  <div>
+                    <Button onClick={handleAddOrigin} variant="secondary" className="w-full cursor-pointer hover:bg-neutral-300 hover:shadow">Enviar</Button>
+                  </div>
                 </div>
-                <div className="flex-1 gap-2 flex flex-col">
-                  <Label htmlFor="origin_id">Nome do Origin</Label>
-                  <Input
-                    id="origin_id"
-                    name="origin_id"
-                    placeholder="ex: vos-cluster-lab"
-                    value={newOrigin.origin_id}
-                    onChange={handleFormChange}
-                  />
-                </div>
-                <div className="flex-2 gap-2 flex flex-col">
-                  <Label htmlFor="domain_name">Domínio do Origin</Label>
-                  <Input
-                    id="domain_name"
-                    name="domain_name"
-                    placeholder="cdn.stb.example.com"
-                    value={newOrigin.domain_name}
-                    onChange={handleFormChange}
-                  />
-                </div>
-                <div>
-                  <Button onClick={handleAddOrigin} variant="secondary" className="w-full cursor-pointer hover:bg-neutral-300 hover:shadow">Enviar</Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          )}
+          
 
           <Card>
             <CardHeader>
@@ -322,10 +331,11 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                               setIsDialogOpen(true);     // Abre o dialog
                             }}
                             className="cursor-pointer hover:bg-neutral-300"
+                            disabled={isViewer}
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" onClick={() => handleDeleteOrigin(origin.id, origin.origin_id)} className="cursor-pointer hover:bg-red-300">
+                          <Button variant="ghost" size="icon" onClick={() => handleDeleteOrigin(origin.id, origin.origin_id)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
                             <Trash2 className="h-4 w-4 text-destructive" />
                           </Button>
                         </div>
