@@ -46,6 +46,7 @@ import { LogOut } from 'lucide-react'
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from './components/ui/tooltip'
 import { useAuth } from './context/AuthContext'
 import NotFoundPage from './pages/NotFoundPage'
+import { User } from 'lucide-react'
 
 // Página de Dashboard
 function DashboardPage() {
@@ -210,6 +211,7 @@ function Sidebar({ isOpen, toggleSidebar }) {
 // Layout Principal
 function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
+  const { user } = useAuth();
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
@@ -240,6 +242,12 @@ function Layout() {
               <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse " />
               Sistema Online
             </Badge>
+
+            <Badge variant="outline" className="text-sm hidden sm:flex text-gray-950 bg-amber-50">
+              <p className=''>{user.name?.split(' ')[0]}</p>
+            </Badge>
+            
+            
           </div>
         </header>
 
