@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/badge.jsx'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.jsx'
 import { Select, SelectContent, SelectItem, SelectLabel, SelectTrigger, SelectValue, } from "@/components/ui/select"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Server, Globe, Settings, TrendingUp, Plus, Trash2, Edit, LayoutDashboard, Users, Cog, Menu, X, Package, AlertTriangle, AlignStartVertical } from 'lucide-react'
+import { Server, Globe, Settings, TrendingUp, Plus, Trash2, Edit, LayoutDashboard, Users, Cog, Menu, X, Package, AlertTriangle, AlignStartVertical, Download, ArrowDown, Layers2, Braces, LaptopMinimalCheckIcon } from 'lucide-react'
 
 import './App.css'
 import logo from "../public/Claro.png"
@@ -47,6 +47,16 @@ import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from './comp
 import { useAuth } from './context/AuthContext'
 import NotFoundPage from './pages/NotFoundPage'
 import { User } from 'lucide-react'
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { UserProfileSheet } from '@/components/shared/UserProfileSheet';
+import PublicRoute from './components/shared/PublicRoute'
+import FunctionsPage from './pages/FunctionsPage'
+import { ForceChangePasswordDialog } from './components/shared/ForceChangePasswordDialog'
+import EditFunctionPage from './pages/EditFunctionPage'
 
 // Página de Dashboard
 function DashboardPage() {
@@ -110,8 +120,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
   const menuItems = [
     { path: '/distributions', icon: Package, label: 'Distribuições' },
     { path: '/config', icon: Cog, label: 'Configurações' },
-    { path: '/policies', icon: Users, label: 'Politicas' },
-    // { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
+    { path: '/policies', icon: Layers2, label: 'Politicas' },
+    { path: '/functions', icon: Braces, label: 'Functions' },
+    { path: '/nodes', icon: LaptopMinimalCheckIcon, label: 'Nodes/Sites' },
+    { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
     { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/relatórios', icon: AlignStartVertical, label: 'Relatórios' },
     { path: '/users', icon: Users, label: 'Usuários' },
@@ -169,12 +181,12 @@ function Sidebar({ isOpen, toggleSidebar }) {
               toggleSidebar();
             }
           }}
-          className={`flex items-center gap-3 px-4 py-3 rounded-lg ${
+          className={`flex items-center gap-3 px-5 py-3 rounded-lg  text-sm  ${
             isActive 
               ? 'bg-destructive/80 !text-white'
               : 'hover:bg-gray-200 hover:text-foreground !text-gray-800'
           } ${
-            isLastItem ? 'mt-auto' : 'mb-3' // <--- A MÁGICA ACONTECE AQUI
+            isLastItem ? 'mt-auto' : 'mb-3' 
           }`}
         >
           <Icon className="h-5 w-5" />
@@ -219,11 +231,12 @@ function Layout() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-neutral-100 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+      <ForceChangePasswordDialog />
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
       <div className={sidebarOpen ? "lg:pl-64 transition-all duration-300" : "transition-all duration-300"}>
         <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-gradient-to-br from-gray-800 to-gray-950">
-          <div className="flex items-center justify-between p-4">
+          <div className="flex items-center justify-between p-4 pr-10">
             <Button 
               variant="outline" 
               size="icon"
@@ -238,14 +251,25 @@ function Layout() {
               <p className="text-sm text-neutral-100">Gerencie suas distribuições, origins e behaviors</p>
             </div>
 
-            <Badge variant="outline" className="text-sm hidden sm:flex text-gray-950 bg-amber-50">
+            {/* <Badge variant="outline" className="text-sm hidden sm:flex text-gray-950 bg-amber-50">
               <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse " />
               Sistema Online
-            </Badge>
+            </Badge> */}
 
-            <Badge variant="outline" className="text-sm hidden sm:flex text-gray-950 bg-amber-50">
-              <p className=''>{user.name?.split(' ')[0]}</p>
-            </Badge>
+            <Sheet>
+              <SheetTrigger asChild>
+                <Badge 
+                  variant="outline" 
+                  className="py-2 px-4 rounded sm:flex text-gray-950 bg-neutral-100 cursor-pointer hover:bg-neutral-300 transition-all duration-200 flex gap-2 tracking-wider font-medium"
+                >
+                  <p className=''>{user.name?.split(' ')[0]}</p>
+                  <User />
+                </Badge>
+              </SheetTrigger>
+              <SheetContent>
+                <UserProfileSheet />
+              </SheetContent>
+            </Sheet>
             
             
           </div>
@@ -265,7 +289,11 @@ function App() {
     <>
       <Routes>
         {/* Rota Pública */}
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        } />
 
         {/* Rotas Protegidas */}
         <Route 
@@ -279,6 +307,9 @@ function App() {
           <Route path="/distributions" element={<DistributionsPage />} />
           <Route path="/config" element={<ConfigPage />} />
           <Route path="/policies" element={<PoliciesPage />} />
+          <Route path="/certificates" element={<CertificatesPage />} />
+          <Route path="/functions" element={<FunctionsPage />} />
+          <Route path="/functions/:id" element={<EditFunctionPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           

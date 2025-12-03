@@ -242,13 +242,13 @@ function UsersPage() {
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
-                      <Button variant="ghost" size="icon" onClick={() => {
+                      <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-neutral-300 transition-all duration-200" onClick={() => {
                         setUserToEdit(user);
                         setIsEditDialogOpen(true);
                       }}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon" onClick={() => setUserToDelete(user)}>
+                      <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-red-300 transition-all duration-200" onClick={() => setUserToDelete(user)}>
                         <Trash2 className="h-4 w-4 text-destructive" />
                       </Button>
                     </div>
