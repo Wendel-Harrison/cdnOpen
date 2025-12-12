@@ -26,6 +26,8 @@ function BehaviorsTab({ distributions, origins }) {
   const [cachePolicies, setCachePolicies] = useState([]);
   const [originPolicies, setOriginPolicies] = useState([]);
 
+  const [functionsList, setFunctionsList] = useState([]);
+
   const { user } = useAuth();
 
   const isAdmin = user.role === 'admin';
@@ -34,23 +36,27 @@ function BehaviorsTab({ distributions, origins }) {
   // Função para buscar os dados dos dropdowns (cache e origin policies)
   const fetchDropdownData = useCallback(async () => {
     try {
-      const [cacheRes, originRes] = await Promise.all([
+      const [cacheRes, originRes, funcRes] = await Promise.all([
         fetch('/api/cache-policies'),
         fetch('/api/origin-policies'),
+        fetch('/api/functions'),
       ]);
       if (!cacheRes.ok || !originRes.ok) throw new Error('Falha ao buscar dados de políticas');
       
       const cacheData = await cacheRes.json();
       const originData = await originRes.json();
+      const funcData = await funcRes.json();
       
       setCachePolicies(cacheData);
       setOriginPolicies(originData);
+      const functionsArray = Array.isArray(funcData) ? funcData : (funcData.data || []);
+      setFunctionsList(functionsArray);
+      console.log("Funções carregadas:", functionsArray);
     } catch (err) {
       toast.error("Erro ao carregar dados de políticas", { description: err.message });
     }
   }, []);
 
-  // Busca os dados dos dropdowns apenas uma vez, quando o componente monta
   useEffect(() => {
     fetchDropdownData();
   }, [fetchDropdownData]);
@@ -157,9 +163,11 @@ function BehaviorsTab({ distributions, origins }) {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-[15%]">Prioridade</TableHead>
-                      <TableHead className="w-[35%]">Path Pattern</TableHead>
-                      <TableHead className="w-[35%]">Origin Atribuído</TableHead>
+                      <TableHead className="w-[10%]">Prioridade</TableHead>
+                      <TableHead className="w-[15%]">Path Pattern</TableHead>
+                      <TableHead className="w-[30%]">Origin Atribuído</TableHead>
+                      <TableHead className="w-[15%]">Politica de Origem</TableHead>
+                      <TableHead className="w-[15%]">Politica de Cache</TableHead>
                       <TableHead className="w-[15%] text-right">Ações</TableHead>
                     </TableRow>
                   </TableHeader>
@@ -174,8 +182,19 @@ function BehaviorsTab({ distributions, origins }) {
                           <TableCell>
                             <code className="text-sm bg-muted px-2 py-1 rounded">{behavior.path_pattern}</code>
                           </TableCell>
+                          <TableCell className=''>
+                            <Badge className='py-1.5 px-5 bg-neutral-100 hover:bg-neutral-300 transition-all duration-200' variant='outline'>
+                              {origins.find(o => o.id === behavior.origin_id)?.origin_id || <span className="text-muted-foreground font-bold">ID: {behavior.origin_id}</span>}
+                            </Badge>
+                          </TableCell>
                           <TableCell>
-                            {origins.find(o => o.id === behavior.origin_id)?.origin_id || <span className="text-muted-foreground">ID: {behavior.origin_id}</span>}
+                            <Badge className='py-1.5 px-5' variant='outline'>
+                              {originPolicies.find(op => op.id === behavior.origin_policy_id)?.name || <Badge className="text-muted-foreground">ID: {behavior.origin_policy_id}</Badge>}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Badge className='py-1.5 px-5' variant='outline'>
+                              {cachePolicies.find(cp => cp.id === behavior.cache_policy_id)?.name || <Badge className="text-muted-foreground">ID: {behavior.cache_policy_id}</Badge>}                            </Badge>
                           </TableCell>
                           <TableCell className="text-right">
                             <div className="flex justify-end gap-2">
@@ -190,7 +209,6 @@ function BehaviorsTab({ distributions, origins }) {
                         </TableRow>
                       ))
                     ) : (
-                      // 4. Mensagem para quando não há behaviors
                       <TableRow>
                         <TableCell colSpan={4} className="text-center h-24 text-muted-foreground">
                           Nenhum behavior encontrado para esta distribuição.
@@ -209,6 +227,7 @@ function BehaviorsTab({ distributions, origins }) {
             originsList={filteredOrigins}
             cachePolicies={cachePolicies}
             originPolicies={originPolicies}
+            functionsList={functionsList}
             onSuccess={() => fetchBehaviors(selectedDistId)}
           />
           {behaviorToEdit && (
@@ -219,6 +238,7 @@ function BehaviorsTab({ distributions, origins }) {
               originsList={filteredOrigins} 
               cachePolicies={cachePolicies}
               originPolicies={originPolicies}
+              functionsList={functionsList}
               onSuccess={handleUpdateSuccess}
               behaviorToEdit={behaviorToEdit}
             />

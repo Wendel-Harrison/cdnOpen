@@ -57,6 +57,8 @@ import PublicRoute from './components/shared/PublicRoute'
 import FunctionsPage from './pages/FunctionsPage'
 import { ForceChangePasswordDialog } from './components/shared/ForceChangePasswordDialog'
 import EditFunctionPage from './pages/EditFunctionPage'
+import NodesSitesPage from './pages/NodesSitesPage'
+import HistoryPage from './pages/HistoryPage'
 
 // Página de Dashboard
 function DashboardPage() {
@@ -309,9 +311,11 @@ function App() {
           <Route path="/policies" element={<PoliciesPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/functions" element={<FunctionsPage />} />
+          <Route path="/nodes" element={<NodesSitesPage />} />
           <Route path="/functions/:id" element={<EditFunctionPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/history" element={<HistoryPage />} />
           
           {/* Esta rota SÓ permite 'admin' */}
           <Route 

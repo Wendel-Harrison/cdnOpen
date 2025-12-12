@@ -1,6 +1,7 @@
 // BehaviorFormDialog.jsx (Versão Atualizada)
 
 import { useState, useEffect } from 'react';
+import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
@@ -16,9 +17,11 @@ const INITIAL_STATE = {
   allowed_methods: 'GET_HEAD',
   cache_policy_id: '',
   origin_policy_id: '',
+  viewer_request_function_id: 'none',
+  viewer_response_function_id: 'none',
 };
 
-export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, originsList, cachePolicies, originPolicies, onSuccess, behaviorToEdit }) {
+export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, originsList, cachePolicies, originPolicies, onSuccess, behaviorToEdit, functionsList }) {
   
   const isEditMode = !!behaviorToEdit;
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -30,14 +33,16 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
       setFormData({
         path_pattern: behaviorToEdit.path_pattern,
         priority: behaviorToEdit.priority,
-        origin_id: behaviorToEdit.origin_id.toString(), // Select precisa de string
+        origin_id: behaviorToEdit.origin_id.toString(),
         viewer_protocol_policy: behaviorToEdit.viewer_protocol_policy,
         allowed_methods: behaviorToEdit.allowed_methods,
         cache_policy_id: behaviorToEdit.cache_policy_id.toString(),
         origin_policy_id: behaviorToEdit.origin_policy_id.toString(),
+        viewer_request_function_id: behaviorToEdit.viewer_request_function_id ? behaviorToEdit.viewer_request_function_id.toString() : 'none',
+        viewer_response_function_id: behaviorToEdit.viewer_response_function_id ? behaviorToEdit.viewer_response_function_id.toString() : 'none',
       });
     } else {
-      setFormData(INITIAL_STATE); // Garante que o form está limpo para criação
+      setFormData(INITIAL_STATE); 
     }
   }, [behaviorToEdit, isEditMode, isOpen]);
 
@@ -56,6 +61,8 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
       origin_id: parseInt(formData.origin_id, 10),
       cache_policy_id: parseInt(formData.cache_policy_id, 10),
       origin_policy_id: parseInt(formData.origin_policy_id, 10),
+      viewer_request_function_id: formData.viewer_request_function_id === 'none' ? null : parseInt(formData.viewer_request_function_id, 10),
+      viewer_response_function_id: formData.viewer_response_function_id === 'none' ? null : parseInt(formData.viewer_response_function_id, 10),
     };
 
     try {
@@ -172,6 +179,57 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
                 ))}
               </SelectContent>
             </Select>
+          </div>
+          <Separator className="my-2" />
+
+          <div className="space-y-4">
+            <h3 className="font-medium text-sm">Function associations - Optional</h3>
+            
+            <div className="grid grid-cols-2 gap-4">
+              {/* Viewer Request */}
+              <div className="space-y-2">
+                <Label>Viewer Request</Label>
+                <Select 
+                  onValueChange={(value) => handleSelectChange('viewer_request_function_id', value)} 
+                  value={formData.viewer_request_function_id}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="No association" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">No association</SelectItem>
+                    {functionsList.map(func => (
+                      <SelectItem key={func.id} value={func.id.toString()}>
+                        {func.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-[10px] text-muted-foreground">Executa quando a CDN recebe a requisição.</p>
+              </div>
+
+              {/* Viewer Response */}
+              <div className="space-y-2">
+                <Label>Viewer Response</Label>
+                <Select 
+                  onValueChange={(value) => handleSelectChange('viewer_response_function_id', value)} 
+                  value={formData.viewer_response_function_id}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="No association" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">No association</SelectItem>
+                    {functionsList.map(func => (
+                      <SelectItem key={func.id} value={func.id.toString()}>
+                        {func.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-[10px] text-muted-foreground">Executa antes da CDN enviar a resposta ao cliente.</p>
+              </div>
+            </div>
           </div>
 
           <DialogFooter>

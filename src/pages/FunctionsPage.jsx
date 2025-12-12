@@ -119,12 +119,10 @@ function FunctionsPage() {
         throw new Error('Falha ao deletar função');
       }
       
-      // Atualiza lista local
       setFunctions(functions.filter(f => f.id !== id));
       toast.success('Função deletada com sucesso!');
       
-      // Opcional: Recarregar dados
-      // await fetchFunctions(currentPage);
+      await fetchFunctions(currentPage);
     } catch (err) {
        toast.error("Erro ao deletar", { description: err.message });
     }
@@ -169,7 +167,6 @@ function FunctionsPage() {
 
   return (
     <div className="space-y-6">
-      {/* Card de Criação (Escondido para Viewers) */}
       {!isViewer && (
         <Card>
           <CardHeader>
@@ -258,7 +255,16 @@ function FunctionsPage() {
                     </TableCell>
                     <TableCell>
                       <span className="text-muted-foreground text-sm">
-                        {func.upadted_at || '-'}
+                        {func.updated_at 
+                          ? new Date(func.updated_at).toLocaleString('pt-BR', {
+                              day: '2-digit',
+                              month: '2-digit',
+                              year: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })
+                          : '-'
+                        }
                       </span>
                     </TableCell>
                     <TableCell className="text-right">

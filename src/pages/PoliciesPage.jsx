@@ -21,6 +21,7 @@ import {
   AlertDialogTitle
 } from "@/components/ui/alert-dialog";
 import { useAuth } from '@/context/AuthContext'
+import { Badge } from '@/components/ui/badge'
 
 function PoliciesPage() {
   // --- CACHE POLICIES ---
@@ -188,9 +189,21 @@ function PoliciesPage() {
                 <TableBody>
                   {cachePolicies.map(policy => (
                     <TableRow key={policy.id}>
-                      <TableCell>{policy.id}</TableCell>
-                      <TableCell>{policy.name}</TableCell>
-                      <TableCell className="truncate" title={policy.description}>{policy.description}</TableCell>
+                      <TableCell>
+                        <Badge className='h-7 w-8'>
+                          {policy.id}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className='truncate pr-5'>
+                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                          {policy.name}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="truncate" title={policy.description}>
+                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                          {policy.description}
+                        </Badge>
+                      </TableCell>
                       <TableCell>
                         <div className="flex justify-end gap-2">
                           <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }}>
@@ -276,9 +289,21 @@ function PoliciesPage() {
                 <TableBody>
                   {originPolicies.map(policy => (
                     <TableRow key={policy.id}>
-                      <TableCell>{policy.id}</TableCell>
-                      <TableCell className='truncate pr-5'>{policy.name}</TableCell>
-                      <TableCell className="truncate" title={policy.description}>{policy.description}</TableCell>
+                      <TableCell>
+                        <Badge className='h-7 w-8'>
+                          {policy.id}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className='truncate pr-5'>
+                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                          {policy.name}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="truncate" title={policy.description}>
+                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                          {policy.description}
+                        </Badge>
+                      </TableCell>
                       <TableCell>
                         <div className="flex justify-end gap-2">
                           <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }}>

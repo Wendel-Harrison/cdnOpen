@@ -75,7 +75,7 @@ function DistributionsPage() {
     try {
       // Aqui você precisaria montar o objeto completo, incluindo o domain_name
       // Este é um exemplo simplificado
-      const newDist = { name: newDistributionName, status: 'deployed' };
+      const newDist = { name: newDistributionName, status: 'deployed', currentUserEmail: user.email, currentUserName: user.name };
 
       const response = await fetch(API_URL, {
         method: 'POST',
@@ -101,6 +101,11 @@ function DistributionsPage() {
     try {
       const response = await fetch(`${API_URL}/${id}`, {
         method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify({
+            currentUserEmail: user.email,
+            currentUserName: user.name
+        }),
       });
 
       if (!response.ok) {
@@ -129,7 +134,11 @@ function DistributionsPage() {
       const response = await fetch(`${API_URL}/${updatedData.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedData),
+        body: JSON.stringify({
+            ...updatedData,
+            currentUserEmail: user.email,
+            currentUserName: user.name
+        }),
       });
 
       if (!response.ok) {

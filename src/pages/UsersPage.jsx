@@ -10,10 +10,12 @@ import { Edit, Plus, Trash2, UserRound, UserPlus, UserCog } from 'lucide-react';
 import { toast } from "sonner";
 import { AlertDialog, AlertDialogAction, AlertDialogTrigger, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { EditUserDialog } from '@/components/shared/EditUserDialog';
+import { useAuth } from '@/context/AuthContext';
 
 const API_URL = '/api/users';
 
 function UsersPage() {
+  const { user } = useAuth();
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -62,7 +64,11 @@ function UsersPage() {
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newUser),
+        body: JSON.stringify({
+          ...newUser,
+          currentUserEmail: user.email,
+          currentUserName: user.name
+        }),
       });
 
       if (!response.ok) {
@@ -94,7 +100,11 @@ function UsersPage() {
       const response = await fetch(`${API_URL}/${userToEdit.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedUser),
+        body: JSON.stringify({
+           ...updatedUser,
+           currentUserEmail: user.email,
+           currentUserName: user.name
+        }),
       });
 
       if (!response.ok) {
@@ -105,8 +115,8 @@ function UsersPage() {
       const data = await response.json();
       setUsers(prev => prev.map(u => (u.id === data.id ? data : u)));
       toast.success("Usuário atualizado com sucesso!");
-      setIsEditDialogOpen(false); // Fecha o diálogo
-      setUserToEdit(null); // Limpa a seleção
+      setIsEditDialogOpen(false);
+      setUserToEdit(null); 
 
     } catch (err) {
       console.error(err);
@@ -121,6 +131,11 @@ function UsersPage() {
     try {
       const response = await fetch(`${API_URL}/${userToDelete.id}`, {
         method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+           currentUserEmail: user.email,
+           currentUserName: user.name
+        }),
       });
 
       if (!response.ok) {
