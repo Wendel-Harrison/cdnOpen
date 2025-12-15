@@ -5,7 +5,7 @@ import { OriginPolicyForm } from './OriginPolicyForm';
 
 // Não precisamos mais das interfaces em JSX
 
-export function EditOriginPolicyDialog({ isOpen, onOpenChange, policy, onSave }) {
+export function EditOriginPolicyDialog({ isOpen, onOpenChange, policy, onSave, currentUserEmail, currentUserName }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
@@ -27,7 +27,7 @@ export function EditOriginPolicyDialog({ isOpen, onOpenChange, policy, onSave })
      setIsSubmitting(true);
      setError(null);
      try {
-       await onSave({ ...policy, ...formData }); // Chama callback do pai
+       await onSave({ ...policy, ...formData, currentUserEmail, currentUserName });
        onOpenChange(false);
      } catch (e) {
         console.error("Erro ao salvar política:", e);
@@ -38,9 +38,6 @@ export function EditOriginPolicyDialog({ isOpen, onOpenChange, policy, onSave })
   };
 
   return (
-    // O JSX da renderização permanece exatamente o mesmo do exemplo TSX
-    // Copie a seção <Dialog>...</Dialog> do exemplo anterior aqui
-    // ...
      <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[600px]">
         <DialogHeader>

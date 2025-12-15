@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { OriginPolicyForm } from './OriginPolicyForm';
+import { useAuth } from '@/context/AuthContext';
+
 
 async function handleApiError(response) {
   let errorMessage = `Erro HTTP: ${response.status} ${response.statusText}`;
@@ -25,9 +27,11 @@ async function handleApiError(response) {
 
 const API_URL = '/api/origin-policies';
 
-export function CreateOriginPolicyDialog({ isOpen, onOpenChange, onPolicyCreated }) {
+export function CreateOriginPolicyDialog({ isOpen, onOpenChange, onPolicyCreated}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
+
+  const { user } = useAuth();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -47,7 +51,12 @@ export function CreateOriginPolicyDialog({ isOpen, onOpenChange, onPolicyCreated
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          currentUserEmail: user.email,
+          currentUserName: user.name  
+        
+        }),
       });
 
       if (!response.ok) {
@@ -59,11 +68,12 @@ export function CreateOriginPolicyDialog({ isOpen, onOpenChange, onPolicyCreated
       onOpenChange(false);
       // Reseta o formulário
       setFormData({
-        name: '', description: '', request_settings: {
-        headers: { behavior: 'none', whitelist: [] },
-        cookies: { behavior: 'none', whitelist: [] },
-        queryStrings: { behavior: 'all', whitelist: [] },
-      }});
+        name: '', description: '', 
+        requestSettings: {
+          headers: { behavior: 'none', whitelist: [] },
+          cookies: { behavior: 'none', whitelist: [] },
+          queryStrings: { behavior: 'all', whitelist: [] },
+        }});
 
     } catch (e) {
       console.error("Erro ao criar política:", e);

@@ -8,6 +8,10 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ShieldCheck } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Globe } from 'lucide-react';
+import { GitBranch } from 'lucide-react';
+import { FileCog } from 'lucide-react';
+import { FileClock } from 'lucide-react';
 
 function HistoryPage() {
   const [logs, setLogs] = useState([]);
@@ -48,6 +52,10 @@ function HistoryPage() {
         case 'Users': return <User className="h-3 w-3" />;
         case 'Functions': return <FileCode className="h-3 w-3" />;
         case 'Distributions': return <Server className="h-3 w-3" />;
+        case 'Origins': return <Globe className="h-3 w-3" />;
+        case 'Behaviors': return <GitBranch className="h-3 w-3" />;
+        case 'Origin Policies': return <FileCog className="h-3 w-3" />;
+        case 'CachePolicy': return <FileClock className="h-3 w-3" />;
         default: return <Activity className="h-3 w-3" />;
     }
   }
@@ -61,17 +69,29 @@ function HistoryPage() {
         <p className="text-muted-foreground">Timeline de todas as alterações realizadas no sistema.</p>
       </div>
 
-      <Tabs defaultValue="ALL" value={selectedGroup} onValueChange={setSelectedGroup} className="w-full">
-        <TabsList className="grid w-full grid-cols-4 max-w-2xl">
-          <TabsTrigger value="ALL">Todos</TabsTrigger>
+      <Tabs defaultValue="ALL" value={selectedGroup} onValueChange={setSelectedGroup} className="w-full ">
+        <TabsList className="grid w-full grid-cols-8 gap-2">
+          <TabsTrigger value="ALL" className="flex gap-2 items-center py-3">Todos</TabsTrigger>
           <TabsTrigger value="Users" className="flex gap-2 items-center">
-            <User className="w-4 h-4" /> Usuários
+            <User className="w-6  h-4" /> Usuários
           </TabsTrigger>
           <TabsTrigger value="Distributions" className="flex gap-2 items-center">
-             <Server className="w-4 h-4" /> Distribuições
+             <Server className="w-8 h-4" /> Distribuições
+          </TabsTrigger>
+          <TabsTrigger value="Origins" className="flex gap-2 items-center">
+             <Globe className="w-6 h-4" /> Origens
+          </TabsTrigger>
+          <TabsTrigger value="Origin Policies" className="flex gap-2 items-center">
+             <FileCog className="w-6 h-4" /> Política de Origin
+          </TabsTrigger>
+          <TabsTrigger value="CachePolicy" className="flex gap-2 items-center">
+             <FileClock className="w-6 h-4" /> Política de Cache
+          </TabsTrigger>
+          <TabsTrigger value="Behaviors" className="flex gap-2 items-center">
+             <GitBranch className="w-6 h-4" /> Behaviors
           </TabsTrigger>
           <TabsTrigger value="Functions" className="flex gap-2 items-center">
-             <FileCode className="w-4 h-4" /> Functions
+             <FileCode className="w-6 h-4" /> Functions
           </TabsTrigger>
         </TabsList>
       </Tabs>

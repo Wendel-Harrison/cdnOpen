@@ -92,7 +92,11 @@ function PoliciesPage() {
       const response = await fetch(`${CACHE_API_URL}/${updatedCachePolicy.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedCachePolicy),
+        body: JSON.stringify({
+          ...updatedCachePolicy,
+          currentUserEmail: user.email,
+          currentUserName: user.name  
+        }),
       });
       if (!response.ok) throw new Error('Falha ao atualizar a política');
       const data = await response.json();
@@ -123,7 +127,11 @@ function PoliciesPage() {
       const response = await fetch(`${ORIGIN_API_URL}/${updatedOriginPolicy.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedOriginPolicy),
+        body: JSON.stringify({
+          ...updatedOriginPolicy,
+          currentUserEmail: user.email,
+          currentUserName: user.name
+        }),
       });
       if (!response.ok) throw new Error('Falha ao atualizar a política de origem');
       const data = await response.json();
@@ -137,7 +145,15 @@ function PoliciesPage() {
 
   const deleteOriginPolicy = async (id) => {
     try {
-      const response = await fetch(`${ORIGIN_API_URL}/${id}`, { method: 'DELETE' });
+      const response = await fetch(`${ORIGIN_API_URL}/${id}`,
+        { 
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            currentUserEmail: user.email, 
+            currentUserName: user.name   
+        })
+      });
       if (!response.ok) throw new Error('Falha ao deletar a política de origem');
       setOriginPolicies(prev => prev.filter(p => p.id !== id));
       toast.success("Política de origem deletada com sucesso!");
@@ -325,6 +341,8 @@ function PoliciesPage() {
             isOpen={isOriginCreateOpen}
             onOpenChange={setIsOriginCreateOpen}
             onPolicyCreated={handleOriginPolicyCreated}
+            currentUserEmail={user?.email} 
+            currentUserName={user?.name}
           />
 
           {selectedOriginPolicy && (
@@ -333,6 +351,8 @@ function PoliciesPage() {
               onOpenChange={setIsOriginEditOpen}
               policy={selectedOriginPolicy}
               onSave={handleUpdateOriginPolicy}
+              currentUserEmail={user?.email} 
+              currentUserName={user?.name}
             />
           )}
 

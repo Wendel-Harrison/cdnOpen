@@ -9,9 +9,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export function OriginPolicyForm({ formData, setFormData }) {
 
-  // As funções handleWhitelistChange, handleInputChange, handleBehaviorChange
-  // permanecem as mesmas, mas sem as anotações de tipo nos parâmetros.
-  // Exemplo:
   const handleWhitelistChange = (type, value) => { // Removemos ': string', etc.
     const list = value.split(',').map(item => item.trim()).filter(Boolean);
     setFormData(prev => ({

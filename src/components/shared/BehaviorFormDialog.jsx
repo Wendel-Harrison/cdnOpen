@@ -9,6 +9,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 
+
 const INITIAL_STATE = {
   path_pattern: '/*',
   priority: 0,
@@ -19,9 +20,10 @@ const INITIAL_STATE = {
   origin_policy_id: '',
   viewer_request_function_id: 'none',
   viewer_response_function_id: 'none',
+  
 };
 
-export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, originsList, cachePolicies, originPolicies, onSuccess, behaviorToEdit, functionsList }) {
+export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, originsList, cachePolicies, originPolicies, onSuccess, behaviorToEdit, functionsList, currentUserName, currentUserEmail }) {
   
   const isEditMode = !!behaviorToEdit;
   const [formData, setFormData] = useState(INITIAL_STATE);
@@ -63,6 +65,8 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
       origin_policy_id: parseInt(formData.origin_policy_id, 10),
       viewer_request_function_id: formData.viewer_request_function_id === 'none' ? null : parseInt(formData.viewer_request_function_id, 10),
       viewer_response_function_id: formData.viewer_response_function_id === 'none' ? null : parseInt(formData.viewer_response_function_id, 10),
+      currentUserEmail,
+      currentUserName,
     };
 
     try {
@@ -79,7 +83,7 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
       
       const resultData = await res.json();
       toast.success(`Behavior ${isEditMode ? 'atualizado' : 'criado'} com sucesso!`);
-      onSuccess(resultData); // Passa o dado atualizado/criado para o pai
+      onSuccess(resultData); 
       onOpenChange(false);
     } catch (err) {
       toast.error(`Erro ao ${isEditMode ? 'atualizar' : 'criar'} behavior`, { description: err.message });

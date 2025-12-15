@@ -97,7 +97,15 @@ function BehaviorsTab({ distributions, origins }) {
   const handleDeleteBehavior = async () => {
     if (!behaviorToDelete) return;
     try {
-      const response = await fetch(`/api/behaviors/${behaviorToDelete.id}`, { method: 'DELETE' });
+      const response = await fetch(`/api/behaviors/${behaviorToDelete.id}`, { 
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' }, 
+        body: JSON.stringify({
+            currentUserEmail: user.email,
+            currentUserName: user.name  
+        })
+      });
+
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message || 'Falha ao deletar o behavior.');
@@ -229,6 +237,8 @@ function BehaviorsTab({ distributions, origins }) {
             originPolicies={originPolicies}
             functionsList={functionsList}
             onSuccess={() => fetchBehaviors(selectedDistId)}
+            currentUserEmail={user?.email} 
+            currentUserName={user?.name}
           />
           {behaviorToEdit && (
             <BehaviorFormDialog
@@ -241,6 +251,8 @@ function BehaviorsTab({ distributions, origins }) {
               functionsList={functionsList}
               onSuccess={handleUpdateSuccess}
               behaviorToEdit={behaviorToEdit}
+              currentUserEmail={user?.email} 
+              currentUserName={user?.name}
             />
           )}
           <AlertDialog open={!!behaviorToDelete} onOpenChange={() => setBehaviorToDelete(null)}>

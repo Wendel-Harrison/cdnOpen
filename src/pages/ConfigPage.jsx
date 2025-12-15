@@ -46,7 +46,12 @@ function ConfigPage() {
       const response = await fetch(`${ORIGINS_API_URL}/${updatedOrigin.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedOrigin),
+        body: JSON.stringify({
+            ...updatedOrigin,
+            currentUserEmail: user.email, 
+            currentUserName: user.name 
+        }),
+        
       });
 
       if (!response.ok) {
@@ -79,7 +84,6 @@ function ConfigPage() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        // Busca os origins e distributions em paralelo
         const [originsRes, distributionsRes] = await Promise.all([
           fetch(ORIGINS_API_URL),
           fetch(DISTRIBUTIONS_API_URL)
@@ -128,6 +132,8 @@ function ConfigPage() {
           distribution_name: newOrigin.distribution_name,
           origin_id: newOrigin.origin_id,
           domain_name: newOrigin.domain_name,
+          currentUserEmail: user.email, 
+          currentUserName: user.name   
         }),
       });
 
@@ -158,23 +164,22 @@ function ConfigPage() {
 
 const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a mensagem
   toast("Confirmar Exclusão", {
-    // Mensagem principal e descrição para o usuário
     title: `Tem certeza que deseja deletar o origin "${originName}"`,
-    
-    // Faz o toast ficar visível até o usuário interagir
     duration: Infinity, 
-    
-    
-    // Estilo visual que destaca o toast
+
     important: true, 
 
-    // Botão de confirmação (ação principal)
     action: {
       label: "Confirmar",
       onClick: async () => {
         try {
           const response = await fetch(`${ORIGINS_API_URL}/${originId}`, {
             method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }, 
+            body: JSON.stringify({
+                currentUserEmail: user.email, 
+                currentUserName: user.name   
+            }),
           });
 
           if (!response.ok) {
