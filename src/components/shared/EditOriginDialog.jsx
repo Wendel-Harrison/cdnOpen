@@ -11,6 +11,8 @@ import { Trash2 } from 'lucide-react'
 function EditOriginDialog({ isOpen, onOpenChange, origin, onSave }) {
   const [formData, setFormData] = useState(null);
 
+  const API_URL = '/api/origins';
+
   useEffect(() => {
     // Garante que os headers sejam sempre um array
     setFormData({ ...origin, headers: origin.headers || [] });
@@ -40,11 +42,37 @@ function EditOriginDialog({ isOpen, onOpenChange, origin, onSave }) {
     }));
   };
 
-  const handleRemoveHeader = (index) => {
-    const newHeaders = formData.headers.filter((_, i) => i !== index);
-    setFormData(prev => ({ ...prev, headers: newHeaders }));
-  };
+  const handleRemoveHeader = async (index) => {
+    const headerToDelete = formData.headers[index];
 
+    // CENÁRIO 1: O header já existe no banco de dados (possui ID)
+    if (headerToDelete.id) {
+
+      try {
+        const response = await fetch(`${API_URL}/headers/${headerToDelete.id}`, {
+          method: 'DELETE',
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao deletar no servidor');
+        }
+
+        // Se o servidor confirmou que deletou, agora removemos da tela
+        const newHeaders = formData.headers.filter((_, i) => i !== index);
+        setFormData(prev => ({ ...prev, headers: newHeaders }));
+
+      } catch (error) {
+        console.error("Erro ao excluir header:", error);
+        alert("Não foi possível excluir o header. Tente novamente.");
+      }
+    } 
+    // CENÁRIO 2: É um header novo que ainda não foi salvo (não tem ID)
+    else {
+      // Apenas remove do estado local, pois não existe no banco ainda
+      const newHeaders = formData.headers.filter((_, i) => i !== index);
+      setFormData(prev => ({ ...prev, headers: newHeaders }));
+    }
+  };
   if (!formData) return null;
 
   return (

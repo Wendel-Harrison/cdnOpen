@@ -60,12 +60,10 @@ function DistributionsPage() {
     }
   }, []);
 
-  // useEffect agora depende da página atual
   useEffect(() => {
     fetchDistributions(currentPage);
   }, [currentPage, fetchDistributions]);
 
-  // 4. Funções para adicionar e deletar que agora chamam a API
   const addDistribution = async () => {
     if (!newDistributionName) {
       toast.warning("O nome da distribuição não pode ser vazio.");
@@ -73,8 +71,6 @@ function DistributionsPage() {
     }
 
     try {
-      // Aqui você precisaria montar o objeto completo, incluindo o domain_name
-      // Este é um exemplo simplificado
       const newDist = { name: newDistributionName, status: 'deployed', currentUserEmail: user.email, currentUserName: user.name };
 
       const response = await fetch(API_URL, {
@@ -88,7 +84,7 @@ function DistributionsPage() {
       }
 
       const addedDistribution = await response.json();
-      setDistributions([...distributions, addedDistribution]); // Adiciona a nova distribuição retornada pela API
+      setDistributions([...distributions, addedDistribution]); 
       setNewDistributionName('');
     } catch (err) {      
       console.error(err);
@@ -151,7 +147,7 @@ function DistributionsPage() {
       setDistributions(prev => prev.map(dist => (dist.id === data.id ? data : dist)));
       setIsEditDialogOpen(false); // Fecha o diálogo
       toast.success("Distribuição atualizada com sucesso!");
-
+      window.location.reload();
     } catch (err) {
       toast.error("Erro ao atualizar", { description: err.message });
     }

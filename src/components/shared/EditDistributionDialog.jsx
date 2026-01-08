@@ -30,6 +30,8 @@ function EditDistributionDialog({ isOpen, onOpenChange, distribution, onSave }) 
     status: 'deployed',
   });
 
+  const [errors, setErrors] = useState({});
+
   // useEffect para preencher o formulário quando o diálogo abre ou a 'distribution' muda
   useEffect(() => {
     if (distribution) {
@@ -39,20 +41,41 @@ function EditDistributionDialog({ isOpen, onOpenChange, distribution, onSave }) 
         domain_name: distribution.domain_name || '',
         status: distribution.status || 'deployed',
       });
+      setErrors({});
     }
   }, [distribution]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: null }));
+    }
   };
 
   const handleSelectChange = (value) => {
     setFormData(prev => ({ ...prev, status: value }));
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+
+    const domainRegex = /^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$/i;
+
+    if (!formData.domain_name) {
+    } else if (!domainRegex.test(formData.domain_name)) {
+      newErrors.domain_name = "Formato inválido. Use apenas o domínio (ex: site.com) sem http:// ou barras.";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSaveChanges = () => {
-    onSave({ ...distribution, ...formData });
+    if (validateForm()) {
+      onSave({ ...distribution, ...formData });
+    }
   };
 
   return (
@@ -93,13 +116,22 @@ function EditDistributionDialog({ isOpen, onOpenChange, distribution, onSave }) 
             <Label htmlFor="domain_name" className="text-right">
               Domínio
             </Label>
-            <Input
-              id="domain_name"
-              name="domain_name"
-              value={formData.domain_name}
-              onChange={handleInputChange}
-              className="col-span-3"
-            />
+            <div className="col-span-3">
+              <Input
+                type="text" // Mudei de 'email' para 'text' pois domínio não é email
+                id="domain_name"
+                name="domain_name"
+                value={formData.domain_name}
+                onChange={handleInputChange}
+                className={errors.domain_name ? "border-red-500" : ""}
+                placeholder="ex: cdn.meusite.com"
+              />
+              {errors.domain_name && (
+                <span className="text-xs text-red-500 mt-1 block">
+                  {errors.domain_name}
+                </span>
+              )}
+            </div>
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="status" className="text-right">
@@ -110,7 +142,9 @@ function EditDistributionDialog({ isOpen, onOpenChange, distribution, onSave }) 
               onValueChange={handleSelectChange}
             >
               <SelectTrigger className="col-span-3">
-                <SelectValue placeholder="Selecione um status" />
+                <span>
+                  <SelectValue placeholder="Selecione um status" />
+                </span>
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="deployed">Deployed</SelectItem>
