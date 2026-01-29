@@ -59,6 +59,9 @@ import { ForceChangePasswordDialog } from './components/shared/ForceChangePasswo
 import EditFunctionPage from './pages/EditFunctionPage'
 import NodesSitesPage from './pages/NodesSitesPage'
 import HistoryPage from './pages/HistoryPage'
+import { FloatingDeployer } from './components/shared/FloatingDeployer'
+import { GlobalOperationsWidget } from './components/shared/GlobalOperationsWidget'
+import ReviewChangesPage from './pages/ReviewChangesPage'
 
 // Página de Dashboard
 function DashboardPage() {
@@ -280,6 +283,7 @@ function Layout() {
         {/* Main Content */}
         <main className="p-6">
           <Outlet />
+          <GlobalOperationsWidget />
         </main>
       </div>
     </div>
@@ -316,6 +320,7 @@ function App() {
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/history" element={<HistoryPage />} />
+          <Route path="/review" element={<ReviewChangesPage />} />
           
           {/* Esta rota SÓ permite 'admin' */}
           <Route 

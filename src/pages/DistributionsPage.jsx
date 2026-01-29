@@ -1,19 +1,26 @@
-import { useState, useEffect, useCallback  } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Label } from '@/components/ui/label.jsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
-import { Trash2, Edit} from 'lucide-react'
-
+import { Trash2, Edit, ChevronRight, ChevronLeft } from 'lucide-react'
+import { toast } from "sonner"
+import { useAuth } from '@/context/AuthContext'
 import EditDistributionDialog from '@/components/shared/EditDistributionDialog';
 
-import { toast } from "sonner"
-import { ChevronRight } from 'lucide-react'
-import { ChevronLeft } from 'lucide-react'
-import { useAuth } from '@/context/AuthContext'
-
+// 1. IMPORTAR OS COMPONENTES DE ALERT DIALOG
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
 
 function DistributionsPage() {
 
@@ -28,9 +35,13 @@ function DistributionsPage() {
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [selectedDistribution, setSelectedDistribution] = useState(null);
 
+  // 2. NOVOS ESTADOS PARA O DELETE
+  const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false);
+  const [idToDelete, setIdToDelete] = useState(null);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const LIMIT = 15; // Define o limite de itens por página
+  const LIMIT = 15; 
 
   const { user } = useAuth();
 
@@ -40,14 +51,12 @@ function DistributionsPage() {
   const fetchDistributions = useCallback(async (page) => {
     try {
       setIsLoading(true);
-      // Adiciona os parâmetros de paginação à URL
       const response = await fetch(`${API_URL}?page=${page}&limit=${LIMIT}`);
       if (!response.ok) {
         throw new Error('Falha ao buscar os dados da API');
       }
       const data = await response.json();
       
-      // Atualiza os estados com os dados e metadados da API
       setDistributions(data.data);
       setTotalPages(data.totalPages);
       setCurrentPage(data.currentPage);
@@ -86,16 +95,25 @@ function DistributionsPage() {
       const addedDistribution = await response.json();
       setDistributions([...distributions, addedDistribution]); 
       setNewDistributionName('');
+      toast.success("Criado com sucesso.");
     } catch (err) {      
       console.error(err);
     }
     await fetchDistributions(currentPage);
-    toast.success("Criado com sucesso.");
   };
 
-  const deleteDistribution = async (id) => {
+  // 3. FUNÇÃO PARA INICIAR O PROCESSO DE DELETE (ABRE O MODAL)
+  const confirmDelete = (id) => {
+    setIdToDelete(id);
+    setIsDeleteAlertOpen(true);
+  };
+
+  // 4. FUNÇÃO QUE EFETIVAMENTE DELETA (CHAMADA PELO MODAL)
+  const executeDelete = async () => {
+    if (!idToDelete) return;
+
     try {
-      const response = await fetch(`${API_URL}/${id}`, {
+      const response = await fetch(`${API_URL}/${idToDelete}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify({
@@ -105,25 +123,25 @@ function DistributionsPage() {
       });
 
       if (!response.ok) {
-        toast.error('Falha ao deletar distribuição');
+        throw new Error('Falha ao deletar');
       }
+      
       await fetchDistributions(currentPage);
-      setDistributions(distributions.filter(d => d.id !== id));
+      setDistributions(prev => prev.filter(d => d.id !== idToDelete));
+      toast.success("Distribuição deletada com sucesso");
+      
     } catch (err) {
-    //   console.error(err);
+       toast.error('Falha ao deletar distribuição');
+    } finally {
+      // Limpa o estado e fecha o modal
+      setIsDeleteAlertOpen(false);
+      setIdToDelete(null);
     }
   };
 
   const filteredDistributions = distributions.filter(dist =>
     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
-  if (isLoading) {
-    return <div className="text-center p-10">Carregando distribuições...</div>;
-  }
-  if (error) {
-    return <div className="text-center p-10 text-destructive">Erro: {error}</div>;
-  }
 
   const handleUpdateDistribution = async (updatedData) => {
     try {
@@ -145,15 +163,14 @@ function DistributionsPage() {
       const data = await response.json();
       
       setDistributions(prev => prev.map(dist => (dist.id === data.id ? data : dist)));
-      setIsEditDialogOpen(false); // Fecha o diálogo
+      setIsEditDialogOpen(false); 
       toast.success("Distribuição atualizada com sucesso!");
-      window.location.reload();
+      // window.location.reload(); // Evite reload se possível, o estado já foi atualizado acima
     } catch (err) {
       toast.error("Erro ao atualizar", { description: err.message });
     }
   };
 
-  // 5. Renderização condicional para os estados de carregamento e erro
   if (isLoading) {
     return <div className="text-center p-10">Carregando distribuições...</div>
   }
@@ -183,9 +200,7 @@ function DistributionsPage() {
                   />
                 </div>
                 <div className="w-1/5">
-                  <Button variant="secondary" onClick={
-                    addDistribution
-                    } className="cursor-pointer hover:bg-neutral-300 w-full hover:shadow">
+                  <Button variant="secondary" onClick={addDistribution} className="cursor-pointer hover:bg-neutral-300 w-full hover:shadow">
                     Adicionar
                   </Button>
                 </div>
@@ -195,7 +210,6 @@ function DistributionsPage() {
         </Card>
       )}
       
-
       <Card>
         <CardHeader>
           <div className="flex justify-between items-center">
@@ -255,7 +269,7 @@ function DistributionsPage() {
                       )}
                     </TableCell>
                     <TableCell>
-                      <Badge variant={dist.status === 'deployed' ? 'default' : 'secondary'}>
+                      <Badge variant={dist.status === 'deployed' ? 'default' : 'secondary'} className="w-20 py-1 rounded-sm">
                         {dist.status}
                       </Badge>
                     </TableCell>
@@ -273,15 +287,23 @@ function DistributionsPage() {
                         >
                           <Edit className="h-4 w-4" />
                         </Button>
-                        <Button variant="ghost" size="icon" onClick={() => deleteDistribution(dist.id)} className="cursor-pointer hover:bg-red-300 transition-all duration-200" disabled={isViewer}>
+                        
+                        {/* 5. BOTÃO DE DELETAR ATUALIZADO PARA CHAMAR confirmDelete */}
+                        <Button 
+                            variant="ghost" 
+                            size="icon" 
+                            onClick={() => confirmDelete(dist.id)} 
+                            className="cursor-pointer hover:bg-red-300 transition-all duration-200" 
+                            disabled={isViewer}
+                        >
                           <Trash2 className="h-4 w-4 text-destructive" />
                         </Button>
+
                       </div>
                     </TableCell>
                   </TableRow>
                 ))
               ) : (
-                // --- MENSAGEM PARA QUANDO O FILTRO NÃO ENCONTRA NADA ---
                 <TableRow>
                   <TableCell colSpan={5} className="text-center h-24 text-muted-foreground">
                     Nenhuma distribuição encontrada com o nome "{searchTerm}".
@@ -290,6 +312,7 @@ function DistributionsPage() {
               )}
             </TableBody>
           </Table>
+          
           <div className="flex items-center justify-end gap-1 mt-3">
             <span className="text-sm text-muted-foreground">
               Página {currentPage} de {totalPages}
@@ -313,6 +336,8 @@ function DistributionsPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* COMPONENTE DE EDIÇÃO JÁ EXISTENTE */}
       {selectedDistribution && (
         <EditDistributionDialog
           isOpen={isEditDialogOpen}
@@ -321,6 +346,25 @@ function DistributionsPage() {
           onSave={handleUpdateDistribution}
         />
       )}
+
+      <AlertDialog open={isDeleteAlertOpen} onOpenChange={setIsDeleteAlertOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Você tem certeza absoluta?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Essa ação não pode ser desfeita. Isso excluirá permanentemente a distribuição
+              e removerá os dados associados.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction onClick={executeDelete} className="bg-destructive text-white hover:bg-destructive/90">
+              Sim, deletar
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
     </div>
   )
 }
