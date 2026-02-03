@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
   Rocket, 
@@ -13,6 +13,7 @@ import { useAuth } from '@/context/AuthContext';
 
 export function GlobalOperationsWidget() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { user } = useAuth();
   
   const [loading, setLoading] = useState(false);
@@ -73,54 +74,97 @@ export function GlobalOperationsWidget() {
 
   // --- LÓGICA DE AÇÃO PRINCIPAL ---
 
+  const chunkArray = (array, size) => {
+    const chunked = [];
+    for (let i = 0; i < array.length; i += size) {
+        chunked.push(array.slice(i, i + size));
+    }
+    return chunked;
+};
+
+const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
   const handleDeployAll = async () => {
-    if (!confirm(` CONFIRMAÇÃO FINAL: \n\nVocê vai enviar ${validatedDists.length} distribuições para PRODUÇÃO agora.\n\nDeseja continuar?`)) return;
+    if (!confirm(`🚀 CONFIRMAÇÃO: Enviar ${validatedDists.length} distribuições para PRODUÇÃO?`)) return;
 
     setLoading(true);
-    console.log("ITENS NA FILA DE DEPLOY:", validatedDists);
-    const deployPromises = validatedDists.map(async (dist) => {
-        try {
-            console.log(`Disparando deploy para ID: ${dist.id}`);
-            
-            const response = await fetch(`${API_URL}/distributions/${dist.id}/deploy`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    user_email: user?.email,
-                    user_name: user?.name,
-                    description: "Batch Deploy One-Click"
-                })
-            });
-
-            if (!response.ok) {
-                const errText = await response.text();
-                throw new Error(`Erro HTTP: ${errText}`);
-            }
-
-            return { id: dist.id, success: true };
-
-        } catch (error) {
-            console.error(`❌ Falha no ID ${dist.id}:`, error);
-            return { id: dist.id, success: false, error };
-        }
-    });
-
-    // 2. Espera todas terminarem (seja com sucesso ou erro)
-    const results = await Promise.all(deployPromises);
-
-    // 3. Contabiliza resultados
-    const successCount = results.filter(r => r.success).length;
-    const failCount = results.filter(r => !r.success).length;
-
-    if (failCount > 0) {
-        toast.warning(`Deploy finalizado com alertas: ${successCount} sucessos, ${failCount} falhas.`);
-    } else {
-        toast.success(`Sucesso Total! ${successCount} distribuições deployadas.`);
+    
+    // 1. Cria os lotes (Batches) de 3 em 3
+    const BATCH_SIZE = 3;
+    const batches = [];
+    for (let i = 0; i < validatedDists.length; i += BATCH_SIZE) {
+        batches.push(validatedDists.slice(i, i + BATCH_SIZE));
     }
 
-    await fetchGlobalStatus();
-  };
+    console.log(`📋 Total de itens: ${validatedDists.length} | Total de Lotes: ${batches.length}`);
 
+    let successCount = 0;
+    let failCount = 0;
+
+    // 2. Processa Lote a Lote
+    for (const [index, batch] of batches.entries()) {
+        console.log(`🔄 Iniciando Lote ${index + 1}/${batches.length}...`);
+
+        const batchPromises = batch.map(async (dist) => {
+            // Controller para cancelar requisição se travar
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 segundos Timeout
+
+            try {
+                const response = await fetch(`${API_URL}/distributions/${dist.id}/deploy`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        user_email: user?.email,
+                        user_name: user?.name,
+                        description: "Batch Deploy Auto"
+                    }),
+                    signal: controller.signal // Liga o timeout
+                });
+
+                clearTimeout(timeoutId); // Limpa o timer se deu certo
+
+                if (!response.ok) throw new Error(await response.text());
+                
+                console.log(`✅ [OK] ID ${dist.id}`);
+                return true;
+            } catch (error) {
+                if (error.name === 'AbortError') {
+                    console.error(`⚠️ [TIMEOUT] O Backend demorou demais no ID ${dist.id}, mas vamos seguir.`);
+                    // Opcional: Considerar sucesso se o backend logou sucesso, 
+                    // ou falha se quiser ser rígido. Aqui assumimos falha segura.
+                    return false; 
+                }
+                console.error(`❌ [ERRO] ID ${dist.id}:`, error);
+                return false;
+            }
+        });
+
+        // Espera o lote terminar
+        const results = await Promise.all(batchPromises);
+        
+        successCount += results.filter(r => r === true).length;
+        failCount += results.filter(r => r === false).length;
+
+        // --- O SEGREDO ANTI-TRAVAMENTO ---
+        // Espera 1 segundo entre lotes para o navegador fechar conexões TCP
+        if (index < batches.length - 1) {
+            console.log("⏳ Respirando 1s antes do próximo lote...");
+            await wait(1000);
+        }
+    }
+
+    setLoading(false);
+    
+    if (failCount > 0) {
+        toast.warning(`Concluído com alertas: ${successCount} sucessos, ${failCount} falhas/timeouts.`);
+    } else {
+        toast.success(`Sucesso Total! ${successCount} distribuições processadas.`);
+    }
+
+    // Atualiza a lista geral
+    await fetchGlobalStatus();
+};
   const handleMainClick = () => {
     if (changedDists.length > 0) {
       // CENÁRIO 1: Amarelo -> Vai para Review
@@ -130,6 +174,10 @@ export function GlobalOperationsWidget() {
       handleDeployAll();
     }
   };
+
+  if (location.pathname.includes('/review')) {
+    return null;
+  }
 
   // --- RENDERIZAÇÃO ---
 
