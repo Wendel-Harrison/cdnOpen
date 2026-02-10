@@ -200,7 +200,7 @@ function DistributionsPage() {
                   />
                 </div>
                 <div className="w-1/5">
-                  <Button variant="secondary" onClick={addDistribution} className="cursor-pointer hover:bg-neutral-300 w-full hover:shadow">
+                  <Button onClick={addDistribution} className="cursor-pointer hover:bg-gray-600 bg-blue-400 w-full hover:shadow">
                     Adicionar
                   </Button>
                 </div>
@@ -234,7 +234,6 @@ function DistributionsPage() {
                 <TableHead>Nome</TableHead>
                 <TableHead>Domínio</TableHead>
                 <TableHead>Origins</TableHead>
-                <TableHead>Status</TableHead>
                 <TableHead className="text-right">Ações</TableHead>
               </TableRow>
             </TableHeader>
@@ -242,38 +241,44 @@ function DistributionsPage() {
               {filteredDistributions.length > 0 ? (
                 filteredDistributions.map((dist) => (
                   <TableRow key={dist.id} className="hover:bg-muted/50 transition-colors">
-                    <TableCell className="font-medium">
-                      <Badge variant="secondary" className="px-3">
+                    <TableCell className="font-medium w-[5%]">
+                      <Badge variant="secondary" className="px-2 py-1.5 bg-blue-400 text-white rounded">
                         {dist.id}
                       </Badge>
                     </TableCell>
-                    <TableCell>
-                      <Badge variant="secondary" className="px-3">
+                    <TableCell className="w-[25%]">
+                      <Badge variant="secondary" className="px-5 font-medium tracking-wide max-w-[90%] truncate rounded" >
                         {dist.name}
                       </Badge>
                     </TableCell>
-                    <TableCell>
-                      <Badge variant='secondary' className='px-5 py-1 text-blue-800 tracking-wider'>
+                    <TableCell className="w-[30%]">
+                      <Badge variant='secondary' className='px-5 py-1 text-blue-800 tracking-wider w-full rounded'>
                         {dist.domain_name}  
                       </Badge>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="w-[30%]">
                       {dist.origins && dist.origins.length > 0 ? (
-                        <div className="flex items-center gap-2">
-                          <Badge variant="secondary" className="truncate px-3 py-1 rounded ">
-                            {dist.origins.length}
-                          </Badge>
-                        </div>
+                        <Badge variant='secondary' className=" rounded">
+                          <div className="flex items-center gap-2">
+                            <span className="truncate  px-5 py-1 text-blue-800 tracking-wider" title={dist.origins[0].origin_id}>
+                              {dist.origins[0].domain_name}
+                            </span>
+
+                            {/* 2. Se tiver mais de 1, mostra o Badge com "+X" */}
+                            {dist.origins.length > 1 && (
+                              <Badge variant="secondary" className="px-2 py-0.5 text-xs rounded-full h-5 min-w-[24px] justify-center">
+                                +{dist.origins.length - 1}
+                              </Badge>
+                            )}
+                            {console.log(dist.origins)}
+                          </div>
+                        </Badge>
+                        
                       ) : (
-                        <span className="text-muted-foreground text-xs">Nenhum origin</span>
+                        <span className="text-muted-foreground text-xs px-5">Nenhum origin</span>
                       )}
                     </TableCell>
-                    <TableCell>
-                      <Badge variant={dist.status === 'deployed' ? 'default' : 'secondary'} className="w-20 py-1 rounded-sm">
-                        {dist.status}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
+                    <TableCell className="text-right w-[10%]">
                       <div className="flex justify-end gap-2">
                         <Button 
                           variant="ghost" 

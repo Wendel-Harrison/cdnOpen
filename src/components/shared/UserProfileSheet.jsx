@@ -103,7 +103,7 @@ export function UserProfileSheet() {
         <div className="space-y-1">
           <Label>Função:</Label>
           <div className="w-full">
-            <Badge variant="outline" className="capitalize py-2.5 px-6 mt-1">{user.role}</Badge>
+            <Badge variant="secondary" className="capitalize py-2.5 px-6 mt-1">{user.role}</Badge>
           </div>
         </div>
       </div>
@@ -157,7 +157,7 @@ export function UserProfileSheet() {
             )}
           />
           <SheetFooter className='absolute bottom-0 left-1/2 -translate-x-1/2'>
-            <Button type="submit" disabled={isSubmitting}>
+            <Button type="submit" className="cursor-pointer bg-blue-400 hover:bg-gray-700 transition-all duration-200" disabled={isSubmitting}>
               {isSubmitting ? 'Salvando...' : 'Salvar Nova Senha'}
             </Button>
           </SheetFooter>

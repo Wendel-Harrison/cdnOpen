@@ -235,12 +235,12 @@ function Layout() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-100 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-300 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
       <ForceChangePasswordDialog />
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
       <div className={sidebarOpen ? "lg:pl-64 transition-all duration-300" : "transition-all duration-300"}>
-        <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-gradient-to-br from-gray-800 to-gray-950">
+        <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-linear-65 from-gray-900 to-cyan-950">
           <div className="flex items-center justify-between p-4 pr-10">
             <Button 
               variant="outline" 

@@ -168,8 +168,8 @@ function PoliciesPage() {
 
   return (
     <div className="space-y-6">
-      <Tabs defaultValue="originPolicy" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 gap-3">
+      <Tabs defaultValue="originPolicy" className="space-y-4 ">
+        <TabsList className="grid w-full grid-cols-2 gap-3 bg-transparent">
           <TabsTrigger value="originPolicy" className="py-2.5 cursor-pointer">Origin Policy</TabsTrigger>
           <TabsTrigger value="cachePolicy" className="py-2.5 cursor-pointer">Cache Policy</TabsTrigger>
         </TabsList>
@@ -183,8 +183,8 @@ function PoliciesPage() {
             </CardHeader>
             <CardContent>
               {!isViewer&& (
-                <Button onClick={() => setIsCacheCreateOpen(true)}>
-                  <Plus className="mr-1 h-4 w-4" /> Nova Política de Cache
+                <Button onClick={() => setIsCacheCreateOpen(true)} className=" cursor-pointer hover:bg-gray-600 bg-blue-400 hover:shadow">
+                  <Plus className="mr-1 h-4 w-4 " /> Nova Política de Cache
                 </Button>
               )}
             </CardContent>
@@ -196,36 +196,36 @@ function PoliciesPage() {
               <Table className="table-fixed w-full">
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[10%]">ID</TableHead>
-                    <TableHead className="w-[20%]">Nome</TableHead>
+                    <TableHead className="w-[5%]">ID</TableHead>
+                    <TableHead className="w-[30%]">Nome</TableHead>
                     <TableHead className="w-[55%]">Descrição</TableHead>
-                    <TableHead className="w-[15%]">Ações</TableHead>
+                    <TableHead className="w-[10%] text-right pr-10">Ações</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {cachePolicies.map(policy => (
                     <TableRow key={policy.id}>
-                      <TableCell>
-                        <Badge className='h-7 w-8'>
+                      <TableCell className=" w-[5%]">
+                        <Badge className='h-7 w-8 bg-blue-400'>
                           {policy.id}
                         </Badge>
-                      </TableCell>
-                      <TableCell className='truncate pr-5'>
-                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                      </TableCell >
+                      <TableCell className=" w-[35%]">
+                        <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
                           {policy.name}
                         </Badge>
                       </TableCell>
-                      <TableCell className="truncate" title={policy.description}>
-                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                      <TableCell className="truncate w-[50%]" title={policy.description}>
+                        <Badge className='py-1.5 px-5 ' variant='secondary'>
                           {policy.description}
                         </Badge>
                       </TableCell>
-                      <TableCell>
+                      <TableCell className=" w-[10%]">
                         <div className="flex justify-end gap-2">
-                          <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }}>
+                          <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" onClick={() => setCachePolicyToDelete(policy)}>
+                          <Button variant="ghost" size="icon" onClick={() => setCachePolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
                             <Trash2 className="h-4 w-4 text-destructive" />
                           </Button>
                         </div>
@@ -282,7 +282,7 @@ function PoliciesPage() {
             </CardHeader>
             <CardContent>
               {!isViewer && (
-                <Button onClick={() => setIsOriginCreateOpen(true)}>
+                <Button onClick={() => setIsOriginCreateOpen(true)} className=" cursor-pointer hover:bg-gray-600 bg-blue-400 hover:shadow">
                   <Plus className="mr-1 h-4 w-4" /> Nova Política de Origem
                 </Button>
               )}
@@ -296,36 +296,36 @@ function PoliciesPage() {
               <Table className="table-fixed w-full">
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-[10%]">ID</TableHead>
-                    <TableHead className="w-[20%]">Nome</TableHead>
+                    <TableHead className="w-[5%]">ID</TableHead>
+                    <TableHead className="w-[30%]">Nome</TableHead>
                     <TableHead className="w-[55%]">Descrição</TableHead>
-                    <TableHead className="w-[15%]">Ações</TableHead>
+                    <TableHead className="w-[10%] text-right pr-10">Ações</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {originPolicies.map(policy => (
                     <TableRow key={policy.id}>
                       <TableCell>
-                        <Badge className='h-7 w-8'>
+                        <Badge className='h-7 w-8 bg-blue-400'>
                           {policy.id}
                         </Badge>
                       </TableCell>
                       <TableCell className='truncate pr-5'>
-                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                        <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
                           {policy.name}
                         </Badge>
                       </TableCell>
                       <TableCell className="truncate" title={policy.description}>
-                        <Badge className='py-1.5 px-5 bg-neutral-100' variant='outline'>
+                        <Badge className='py-1.5 px-5 ' variant='secondary'>
                           {policy.description}
                         </Badge>
                       </TableCell>
                       <TableCell>
                         <div className="flex justify-end gap-2">
-                          <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }}>
+                          <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" onClick={() => setOriginPolicyToDelete(policy)}>
+                          <Button variant="ghost" size="icon" onClick={() => setOriginPolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
                             <Trash2 className="h-4 w-4 text-destructive" />
                           </Button>
                         </div>

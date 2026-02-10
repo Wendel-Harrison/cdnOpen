@@ -211,7 +211,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
   return (
     <div className="space-y-6">
       <Tabs defaultValue="origins" className="space-y-4">
-        <TabsList className="grid w-full grid-cols-2 gap-3">
+        <TabsList className="grid w-full grid-cols-2 gap-3 bg-transparent">
           <TabsTrigger value="origins" className='py-2.5 cursor-pointer'>Origins</TabsTrigger>
           <TabsTrigger value="behaviors" className='py-2.5 cursor-pointer' >Behaviors</TabsTrigger>
         </TabsList>
@@ -231,14 +231,14 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                       value={newOrigin.distribution_id ? newOrigin.distribution_id.toString() : ''}
                       onValueChange={(value) => handleFormChange({ target: { name: 'distribution_id', value: value } })}
                     >
-                      <SelectTrigger className="w-full">
+                      <SelectTrigger className="w-full cursor-pointer">
                         <SelectValue placeholder="Selecione uma Distribuição" />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>Distribuições</SelectLabel>
                           {distributions.map(dist => (
-                            <SelectItem key={dist.id} value={dist.id.toString()}>
+                            <SelectItem className="cursor-pointer" key={dist.id} value={dist.id.toString()}>
                               {dist.name}
                             </SelectItem>
                           ))}
@@ -267,7 +267,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                     />
                   </div>
                   <div>
-                    <Button onClick={handleAddOrigin} variant="secondary" className="w-full cursor-pointer hover:bg-neutral-300 hover:shadow">Enviar</Button>
+                    <Button onClick={handleAddOrigin} className="w-full cursor-pointer hover:bg-gray-600 bg-blue-400 hover:shadow">Enviar</Button>
                   </div>
                 </div>
               </CardContent>
@@ -296,37 +296,37 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                 <TableBody>
                   {origins.map((origin) => (
                     <TableRow key={origin.id} className="hover:bg-muted/50 transition-colors">
-                      <TableCell>
-                        <Badge className="px-2 py-1">
+                      <TableCell className="w-[5%]">
+                        <Badge className="px-2 py-1.5 bg-blue-400 rounded">
                           {origin.id}
                         </Badge>
                       </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className="px-4 py-1">
+                      <TableCell className=" w-[22%]">
+                        <Badge variant="secondary" className="px-5 py-1 rounded">
                           {distributions.find(dist => dist.id === origin.distribution_id)?.name || 'Não encontrada'}
                         </Badge>
                       </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className="px-4 py-1 truncate">
+                      <TableCell className=" w-[15%]">
+                        <Badge variant="secondary" className="px-5 py-1 truncate text-blue-800 rounded">
                           {origin.origin_id}
                         </Badge>
                       </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className="w-full py-1">
+                      <TableCell className=" w-[30%]">
+                        <Badge variant="secondary" className="w-full py-1 text-blue-800 rounded">
                           {origin.domain_name}
                         </Badge>
                       </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className="px-4 py-1 uppercase w-20">
+                      <TableCell className=" w-[10%]">
+                        <Badge variant="secondary" className="px-5 py-1 uppercase w-20 rounded">
                           {origin.protocol}
                         </Badge>
                       </TableCell>
-                      <TableCell>
-                        <Badge className="px-2 py-1">
+                      <TableCell className=" w-[8%]">
+                        <Badge  className="px-2 py-1.5 bg-blue-400/70 rounded">
                           {origin.port}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className=" w-[10%]">
                         <div className="flex justify-end gap-2">
                           <Button 
                             variant="ghost" 

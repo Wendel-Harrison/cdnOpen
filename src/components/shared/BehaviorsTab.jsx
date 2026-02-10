@@ -130,14 +130,14 @@ function BehaviorsTab({ distributions, origins }) {
         </CardHeader>
         <CardContent className='flex justify-between'>
           <Select onValueChange={setSelectedDistId} value={selectedDistId}>
-            <SelectTrigger className="w-[300px]">
+            <SelectTrigger className="w-[300px] cursor-pointer">
               <SelectValue placeholder="Selecione uma distribuição..." />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Distribuições Disponíveis</SelectLabel>
                 {distributions.map(dist => (
-                  <SelectItem key={dist.id} value={dist.id.toString()}>
+                  <SelectItem className="cursor-pointer" key={dist.id} value={dist.id.toString()}>
                     {dist.name}
                   </SelectItem>
                 ))}
@@ -145,7 +145,7 @@ function BehaviorsTab({ distributions, origins }) {
             </SelectContent>
           </Select>
           {selectedDistId && !isViewer && (
-          <Button onClick={() => setIsCreateDialogOpen(true)} className="cursor-pointer hover:bg-gray-600 hover:shadow">
+          <Button onClick={() => setIsCreateDialogOpen(true)} className="cursor-pointer hover:bg-gray-600 hover:shadow bg-blue-400">
             <Plus className="mr-2 h-4 w-4" /> Novo Behavior
           </Button>
         )}
@@ -184,27 +184,27 @@ function BehaviorsTab({ distributions, origins }) {
                     {behaviors.length > 0 ? (
                       behaviors.map((behavior) => (
                         <TableRow key={behavior.id} className="hover:bg-muted/50 transition-colors">
-                          <TableCell>
-                            <Badge variant="secondary">{behavior.priority}</Badge>
+                          <TableCell className=" w-[5%]">
+                            <Badge className="bg-blue-400 px-2.5 py-1.5 rounded">{behavior.priority}</Badge>
                           </TableCell>
-                          <TableCell>
-                            <code className="text-sm bg-muted px-2 py-1 rounded">{behavior.path_pattern}</code>
+                          <TableCell className=" w-[10%]">
+                            <code className="text-sm bg-muted px-2 py-1 rounded text-blue-800">{behavior.path_pattern}</code>
                           </TableCell>
-                          <TableCell className=''>
-                            <Badge className='py-1.5 px-5 bg-neutral-100 hover:bg-neutral-300 transition-all duration-200' variant='outline'>
+                          <TableCell className=" w-[35%]">
+                            <Badge className='py-1.5 px-5  text-blue-800 rounded' variant='secondary'>
                               {origins.find(o => o.id === behavior.origin_id)?.origin_id || <span className="text-muted-foreground font-bold">ID: {behavior.origin_id}</span>}
                             </Badge>
                           </TableCell>
-                          <TableCell>
-                            <Badge className='py-1.5 px-5' variant='outline'>
+                          <TableCell className=" w-[20%]">
+                            <Badge className='py-1.5 px-5 rounded' variant='secondary'>
                               {originPolicies.find(op => op.id === behavior.origin_policy_id)?.name || <Badge className="text-muted-foreground">ID: {behavior.origin_policy_id}</Badge>}
                             </Badge>
                           </TableCell>
-                          <TableCell>
-                            <Badge className='py-1.5 px-5' variant='outline'>
+                          <TableCell className=" w-[20%]">
+                            <Badge className='py-1.5 px-5 rounded' variant='secondary'>
                               {cachePolicies.find(cp => cp.id === behavior.cache_policy_id)?.name || <Badge className="text-muted-foreground">ID: {behavior.cache_policy_id}</Badge>}                            </Badge>
                           </TableCell>
-                          <TableCell className="text-right">
+                          <TableCell className=" w-[10%]">
                             <div className="flex justify-end gap-2">
                               <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)} className="cursor-pointer hover:bg-neutral-300 hover:shadow" disabled={isViewer}>
                                 <Edit className="h-4 w-4" />
@@ -218,7 +218,7 @@ function BehaviorsTab({ distributions, origins }) {
                       ))
                     ) : (
                       <TableRow>
-                        <TableCell colSpan={4} className="text-center h-24 text-muted-foreground">
+                        <TableCell colSpan={6} className="text-center h-24 text-muted-foreground">
                           Nenhum behavior encontrado para esta distribuição.
                         </TableCell>
                       </TableRow>
