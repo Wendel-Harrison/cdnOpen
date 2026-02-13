@@ -12,6 +12,17 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { SelectGroup } from '@radix-ui/react-select'
 import { toast } from "sonner"
 
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog"
+
 import EditOriginDialog from '@/components/shared/EditOriginDialog'
 import { Edit, Trash2 } from 'lucide-react'
 
@@ -32,9 +43,12 @@ function ConfigPage() {
 
   const [formErrors, setFormErrors] = useState({});
 
-    // ESTADOS PARA O DIALOG
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedOrigin, setSelectedOrigin] = useState(null);
+
+  // ... outros states
+  const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
+  const [originToDelete, setOriginToDelete] = useState(null);
 
   const { user } = useAuth();
   
@@ -160,51 +174,48 @@ function ConfigPage() {
   if (isLoading) return <p>Carregando configurações...</p>;
   if (error) return <p className="text-destructive">Erro: {error}</p>;
 
-  // Dentro do componente ConfigPage
 
-const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a mensagem
-  toast("Confirmar Exclusão", {
-    title: `Tem certeza que deseja deletar o origin "${originName}"`,
-    duration: Infinity, 
+  const openDeleteDialog = (origin) => {
+    setOriginToDelete(origin);
+    setIsDeleteDialogOpen(true);
+  };
 
-    important: true, 
+  const handleConfirmDelete = async () => {
+    if (!originToDelete) return;
 
-    action: {
-      label: "Confirmar",
-      onClick: async () => {
-        try {
-          const response = await fetch(`${ORIGINS_API_URL}/${originId}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }, 
-            body: JSON.stringify({
-                currentUserEmail: user.email, 
-                currentUserName: user.name   
-            }),
-          });
+    try {
+      const response = await fetch(`${ORIGINS_API_URL}/${originToDelete.id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+           currentUserEmail: user.email, 
+           currentUserName: user.name   
+        }),
+      });
 
-          if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.message || 'Falha ao deletar o origin.');
-          }
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
 
-          setOrigins(prevOrigins => prevOrigins.filter(o => o.id !== originId));
-          toast.success("Origin deletado com sucesso!");
+        throw new Error(errorData.message || 'Falha ao deletar o origin.');
+      }
 
-        } catch (err) {
-          console.error("Erro ao deletar origin:", err);
-          toast.error("Erro ao deletar origin", {
-            description: err.message,
-          });
-        }
-      },
-    },
-    
-    cancel: {
-      label: "Cancelar",
-      onClick: () => {}, // Apenas fecha o toast, não faz mais nada
-    },
-  });
-};
+      // Sucesso
+      setOrigins(prevOrigins => prevOrigins.filter(o => o.id !== originToDelete.id));
+      
+      toast.success("Origin deletado com sucesso!");
+      setIsDeleteDialogOpen(false);
+      setOriginToDelete(null);
+
+    } catch (err) {
+      console.error("Erro ao deletar origin:", err);
+      
+      toast.error("Erro na exclusão", {
+        description: err.message, 
+        duration: 5000, 
+      });
+      
+    }
+  };
 
  
 
@@ -340,7 +351,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
                           >
                             <Edit className="h-4 w-4" />
                           </Button>
-                          <Button variant="ghost" size="icon" onClick={() => handleDeleteOrigin(origin.id, origin.origin_id)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
+                          <Button variant="ghost" size="icon" onClick={() => openDeleteDialog(origin)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
                             <Trash2 className="h-4 w-4 text-destructive" />
                           </Button>
                         </div>
@@ -369,6 +380,26 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
           onSave={handleSaveOrigin}
         />
       )}
+      <AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Tem certeza absoluta?</AlertDialogTitle>
+            <AlertDialogDescription>
+              Essa ação não pode ser desfeita. Isso excluirá permanentemente o origin 
+              e removerá seus dados dos nossos servidores.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancelar</AlertDialogCancel>
+            <AlertDialogAction 
+              onClick={handleConfirmDelete} 
+              className="bg-destructive  hover:bg-destructive/90"
+            >
+              Excluir
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
 
         
 
@@ -377,6 +408,7 @@ const handleDeleteOrigin = (originId, originName) => { // Passamos o nome para a
           <BehaviorsTab distributions={distributions} origins={origins} />
         </TabsContent>
       </Tabs>
+      
     </div>
   )
 }

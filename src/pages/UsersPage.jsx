@@ -213,7 +213,7 @@ function UsersPage() {
               </select>
             </div>
             <div className="flex items-end">
-              <Button onClick={addUser} className="w-full">
+              <Button onClick={addUser} className="w-full bg-blue-400 hover:bg-gray-700 transition-all duration-150">
                 <Plus className="mr-2 h-4 w-4" />
                 Adicionar Usuário
               </Button>
@@ -245,13 +245,13 @@ function UsersPage() {
                   <TableCell className="font-medium text-center">
                     <RoleIcon role={user.role} />
                   </TableCell>
-                  <TableCell className=" py-1 font-medium">{user.name}</TableCell>
+                  <TableCell className=" py-1 font-medium" >{user.name}</TableCell>
                   <TableCell>{user.email}</TableCell>
                   <TableCell>
-                    <Badge variant="outline" className="w-20 py-1 font-medium">{user.role}</Badge>
+                    <Badge variant="secondary" className="w-20 rounded py-1 font-medium">{user.role}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'} className="w-14 py-1">
+                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'} className={user.status === 'active' ? 'bg-blue-300  rounded py-1.5 w-18' : 'bg-red-400 text-white  w-18 py-1.5 rounded'}>
                       {user.status}
                     </Badge>
                   </TableCell>

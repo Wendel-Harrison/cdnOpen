@@ -10,8 +10,16 @@ import { toast } from "sonner";
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
-// Importe o diálogo que criamos acima
-// import EditFunctionDialog from '@/components/shared/EditFunctionDialog';
+import { 
+  AlertDialog, 
+  AlertDialogAction, 
+  AlertDialogCancel, 
+  AlertDialogContent, 
+  AlertDialogDescription, 
+  AlertDialogFooter, 
+  AlertDialogHeader, 
+  AlertDialogTitle 
+} from '@/components/ui/alert-dialog';
 
 function FunctionsPage() {
   const navigate = useNavigate();
@@ -35,6 +43,9 @@ function FunctionsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const LIMIT = 10;
+
+  const [functionToDelete, setFunctionToDelete] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const { user } = useAuth();
   const isAdmin = user.role === 'admin';
@@ -99,8 +110,6 @@ function FunctionsPage() {
       setNewFunctionDescription('');
       toast.success("Função criada com sucesso.");
       
-      // Opcional: Recarregar a página atual para garantir sincronia
-      // await fetchFunctions(currentPage);
 
     } catch (err) {      
       console.error(err);
@@ -109,22 +118,36 @@ function FunctionsPage() {
   };
 
   // --- DELETAR ---
-  const deleteFunction = async (id) => {
+  const handleConfirmDelete = async () => {
+    if (!functionToDelete) return;
+
+    setIsDeleting(true); // Ativa loading do botão
+
     try {
-      const response = await fetch(`${API_URL}/${id}`, {
+      const response = await fetch(`${API_URL}/${functionToDelete.id}`, {
         method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        // Enviando dados do usuário para auditoria (se o backend suportar)
+        body: JSON.stringify({
+            currentUserEmail: user?.email,
+            currentUserName: user?.name
+        })
       });
 
       if (!response.ok) {
-        throw new Error('Falha ao deletar função');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Falha ao deletar função');
       }
       
-      setFunctions(functions.filter(f => f.id !== id));
+      setFunctions(prev => prev.filter(f => f.id !== functionToDelete.id));
       toast.success('Função deletada com sucesso!');
       
-      await fetchFunctions(currentPage);
+      setFunctionToDelete(null);
+
     } catch (err) {
        toast.error("Erro ao deletar", { description: err.message });
+    } finally {
+       setIsDeleting(false);
     }
   };
 
@@ -196,7 +219,7 @@ function FunctionsPage() {
                 </div>
               </div>
               <div className="flex justify-end">
-                <Button variant="secondary" onClick={addFunction} className="w-1/4">
+                <Button variant="secondary" onClick={addFunction} className="w-1/4  bg-blue-400 text-white hover:bg-gray-700 transition-all duration-150">
                   Adicionar
                 </Button>
               </div>
@@ -281,7 +304,7 @@ function FunctionsPage() {
                         <Button 
                           variant="ghost" 
                           size="icon" 
-                          onClick={() => deleteFunction(func.id)} 
+                          onClick={() => setFunctionToDelete(func)} 
                           className="cursor-pointer hover:bg-red-300"
                           disabled={isViewer}
                         >
@@ -335,6 +358,31 @@ function FunctionsPage() {
           onSave={handleUpdateFunction}
         />
       )}
+      <AlertDialog open={!!functionToDelete} onOpenChange={(open) => !open && setFunctionToDelete(null)}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Confirmar Exclusão</AlertDialogTitle>
+            <AlertDialogDescription>
+              Tem certeza que deseja excluir a função <span className="font-bold text-foreground">"{functionToDelete?.name}"</span>? 
+              <br/>
+              Essa ação removerá o código permanentemente e não poderá ser desfeita.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isDeleting}>Cancelar</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={(e) => {
+                e.preventDefault(); // Impede fechar automático
+                handleConfirmDelete();
+              }}
+              className="bg-destructive hover:bg-destructive/90 "
+              disabled={isDeleting}
+            >
+              {isDeleting ? "Excluindo..." : "Excluir"}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

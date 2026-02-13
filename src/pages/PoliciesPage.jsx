@@ -264,7 +264,7 @@ function PoliciesPage() {
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   onClick={() => cachePolicyToDelete && deleteCachePolicy(cachePolicyToDelete.id)}
-                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  className="bg-destructive hover:bg-destructive/90"
                 >
                   Excluir
                 </AlertDialogAction>
@@ -368,7 +368,7 @@ function PoliciesPage() {
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
                   onClick={() => originPolicyToDelete && deleteOriginPolicy(originPolicyToDelete.id)}
-                  className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+                  className="bg-destructive hover:bg-destructive/90"
                 >
                   Excluir
                 </AlertDialogAction>

@@ -70,16 +70,16 @@ function HistoryPage() {
       </div>
 
       <Tabs defaultValue="ALL" value={selectedGroup} onValueChange={setSelectedGroup} className="w-full ">
-        <TabsList className="grid w-full grid-cols-8 gap-2">
+        <TabsList className="grid w-full grid-cols-8 gap-2 bg-transparent">
           <TabsTrigger value="ALL" className="flex gap-2 items-center py-3">Todos</TabsTrigger>
-          <TabsTrigger value="Users" className="flex gap-2 items-center">
-            <User className="w-6  h-4" /> Usuários
-          </TabsTrigger>
           <TabsTrigger value="Distributions" className="flex gap-2 items-center">
              <Server className="w-8 h-4" /> Distribuições
           </TabsTrigger>
           <TabsTrigger value="Origins" className="flex gap-2 items-center">
              <Globe className="w-6 h-4" /> Origens
+          </TabsTrigger>
+          <TabsTrigger value="Behaviors" className="flex gap-2 items-center">
+             <GitBranch className="w-6 h-4" /> Behaviors
           </TabsTrigger>
           <TabsTrigger value="Origin Policies" className="flex gap-2 items-center">
              <FileCog className="w-6 h-4" /> Política de Origin
@@ -87,11 +87,11 @@ function HistoryPage() {
           <TabsTrigger value="CachePolicy" className="flex gap-2 items-center">
              <FileClock className="w-6 h-4" /> Política de Cache
           </TabsTrigger>
-          <TabsTrigger value="Behaviors" className="flex gap-2 items-center">
-             <GitBranch className="w-6 h-4" /> Behaviors
-          </TabsTrigger>
           <TabsTrigger value="Functions" className="flex gap-2 items-center">
              <FileCode className="w-6 h-4" /> Functions
+          </TabsTrigger>
+          <TabsTrigger value="Users" className="flex gap-2 items-center">
+            <User className="w-6  h-4" /> Usuários
           </TabsTrigger>
         </TabsList>
       </Tabs>
