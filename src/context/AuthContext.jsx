@@ -35,17 +35,16 @@ export function AuthProvider({ children }) {
       }
 
       setUser(data); 
-      navigate('/distributions');
+      navigate('/inicio');
     } catch (err) {
-      console.error(err);
-      alert(err.message);
+      throw err;
     }
   };
 
   // Função de Logout
   const logout = () => {
     setUser(null);
-    navigate('/'); // Redireciona para a página de login
+    navigate('/'); 
   };
 
   // Valor que será compartilhado com todos os componentes filhos

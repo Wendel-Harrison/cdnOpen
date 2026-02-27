@@ -55,7 +55,7 @@ function HistoryPage() {
         case 'Origins': return <Globe className="h-3 w-3" />;
         case 'Behaviors': return <GitBranch className="h-3 w-3" />;
         case 'Origin Policies': return <FileCog className="h-3 w-3" />;
-        case 'CachePolicy': return <FileClock className="h-3 w-3" />;
+        case 'Cache Policies': return <FileClock className="h-3 w-3" />;
         default: return <Activity className="h-3 w-3" />;
     }
   }
@@ -84,7 +84,7 @@ function HistoryPage() {
           <TabsTrigger value="Origin Policies" className="flex gap-2 items-center">
              <FileCog className="w-6 h-4" /> Política de Origin
           </TabsTrigger>
-          <TabsTrigger value="CachePolicy" className="flex gap-2 items-center">
+          <TabsTrigger value="Cache Policies" className="flex gap-2 items-center">
              <FileClock className="w-6 h-4" /> Política de Cache
           </TabsTrigger>
           <TabsTrigger value="Functions" className="flex gap-2 items-center">

@@ -5,7 +5,7 @@ function PublicRoute({ children }) {
   const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
-    return <Navigate to="/distributions" replace />;
+    return <Navigate to="/inicio" replace />;
   }
 
   return children;

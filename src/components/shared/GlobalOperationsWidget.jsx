@@ -25,7 +25,6 @@ export function GlobalOperationsWidget() {
 
   const API_URL = 'http://10.127.254.87:3000'; 
 
-  // --- BUSCA DE STATUS (Mantida igual para garantir precisão) ---
   const fetchGlobalStatus = async () => {
     // Evita loading visual se já tiver dados carregados (para não piscar o botão)
     if (!dataLoaded) setLoading(true); 
@@ -175,7 +174,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     }
   };
 
-  if (location.pathname.includes('/review')) {
+  if (location.pathname.includes('/review') || location.pathname.includes('/inicio')) {
     return null;
   }
 

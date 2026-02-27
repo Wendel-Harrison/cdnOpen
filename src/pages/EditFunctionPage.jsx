@@ -9,12 +9,16 @@ import { toast } from "sonner";
 import { ArrowLeft, Save } from 'lucide-react';
 import luaparse from 'luaparse';
 
+import { useAuth } from '@/context/AuthContext';
+
 export default function EditFunctionPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   const editorRef = useRef(null);
   const monacoRef = useRef(null);
   
+  const { user } = useAuth();
+
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -23,14 +27,10 @@ export default function EditFunctionPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
 
-  // --- FUNÇÃO DE VALIDAÇÃO CORRIGIDA ---
-  // Agora aceita 'monacoInstance' como argumento opcional
   function validateLuaCode(value, monacoInstance = null) {
     const model = editorRef.current?.getModel();
-    // Usa a instância passada OU a referência salva
     const monaco = monacoInstance || monacoRef.current;
 
-    // Se não tivermos o monaco ou o model, não podemos validar
     if (!monaco || !model) return;
 
     try {
@@ -50,7 +50,6 @@ export default function EditFunctionPage() {
     }
   }
 
-  // --- LÓGICA DO INTELLISENSE (OpenResty/Lua) ---
   function handleEditorDidMount(editor, monaco) {
     editorRef.current = editor;
 
@@ -174,10 +173,16 @@ export default function EditFunctionPage() {
   const handleSave = async () => {
     setIsSaving(true);
     try {
+      const payload = {
+          ...formData,
+          currentUserEmail: user?.email,
+          currentUserName: user?.name
+      };
+
       const response = await fetch(`/api/functions/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {

@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input.jsx';
 import { Label } from '@/components/ui/label.jsx';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx';
 import { Badge } from '@/components/ui/badge.jsx';
-import { Trash2, Edit, ChevronLeft, ChevronRight, Code } from 'lucide-react'; // Adicionei ícone Code
+import { Trash2, Edit, ChevronLeft, ChevronRight, Code } from 'lucide-react';
 import { toast } from "sonner";
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -24,26 +24,23 @@ import {
 function FunctionsPage() {
   const navigate = useNavigate();
 
-  const API_URL = '/api/functions'; // Endpoint da API
+  const API_URL = '/api/functions';
   const [functions, setFunctions] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Estados para criação
+  // Estados para criação rápida
   const [newFunctionName, setNewFunctionName] = useState('');
   const [newFunctionDescription, setNewFunctionDescription] = useState('');
 
   const [searchTerm, setSearchTerm] = useState('');
-
-  // Estados para edição
-  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
-  const [selectedFunction, setSelectedFunction] = useState(null);
 
   // Paginação
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const LIMIT = 10;
 
+  // Estados para deleção
   const [functionToDelete, setFunctionToDelete] = useState(null);
   const [isDeleting, setIsDeleting] = useState(false);
 
@@ -61,7 +58,6 @@ function FunctionsPage() {
       }
       const data = await response.json();
       
-      // Garante que seja array
       setFunctions(Array.isArray(data.data) ? data.data : []);
       setTotalPages(data.totalPages || 1);
       setCurrentPage(data.currentPage || 1);
@@ -89,7 +85,10 @@ function FunctionsPage() {
       const newFunc = { 
         name: newFunctionName, 
         description: newFunctionDescription,
-        code: '// Seu código aqui...'
+        code: '// Seu código aqui...',
+        // DADOS DE AUDITORIA
+        currentUserEmail: user?.email,
+        currentUserName: user?.name
       };
 
       const response = await fetch(API_URL, {
@@ -99,17 +98,16 @@ function FunctionsPage() {
       });
 
       if (!response.ok) {
-        throw new Error("Falha ao criar a função");
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Falha ao criar a função");
       }
 
       const addedFunction = await response.json();
-      // Atualiza a lista localmente ou faz refetch
       setFunctions(prev => [...prev, addedFunction]); 
       
       setNewFunctionName('');
       setNewFunctionDescription('');
       toast.success("Função criada com sucesso.");
-      
 
     } catch (err) {      
       console.error(err);
@@ -121,13 +119,13 @@ function FunctionsPage() {
   const handleConfirmDelete = async () => {
     if (!functionToDelete) return;
 
-    setIsDeleting(true); // Ativa loading do botão
+    setIsDeleting(true); 
 
     try {
       const response = await fetch(`${API_URL}/${functionToDelete.id}`, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
-        // Enviando dados do usuário para auditoria (se o backend suportar)
+        // DADOS DE AUDITORIA NO DELETE
         body: JSON.stringify({
             currentUserEmail: user?.email,
             currentUserName: user?.name
@@ -135,6 +133,7 @@ function FunctionsPage() {
       });
 
       if (!response.ok) {
+        // LER MENSAGEM DO BACKEND (ex: erro de chave estrangeira)
         const errorData = await response.json().catch(() => ({}));
         throw new Error(errorData.message || 'Falha ao deletar função');
       }
@@ -142,37 +141,12 @@ function FunctionsPage() {
       setFunctions(prev => prev.filter(f => f.id !== functionToDelete.id));
       toast.success('Função deletada com sucesso!');
       
-      setFunctionToDelete(null);
+      setFunctionToDelete(null); // Fecha o modal no sucesso
 
     } catch (err) {
        toast.error("Erro ao deletar", { description: err.message });
     } finally {
        setIsDeleting(false);
-    }
-  };
-
-  // --- ATUALIZAR ---
-  const handleUpdateFunction = async (updatedData) => {
-    try {
-      const response = await fetch(`${API_URL}/${updatedData.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(updatedData),
-      });
-
-      if (!response.ok) {
-        const errorRes = await response.json();
-        throw new Error(errorRes.message || 'Falha ao atualizar a função');
-      }
-
-      const data = await response.json();
-      
-      setFunctions(prev => prev.map(func => (func.id === data.id ? data : func)));
-      setIsEditDialogOpen(false);
-      toast.success("Função atualizada com sucesso!");
-
-    } catch (err) {
-      toast.error("Erro ao atualizar", { description: err.message });
     }
   };
 
@@ -292,6 +266,7 @@ function FunctionsPage() {
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-2">
+                        {/* BOTÃO EDITAR: Navega para a página de edição */}
                         <Button 
                           variant="ghost" 
                           size="icon"
@@ -301,6 +276,8 @@ function FunctionsPage() {
                         >
                           <Edit className="h-4 w-4" />
                         </Button>
+                        
+                        {/* BOTÃO EXCLUIR: Abre o Alert Dialog */}
                         <Button 
                           variant="ghost" 
                           size="icon" 
@@ -316,7 +293,7 @@ function FunctionsPage() {
                 ))
               ) : (
                 <TableRow>
-                  <TableCell colSpan={4} className="text-center h-24 text-muted-foreground">
+                  <TableCell colSpan={5} className="text-center h-24 text-muted-foreground">
                     Nenhuma função encontrada com o nome "{searchTerm}".
                   </TableCell>
                 </TableRow>
@@ -349,15 +326,7 @@ function FunctionsPage() {
         </CardContent>
       </Card>
 
-      {/* Diálogo de Edição */}
-      {selectedFunction && (
-        <EditFunctionDialog
-          isOpen={isEditDialogOpen}
-          onOpenChange={setIsEditDialogOpen}
-          functionItem={selectedFunction}
-          onSave={handleUpdateFunction}
-        />
-      )}
+      {/* ALERT DIALOG DE DELEÇÃO */}
       <AlertDialog open={!!functionToDelete} onOpenChange={(open) => !open && setFunctionToDelete(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>

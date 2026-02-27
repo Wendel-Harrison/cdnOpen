@@ -1,58 +1,96 @@
 // src/pages/LoginPage.jsx
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext'; // Ajuste o caminho
+import { useAuth } from '../context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import logo from "../../public/Claro.png"; // Importa o logo
+import { toast } from 'sonner'; // <-- Importando o toast
+import logo from "../../public/Claro.png";
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [hasError, setHasError] = useState(false); // <-- Estado de erro
+  const [isLoading, setIsLoading] = useState(false); 
   const { login } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password); // Chama a função de login
+    setHasError(false);
+    setIsLoading(true);
+
+    try {
+      // Usamos await para esperar a resposta do contexto
+      await login(email, password);
+    } catch (err) {
+      // Se cair aqui, o login falhou
+      setHasError(true);
+      toast.error('E-mail ou senha incorretos.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // Esta página não usa o <Layout> principal,
-  // pois ela não deve ter a sidebar.
+  // Limpa o estado de erro assim que o usuário começar a corrigir a digitação
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (hasError) setHasError(false);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (hasError) setHasError(false);
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-neutral-100 to-indigo-100">
-      <Card className="w-full max-w-md shadow-lg">
+      <Card 
+        className={`w-full max-w-md transition-all duration-300 ${
+          hasError 
+            ? 'border-red-500 shadow-[0_0_25px_rgba(239,68,68,0.4)] animate-shake' 
+            : 'shadow-lg border-border'
+        }`}
+      >
         <CardHeader className="text-center">
           <img src={logo} alt="Logo" className="w-16 mx-auto mb-4" />
           <CardTitle className="text-3xl font-bold">CDN Admin Dashboard</CardTitle>
-          <CardDescription>Por favor, faça login para continuar.</CardDescription>
+          <CardDescription className={hasError ? "text-red-500 font-medium transition-colors" : "transition-colors"}>
+            {hasError ? "Falha na autenticação." : "Por favor, faça login para continuar."}
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email" className={hasError ? "text-red-500" : ""}>Email</Label>
               <Input
                 id="email"
                 type="email"
                 placeholder="user@domain.com.br"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={handleEmailChange} // <-- Atualizado
                 required
+                className={hasError ? "border-red-500 focus-visible:ring-red-500" : ""}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Senha</Label>
+              <Label htmlFor="password" className={hasError ? "text-red-500" : ""}>Senha</Label>
               <Input
                 id="password"
                 type="password"
                 placeholder="************"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange} // <-- Atualizado
                 required
+                className={hasError ? "border-red-500 focus-visible:ring-red-500" : ""}
               />
             </div>
-            <Button type="submit" className="w-full !mt-6 bg-destructive hover:bg-destructive/90">
-              Entrar
+            <Button 
+              type="submit" 
+              disabled={isLoading}
+              className={`w-full !mt-6 ${hasError ? "bg-red-600 hover:bg-red-700" : "bg-destructive hover:bg-destructive/90"}`}
+            >
+              {isLoading ? "Entrando..." : "Entrar"}
             </Button>
           </form>
         </CardContent>

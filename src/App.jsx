@@ -62,6 +62,7 @@ import HistoryPage from './pages/HistoryPage'
 import { FloatingDeployer } from './components/shared/FloatingDeployer'
 import { GlobalOperationsWidget } from './components/shared/GlobalOperationsWidget'
 import ReviewChangesPage from './pages/ReviewChangesPage'
+import HomePage from './pages/HomePage'
 
 // Página de Dashboard
 function DashboardPage() {
@@ -122,6 +123,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()
   const { logout } = useAuth();
 
+  if (location.pathname.includes('/inicio')) {
+    return null;
+  }
+
   const menuItems = [
     { path: '/distributions', icon: Package, label: 'Distribuições' },
     { path: '/config', icon: Cog, label: 'Configurações' },
@@ -154,10 +159,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b border-border">
-            <div className="flex items-center gap-3">
+            <Link to="/inicio" className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
               <img src={logo} alt="Logo" className='w-10' />
-              <span className="text-xl font-bold">CDN Claro</span>
-            </div>
+              <span className="text-xl font-bold text-foreground">CDN Claro</span>
+            </Link>
             <Button 
               variant="ghost" 
               size="icon" 
@@ -170,36 +175,36 @@ function Sidebar({ isOpen, toggleSidebar }) {
 
           {/* Menu Items */}
           <nav className="flex flex-col h-full p-4">
-    {menuItems.map((item, index) => {
-      const Icon = item.icon;
-      const isActive = location.pathname === item.path;
-      
-      // Lógica para identificar o último item
-      const isLastItem = index === menuItems.length - 1;
+            {menuItems.map((item, index) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              
+              // Lógica para identificar o último item
+              const isLastItem = index === menuItems.length - 1;
 
-      return (
-        <Link
-          key={item.path}
-          to={item.path}
-          onClick={() => {
-            if (window.innerWidth < 1024) {
-              toggleSidebar();
-            }
-          }}
-          className={`flex items-center gap-3 px-5 py-3 rounded-lg  text-sm  ${
-            isActive 
-              ? 'bg-destructive/80 !text-white'
-              : 'hover:bg-gray-200 hover:text-foreground !text-gray-800'
-          } ${
-            isLastItem ? 'mt-auto' : 'mb-3' 
-          }`}
-        >
-          <Icon className="h-5 w-5" />
-          <span className="font-medium">{item.label}</span>
-        </Link>
-      );
-    })}
-  </nav>
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => {
+                    if (window.innerWidth < 1024) {
+                      toggleSidebar();
+                    }
+                  }}
+                  className={`flex items-center gap-3 px-5 py-3 rounded-lg  text-sm  ${
+                    isActive 
+                      ? 'bg-destructive/80 !text-white'
+                      : 'hover:bg-gray-200 hover:text-foreground !text-gray-800'
+                  } ${
+                    isLastItem ? 'mt-auto' : 'mb-3' 
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                  <span className="font-medium">{item.label}</span>
+                </Link>
+              );
+            })}
+          </nav>
 
           <div className="p-4 border-t border-border flex justify-between items-center">
             <div className="flex items-center gap-2 px-4 py-2">
@@ -230,6 +235,9 @@ function Layout() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const { user } = useAuth();
 
+  const location = useLocation();
+  const isInicio = location.pathname.includes('/inicio');
+
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
@@ -239,7 +247,7 @@ function Layout() {
       <ForceChangePasswordDialog />
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
-      <div className={sidebarOpen ? "lg:pl-64 transition-all duration-300" : "transition-all duration-300"}>
+      <div className={(!isInicio && sidebarOpen) ? "lg:pl-64 transition-all duration-300" : "transition-all duration-300"}>
         <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-linear-65 from-gray-900 to-cyan-950">
           <div className="flex items-center justify-between p-4 pr-10">
             <Button 
@@ -283,7 +291,7 @@ function Layout() {
         {/* Main Content */}
         <main className="p-6">
           <Outlet />
-          <GlobalOperationsWidget />
+          {!isInicio && <GlobalOperationsWidget />}
         </main>
       </div>
     </div>
@@ -310,6 +318,7 @@ function App() {
           }
         >
           {/* Estas rotas permitem 'admin', 'editor' e 'viewer' */}
+          <Route path="/inicio" element={<HomePage />} />
           <Route path="/distributions" element={<DistributionsPage />} />
           <Route path="/config" element={<ConfigPage />} />
           <Route path="/policies" element={<PoliciesPage />} />

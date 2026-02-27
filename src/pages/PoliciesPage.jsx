@@ -12,7 +12,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs.j
 import {
   AlertDialog,
   AlertDialogAction,
-  AlertDialogTrigger,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -43,6 +42,9 @@ function PoliciesPage() {
   const [selectedOriginPolicy, setSelectedOriginPolicy] = useState(null);
   const [originPolicyToDelete, setOriginPolicyToDelete] = useState(null);
   const ORIGIN_API_URL = '/api/origin-policies';
+
+  // Novo estado para loading de deleção (UX)
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const { user } = useAuth();
 
@@ -108,14 +110,35 @@ function PoliciesPage() {
     }
   };
 
-  const deleteCachePolicy = async (id) => {
+  const deleteCachePolicy = async () => {
+    if (!cachePolicyToDelete) return;
+    setIsDeleting(true);
+
     try {
-      const response = await fetch(`${CACHE_API_URL}/${id}`, { method: 'DELETE' });
-      if (!response.ok) throw new Error('Falha ao deletar a política');
-      setCachePolicies(prev => prev.filter(p => p.id !== id));
+      // CORREÇÃO: Enviando body com dados do usuário para auditoria
+      const response = await fetch(`${CACHE_API_URL}/${cachePolicyToDelete.id}`, { 
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            currentUserEmail: user.email, 
+            currentUserName: user.name   
+          })
+      });
+
+      if (!response.ok) {
+        // CORREÇÃO: Lendo a mensagem de erro do backend (ex: constraint violation)
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Falha ao deletar a política');
+      }
+
+      setCachePolicies(prev => prev.filter(p => p.id !== cachePolicyToDelete.id));
       toast.success("Política de cache deletada com sucesso!");
+      setCachePolicyToDelete(null); // Fecha o modal no sucesso
     } catch (err) {
       toast.error("Erro ao deletar política de cache", { description: err.message });
+      // Não fecha o modal no erro
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -143,9 +166,12 @@ function PoliciesPage() {
     }
   };
 
-  const deleteOriginPolicy = async (id) => {
+  const deleteOriginPolicy = async () => {
+    if (!originPolicyToDelete) return;
+    setIsDeleting(true);
+
     try {
-      const response = await fetch(`${ORIGIN_API_URL}/${id}`,
+      const response = await fetch(`${ORIGIN_API_URL}/${originPolicyToDelete.id}`,
         { 
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json' },
@@ -154,11 +180,20 @@ function PoliciesPage() {
             currentUserName: user.name   
         })
       });
-      if (!response.ok) throw new Error('Falha ao deletar a política de origem');
-      setOriginPolicies(prev => prev.filter(p => p.id !== id));
+
+      if (!response.ok) {
+        // CORREÇÃO: Lendo a mensagem de erro do backend
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || 'Falha ao deletar a política de origem');
+      }
+
+      setOriginPolicies(prev => prev.filter(p => p.id !== originPolicyToDelete.id));
       toast.success("Política de origem deletada com sucesso!");
+      setOriginPolicyToDelete(null);
     } catch (err) {
       toast.error("Erro ao deletar política de origem", { description: err.message });
+    } finally {
+      setIsDeleting(false);
     }
   };
 
@@ -241,6 +276,9 @@ function PoliciesPage() {
             isOpen={isCacheCreateOpen}
             onOpenChange={setIsCacheCreateOpen}
             onPolicyCreated={handleCachePolicyCreated}
+            // CORREÇÃO: Passando user data
+            currentUserEmail={user?.email} 
+            currentUserName={user?.name}
           />
 
           {selectedCachePolicy && (
@@ -249,10 +287,13 @@ function PoliciesPage() {
               onOpenChange={setIsCacheEditOpen}
               policy={selectedCachePolicy}
               onSave={handleUpdateCachePolicy}
+              // CORREÇÃO: Passando user data
+              currentUserEmail={user?.email} 
+              currentUserName={user?.name}
             />
           )}
 
-          <AlertDialog open={!!cachePolicyToDelete} onOpenChange={() => setCachePolicyToDelete(null)}>
+          <AlertDialog open={!!cachePolicyToDelete} onOpenChange={(open) => !open && setCachePolicyToDelete(null)}>
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Confirmar Exclusão</AlertDialogTitle>
@@ -261,12 +302,16 @@ function PoliciesPage() {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogCancel disabled={isDeleting}>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
-                  onClick={() => cachePolicyToDelete && deleteCachePolicy(cachePolicyToDelete.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    deleteCachePolicy();
+                  }}
                   className="bg-destructive hover:bg-destructive/90"
+                  disabled={isDeleting}
                 >
-                  Excluir
+                  {isDeleting ? "Excluindo..." : "Excluir"}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -356,7 +401,7 @@ function PoliciesPage() {
             />
           )}
 
-          <AlertDialog open={!!originPolicyToDelete} onOpenChange={() => setOriginPolicyToDelete(null)}>
+          <AlertDialog open={!!originPolicyToDelete} onOpenChange={(open) => !open && setOriginPolicyToDelete(null)}>
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Confirmar Exclusão</AlertDialogTitle>
@@ -365,12 +410,16 @@ function PoliciesPage() {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogCancel disabled={isDeleting}>Cancelar</AlertDialogCancel>
                 <AlertDialogAction
-                  onClick={() => originPolicyToDelete && deleteOriginPolicy(originPolicyToDelete.id)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    deleteOriginPolicy();
+                  }}
                   className="bg-destructive hover:bg-destructive/90"
+                  disabled={isDeleting}
                 >
-                  Excluir
+                  {isDeleting ? "Excluindo..." : "Excluir"}
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
