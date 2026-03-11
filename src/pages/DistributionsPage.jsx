@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button.jsx'
+import { Skeleton } from '@/components/ui/skeleton'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Input } from '@/components/ui/input.jsx'
 import { Label } from '@/components/ui/label.jsx'
@@ -51,6 +52,7 @@ function DistributionsPage() {
   const fetchDistributions = useCallback(async (page) => {
     try {
       setIsLoading(true);
+      await new Promise(resolve => setTimeout(resolve, 500));
       const response = await fetch(`${API_URL}?page=${page}&limit=${LIMIT}`);
       if (!response.ok) {
         throw new Error('Falha ao buscar os dados da API');
@@ -172,7 +174,91 @@ function DistributionsPage() {
   };
 
   if (isLoading) {
-    return <div className="text-center p-10">Carregando distribuições...</div>
+    return (
+      <div className="space-y-6">
+        {/* Skeleton do Card de Adicionar Distribuição (Só mostra se não for viewer) */}
+        {!isViewer && (
+          <Card>
+            <CardHeader>
+              <Skeleton className="h-6 w-[250px] mb-2" />
+              <Skeleton className="h-4 w-[400px]" />
+            </CardHeader>
+            <CardContent>
+              <div>
+                <Skeleton className="h-4 w-[150px] mb-2" />
+                <div className="flex items-center justify-center gap-5">
+                  <div className="w-4/5">
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                  <div className="w-1/5">
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Skeleton do Card da Tabela */}
+        <Card>
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <div className="space-y-2">
+                <Skeleton className="h-6 w-[200px]" />
+                <Skeleton className="h-4 w-[350px]" />
+              </div>
+              <div className="w-1/3">
+                <Skeleton className="h-10 w-full" />
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>ID</TableHead>
+                  <TableHead>Nome</TableHead>
+                  <TableHead>Domínio</TableHead>
+                  <TableHead>Origins</TableHead>
+                  <TableHead className="text-right">Ações</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {/* Gera 6 linhas falsas para a tabela */}
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <TableRow key={index} className="h-16">
+                    <TableCell className="w-[5%]">
+                      <Skeleton className="h-7 w-10 rounded" />
+                    </TableCell>
+                    <TableCell className="w-[25%]">
+                      <Skeleton className="h-7 w-full max-w-[200px] rounded" />
+                    </TableCell>
+                    <TableCell className="w-[30%]">
+                      <Skeleton className="h-7 w-full max-w-[280px] rounded" />
+                    </TableCell>
+                    <TableCell className="w-[30%]">
+                      <Skeleton className="h-7 w-full max-w-[200px] rounded" />
+                    </TableCell>
+                    <TableCell className="w-[10%] text-right">
+                      <div className="flex justify-end gap-2">
+                        <Skeleton className="h-8 w-8 rounded" />
+                        <Skeleton className="h-8 w-8 rounded" />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            
+            <div className="flex items-center justify-end gap-2 mt-4">
+              <Skeleton className="h-4 w-[100px] mr-2" />
+              <Skeleton className="h-8 w-8 rounded" />
+              <Skeleton className="h-8 w-8 rounded" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   if (error) {

@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx'
+import { Skeleton } from '@/components/ui/skeleton';
 import { Edit, Plus, Trash2 } from 'lucide-react'
 import CreatePolicyDialog from '@/components/shared/CreatePolicyDialog'
 import EditPolicyDialog from '@/components/shared/EditPolicyDialog'
@@ -198,7 +199,75 @@ function PoliciesPage() {
   };
 
   // --- RENDER ---
-  if (isCacheLoading || isOriginLoading) return <p>Carregando políticas...</p>;
+  // --- RENDER ---
+  if (isCacheLoading || isOriginLoading) {
+    return (
+      <div className="space-y-6">
+        {/* Skeleton das Abas (Tabs) */}
+        <div className="grid w-full grid-cols-2 gap-3 mb-4">
+          <Skeleton className="h-10 w-full rounded-md" />
+          <Skeleton className="h-10 w-full rounded-md" />
+        </div>
+
+        <div className="space-y-4">
+          {/* Skeleton do Card de Adicionar Política */}
+          {!isViewer && (
+            <Card>
+              <CardHeader>
+                <Skeleton className="h-6 w-[250px] mb-2" />
+                <Skeleton className="h-4 w-[350px]" />
+              </CardHeader>
+              <CardContent>
+                {/* Skeleton do botão "Nova Política" */}
+                <Skeleton className="h-10 w-[200px] rounded-md" />
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Skeleton da Tabela de Políticas */}
+          <Card>
+            <CardHeader>
+              <Skeleton className="h-6 w-[150px]" />
+            </CardHeader>
+            <CardContent>
+              <Table className="table-fixed w-full">
+                <TableHeader>
+                  <TableRow>
+                    <TableHead className="w-[5%]">ID</TableHead>
+                    <TableHead className="w-[30%]">Nome</TableHead>
+                    <TableHead className="w-[55%]">Descrição</TableHead>
+                    <TableHead className="w-[10%] text-right pr-10">Ações</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {/* Gera 6 linhas com as mesmas proporções da sua tabela de políticas */}
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <TableRow key={index} className="h-14">
+                      <TableCell className="w-[5%]">
+                        <Skeleton className="h-7 w-8 rounded" />
+                      </TableCell>
+                      <TableCell className="w-[30%] pr-5">
+                        <Skeleton className="h-7 w-full max-w-[180px] rounded" />
+                      </TableCell>
+                      <TableCell className="w-[55%]">
+                        <Skeleton className="h-7 w-full max-w-[350px] rounded" />
+                      </TableCell>
+                      <TableCell className="w-[10%]">
+                        <div className="flex justify-end gap-2">
+                          <Skeleton className="h-8 w-8 rounded" />
+                          <Skeleton className="h-8 w-8 rounded" />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
   if (cacheError || originError) return <p className="text-destructive">Erro: {cacheError || originError}</p>;
 
   return (

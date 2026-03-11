@@ -3,6 +3,7 @@ import { useState, useEffect  } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Input } from '@/components/ui/input.jsx'
+import { Skeleton } from '@/components/ui/skeleton';
 import { Label } from '@/components/ui/label.jsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx'
 import { Badge } from '@/components/ui/badge.jsx'
@@ -98,6 +99,7 @@ function ConfigPage() {
     const fetchData = async () => {
       try {
         setIsLoading(true);
+              await new Promise(resolve => setTimeout(resolve, 500));
         const [originsRes, distributionsRes] = await Promise.all([
           fetch(ORIGINS_API_URL),
           fetch(DISTRIBUTIONS_API_URL)
@@ -171,7 +173,102 @@ function ConfigPage() {
     }
   };
 
-  if (isLoading) return <p>Carregando configurações...</p>;
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        {/* Skeleton das Abas (Tabs) */}
+        <div className="grid w-full grid-cols-2 gap-3 mb-4">
+          <Skeleton className="h-10 w-full rounded-md" />
+          <Skeleton className="h-10 w-full rounded-md" />
+        </div>
+
+        <div className="space-y-4">
+          {/* Skeleton do Formulário de Adicionar Origin */}
+          {!isViewer && (
+            <Card>
+              <CardHeader>
+                <Skeleton className="h-6 w-[250px] mb-2" />
+                <Skeleton className="h-4 w-[400px]" />
+              </CardHeader>
+              <CardContent>
+                <div className="flex items-end gap-6">
+                  <div className="flex-1 gap-2 flex flex-col">
+                    <Skeleton className="h-4 w-[100px]" />
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                  <div className="flex-1 gap-2 flex flex-col">
+                    <Skeleton className="h-4 w-[120px]" />
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                  <div className="flex-2 gap-2 flex flex-col">
+                    <Skeleton className="h-4 w-[140px]" />
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                  <div>
+                    <Skeleton className="h-10 w-[80px]" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
+
+          {/* Skeleton da Tabela de Origins */}
+          <Card>
+            <CardHeader>
+              <Skeleton className="h-6 w-[200px] mb-2" />
+              <Skeleton className="h-4 w-[350px]" />
+            </CardHeader>
+            <CardContent>
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>ID</TableHead>
+                    <TableHead>Distribution</TableHead>
+                    <TableHead>Origin</TableHead>
+                    <TableHead>Domínio</TableHead>
+                    <TableHead>Protocolo</TableHead>
+                    <TableHead>Porta</TableHead>
+                    <TableHead className="text-right">Ações</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {/* Gera 6 linhas com os mesmos tamanhos da sua tabela real */}
+                  {Array.from({ length: 6 }).map((_, index) => (
+                    <TableRow key={index} className="h-14">
+                      <TableCell className="w-[5%]">
+                        <Skeleton className="h-7 w-8 rounded" />
+                      </TableCell>
+                      <TableCell className="w-[22%]">
+                        <Skeleton className="h-7 w-[140px] rounded" />
+                      </TableCell>
+                      <TableCell className="w-[15%]">
+                        <Skeleton className="h-7 w-[120px] rounded" />
+                      </TableCell>
+                      <TableCell className="w-[30%]">
+                        <Skeleton className="h-7 w-[250px] rounded" />
+                      </TableCell>
+                      <TableCell className="w-[10%]">
+                        <Skeleton className="h-7 w-14 rounded" />
+                      </TableCell>
+                      <TableCell className="w-[8%]">
+                        <Skeleton className="h-7 w-10 rounded" />
+                      </TableCell>
+                      <TableCell className="w-[10%] text-right">
+                        <div className="flex justify-end gap-2">
+                          <Skeleton className="h-8 w-8 rounded" />
+                          <Skeleton className="h-8 w-8 rounded" />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
   if (error) return <p className="text-destructive">Erro: {error}</p>;
 
 

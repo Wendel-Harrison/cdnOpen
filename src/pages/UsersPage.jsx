@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Edit, Plus, Trash2, UserRound, UserPlus, UserCog } from 'lucide-react';
 import { toast } from "sonner";
 import { AlertDialog, AlertDialogAction, AlertDialogTrigger, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
@@ -32,6 +33,7 @@ function UsersPage() {
   const fetchUsers = useCallback(async () => {
     try {
       setIsLoading(true);
+      await new Promise(resolve => setTimeout(resolve, 500));
       const res = await fetch(API_URL);
       if (!res.ok) throw new Error('Falha ao buscar usuários');
       const data = await res.json();
@@ -153,8 +155,90 @@ function UsersPage() {
     }
   };
 
-  // --- RENDERIZAÇÃO ---
-  if (isLoading) return <p>Carregando usuários...</p>;
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <Card>
+          <CardHeader>
+            <Skeleton className="h-6 w-[250px] mb-2" />
+            <Skeleton className="h-4 w-[400px]" />
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-4">
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[50px]" />
+                <Skeleton className="h-10 w-full" />
+              </div>
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[50px]" />
+                <Skeleton className="h-10 w-full" />
+              </div>
+              <div className="space-y-2">
+                <Skeleton className="h-4 w-[60px]" />
+                <Skeleton className="h-10 w-full" />
+              </div>
+              <div className="flex items-end">
+                <Skeleton className="h-10 w-full rounded-md" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Skeleton da Tabela de Usuários */}
+        <Card>
+          <CardHeader>
+            <Skeleton className="h-6 w-[200px] mb-2" />
+            <Skeleton className="h-4 w-[350px]" />
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[5%]"></TableHead>
+                  <TableHead className="w-[25%]">Nome</TableHead>
+                  <TableHead className="w-[30%]">Email</TableHead>
+                  <TableHead className="w-[15%]">Função</TableHead>
+                  <TableHead className="w-[15%]">Status</TableHead>
+                  <TableHead className="w-[10%] text-right">Ações</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {/* Gera 6 linhas "fantasmas" respeitando as colunas */}
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <TableRow key={index} className="h-14">
+                    <TableCell className="text-center">
+                      {/* Simula o ícone de usuário */}
+                      <Skeleton className="h-8 w-8 rounded-full mx-auto" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-5 w-full max-w-[150px] rounded" />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="h-5 w-full max-w-[200px] rounded" />
+                    </TableCell>
+                    <TableCell>
+                      {/* Simula a Badge de Função */}
+                      <Skeleton className="h-7 w-20 rounded" />
+                    </TableCell>
+                    <TableCell>
+                      {/* Simula a Badge de Status */}
+                      <Skeleton className="h-7 w-16 rounded" />
+                    </TableCell>
+                    <TableCell className="text-right">
+                      <div className="flex justify-end gap-2">
+                        <Skeleton className="h-8 w-8 rounded" />
+                        <Skeleton className="h-8 w-8 rounded" />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
   if (error) return <p className="text-destructive">Erro: {error}</p>;
 
   const RoleIcon = ({ role }) => {

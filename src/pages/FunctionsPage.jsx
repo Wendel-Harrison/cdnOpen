@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button.jsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 import { Input } from '@/components/ui/input.jsx';
 import { Label } from '@/components/ui/label.jsx';
+import { Skeleton } from '@/components/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx';
 import { Badge } from '@/components/ui/badge.jsx';
 import { Trash2, Edit, ChevronLeft, ChevronRight, Code } from 'lucide-react';
@@ -52,6 +53,7 @@ function FunctionsPage() {
   const fetchFunctions = useCallback(async (page) => {
     try {
       setIsLoading(true);
+      
       const response = await fetch(`${API_URL}?page=${page}&limit=${LIMIT}`);
       if (!response.ok) {
         throw new Error('Falha ao buscar as funções');
@@ -156,8 +158,101 @@ function FunctionsPage() {
   );
 
   if (isLoading) {
-    return <div className="text-center p-10">Carregando funções...</div>;
+    return (
+      <div className="space-y-6">
+        {/* Skeleton do Card de Adicionar Função */}
+        {!isViewer && (
+          <Card>
+            <CardHeader>
+              <Skeleton className="h-6 w-[200px] mb-2" />
+              <Skeleton className="h-4 w-[400px]" />
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[50px]" />
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-[150px]" />
+                    <Skeleton className="h-10 w-full" />
+                  </div>
+                </div>
+                <div className="flex justify-end">
+                  <Skeleton className="h-10 w-1/4 rounded-md" />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Skeleton do Card de Listagem */}
+        <Card>
+          <CardHeader>
+            <div className="flex justify-between items-center">
+              <div>
+                <Skeleton className="h-6 w-[150px] mb-2" />
+                <Skeleton className="h-4 w-[250px]" />
+              </div>
+              <div className="w-1/3">
+                <Skeleton className="h-10 w-full" />
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-[5%]">ID</TableHead>
+                  <TableHead className="w-[12%]">Nome</TableHead>
+                  <TableHead className="w-[43%]">Descrição</TableHead>
+                  <TableHead className="w-[15%]">Última Modificação</TableHead>
+                  <TableHead className="w-[20%] text-right">Ações</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {/* Gera 6 linhas com as mesmas proporções da sua tabela real */}
+                {Array.from({ length: 6 }).map((_, index) => (
+                  <TableRow key={index} className="h-16">
+                    <TableCell className="w-[5%]">
+                      <Skeleton className="h-6 w-8 rounded" />
+                    </TableCell>
+                    <TableCell className="w-[12%]">
+                      <div className="flex items-center gap-2">
+                        {/* Simula o ícone de Code < /> e o texto */}
+                        <Skeleton className="h-4 w-4 rounded-sm" />
+                        <Skeleton className="h-5 w-full max-w-[120px] rounded" />
+                      </div>
+                    </TableCell>
+                    <TableCell className="w-[43%]">
+                      <Skeleton className="h-5 w-full max-w-[300px] rounded" />
+                    </TableCell>
+                    <TableCell className="w-[15%]">
+                      <Skeleton className="h-5 w-[100px] rounded" />
+                    </TableCell>
+                    <TableCell className="w-[20%] text-right">
+                      <div className="flex justify-end gap-2">
+                        <Skeleton className="h-8 w-8 rounded" />
+                        <Skeleton className="h-8 w-8 rounded" />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+
+            <div className="flex items-center justify-end gap-2 mt-4">
+              <Skeleton className="h-4 w-[100px] mr-2" />
+              <Skeleton className="h-8 w-8 rounded" />
+              <Skeleton className="h-8 w-8 rounded" />
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
+
   if (error) {
     return <div className="text-center p-10 text-destructive">Erro: {error}</div>;
   }
@@ -252,8 +347,8 @@ function FunctionsPage() {
                     </TableCell>
                     <TableCell>
                       <span className="text-muted-foreground text-sm">
-                        {func.updated_at 
-                          ? new Date(func.updated_at).toLocaleString('pt-BR', {
+                        {func.last_updated_at 
+                          ? new Date(func.last_updated_at).toLocaleString('pt-BR', {
                               day: '2-digit',
                               month: '2-digit',
                               year: 'numeric',

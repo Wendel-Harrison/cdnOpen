@@ -264,10 +264,7 @@ function Layout() {
               <p className="text-sm text-neutral-100">Gerencie suas distribuições, origins e behaviors</p>
             </div>
 
-            {/* <Badge variant="outline" className="text-sm hidden sm:flex text-gray-950 bg-amber-50">
-              <div className="h-2 w-2 rounded-full bg-green-500 mr-2 animate-pulse " />
-              Sistema Online
-            </Badge> */}
+            <GlobalOperationsWidget />
 
             <Sheet>
               <SheetTrigger asChild>
@@ -291,7 +288,6 @@ function Layout() {
         {/* Main Content */}
         <main className="p-6">
           <Outlet />
-          {!isInicio && <GlobalOperationsWidget />}
         </main>
       </div>
     </div>

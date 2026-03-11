@@ -5,17 +5,50 @@ import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 const AUTH_KEY = 'cdn-auth-user';
 
+const SEVEN_DAYS_IN_MS = 7 * 24 * 60 * 60 * 1000;
+
 export function AuthProvider({ children }) {
+  const navigate = useNavigate();
 
   const [user, setUser] = useState(() => {
-    const storedUser = localStorage.getItem(AUTH_KEY);
-    return storedUser ? JSON.parse(storedUser) : null;
+    const storedItem = localStorage.getItem(AUTH_KEY);
+    
+    if (!storedItem) return null;
+
+    try {
+      const parsedItem = JSON.parse(storedItem);
+      
+      if (!parsedItem.timestamp || !parsedItem.data) {
+        localStorage.removeItem(AUTH_KEY);
+        return null;
+      }
+
+      const now = new Date().getTime();
+      const isExpired = (now - parsedItem.timestamp) > SEVEN_DAYS_IN_MS;
+
+      if (isExpired) {
+        // Se passou de 7 dias, limpa o cache e exige novo login
+        localStorage.removeItem(AUTH_KEY);
+        console.log("Sessão expirada. Refaça o login.");
+        return null;
+      }
+
+      // Se ainda estiver no prazo, retorna os dados reais do usuário
+      return parsedItem.data;
+    } catch (error) {
+      localStorage.removeItem(AUTH_KEY);
+      return null;
+    }
   });
 
-  const navigate = useNavigate();
+  // Gravar o usuário no localStorage SEMPRE com a data atual (timestamp)
   useEffect(() => {
     if (user) {
-      localStorage.setItem(AUTH_KEY, JSON.stringify(user));
+      const itemToStore = {
+        data: user,
+        timestamp: new Date().getTime()
+      };
+      localStorage.setItem(AUTH_KEY, JSON.stringify(itemToStore));
     } else {
       localStorage.removeItem(AUTH_KEY);
     }
@@ -47,7 +80,6 @@ export function AuthProvider({ children }) {
     navigate('/'); 
   };
 
-  // Valor que será compartilhado com todos os componentes filhos
   const value = { user, login, logout, isAuthenticated: !!user };
 
   return (

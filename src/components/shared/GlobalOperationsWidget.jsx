@@ -187,35 +187,39 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   if (!dataLoaded) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 animate-in slide-in-from-bottom-5">
-      <Button 
-        size="lg"
-        onClick={handleMainClick}
-        disabled={loading || isAllClean} // Desabilitado se estiver verde ou carregando
+    <div className="z-50 animate-in slide-in-from-bottom-5 mr-2">
+      <button 
+        /* Trocamos o 'disabled' nativo por uma trava lógica no clique, 
+           assim o mouse ainda consegue dar o trigger na animação de hover */
+        onClick={loading || isAllClean ? undefined : handleMainClick}
         className={`
-          h-14 rounded-full shadow-2xl transition-all duration-300 border-2 px-6
+          group relative flex items-center justify-start p-0 h-8.5 rounded-full  shadow-2xl border-2 
+          transition-all duration-500 ease-in-out overflow-hidden whitespace-nowrap outline-none
+          w-8.5 hover:w-[150px]
           ${hasChanges 
-            ? 'bg-yellow-500 hover:bg-yellow-600 border-yellow-300 text-white shadow-yellow-200' // AMARELO
+            ? 'bg-amber-500 hover:bg-amber-600 border-amber-400 text-white shadow-amber-200 cursor-pointer' 
             : hasReadyToDeploy 
-              ? 'bg-blue-600 hover:bg-blue-700 border-blue-400 text-white shadow-blue-200' // AZUL
-              : 'bg-green-600 border-green-400 text-white opacity-90 cursor-default' // VERDE (Disabled visualmente bonito)
+              ? 'bg-blue-600 hover:bg-blue-700 border-blue-400 text-white shadow-blue-200 cursor-pointer' 
+              : 'bg-emerald-500 hover:bg-emerald-600 border-emerald-400 text-white shadow-emerald-200 cursor-default'
           }
         `}
       >
-        {/* ÍCONE */}
-        {loading ? (
-          <Loader2 className="w-6 h-6 animate-spin mr-3" />
-        ) : hasChanges ? (
-          <AlertTriangle className="w-6 h-6 mr-3 animate-pulse" />
-        ) : hasReadyToDeploy ? (
-          <Rocket className="w-6 h-6 mr-3" />
-        ) : (
-          <CheckCircle2 className="w-6 h-6 mr-3" />
-        )}
+        {/* ÍCONE - Fixo à esquerda */}
+        <div className="w-7.5 h-7 p-1 flex items-center justify-center shrink-0">
+          {loading ? (
+            <Loader2 className="w-6 h-6 animate-spin" />
+          ) : hasChanges ? (
+            <AlertTriangle className="w-6 h-6 animate-pulse" />
+          ) : hasReadyToDeploy ? (
+            <Rocket className="w-5 h-5 p-1" />
+          ) : (
+            <CheckCircle2 className="w-6 h-6" />
+          )}
+        </div>
 
-        {/* TEXTO */}
-        <div className="flex flex-col items-start text-xs">
-          <span className="font-bold text-sm">
+        {/* TEXTO - Centralizado verticalmente com proporções ajustadas */}
+        <div className="flex flex-col items-start justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pr-6 shrink-0">
+          <span className="font-bold text-[10px] leading-tight tracking-wide">
             {hasChanges 
                 ? 'REVISAR PENDÊNCIAS' 
                 : hasReadyToDeploy 
@@ -223,7 +227,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
                     : 'SISTEMA ONLINE'
             }
           </span>
-          <span className="opacity-90 font-mono">
+          <span className="opacity-90 font-mono text-[10px] leading-tight tracking-wider mt-0.5">
             {hasChanges 
               ? `${changedDists.length} alterações` 
               : hasReadyToDeploy 
@@ -231,7 +235,7 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
                 : 'Ambiente Seguro'}
           </span>
         </div>
-      </Button>
+      </button>
     </div>
   );
 }

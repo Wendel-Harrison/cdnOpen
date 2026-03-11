@@ -21,12 +21,32 @@ function LoginPage() {
     setIsLoading(true);
 
     try {
-      // Usamos await para esperar a resposta do contexto
+      // Tenta fazer o login
       await login(email, password);
     } catch (err) {
-      // Se cair aqui, o login falhou
       setHasError(true);
-      toast.error('E-mail ou senha incorretos.');
+      
+      // Verifica se a mensagem de erro que veio do backend é a de inatividade
+      if (err.message === 'INACTIVE_ACCOUNT') {
+        toast.error(
+          <div>
+            Usuário inativo.<br />
+            <span className="text-xs opacity-80">
+               Peça a um administrador para reativar seu acesso.
+            </span>
+          </div>
+        );
+      } else {
+        // Se for qualquer outro erro (ex: senha errada)
+        toast.error(
+          <div>
+            E-mail ou senha incorretos.<br />
+            <span className="text-xs opacity-80">
+               Entre em contato com a Engenharia para redefinição de senha.
+            </span>
+          </div>
+        );
+      }
     } finally {
       setIsLoading(false);
     }
