@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/alert-dialog"
 
 import EditOriginDialog from '@/components/shared/EditOriginDialog'
-import { Edit, Trash2 } from 'lucide-react'
+import { Edit, Trash2, Search } from 'lucide-react'
 
 import BehaviorsTab from '../components/shared/BehaviorsTab';
 import { useAuth } from '@/context/AuthContext'
@@ -43,6 +43,7 @@ function ConfigPage() {
   const [error, setError] = useState(null);
 
   const [formErrors, setFormErrors] = useState({});
+  const [searchTerm, setSearchTerm] = useState('');
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedOrigin, setSelectedOrigin] = useState(null);
@@ -173,6 +174,18 @@ function ConfigPage() {
     }
   };
 
+  const filteredOrigins = origins.filter((origin) => {
+    const searchLower = searchTerm.toLowerCase();
+    
+    const distName = distributions.find(d => d.id === origin.distribution_id)?.name || '';
+
+    return (
+      origin.origin_id?.toLowerCase().includes(searchLower) ||
+      origin.domain_name?.toLowerCase().includes(searchLower) ||
+      distName.toLowerCase().includes(searchLower)
+    );
+  });
+
   if (isLoading) {
     return (
       <div className="space-y-6">
@@ -232,7 +245,6 @@ function ConfigPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {/* Gera 6 linhas com os mesmos tamanhos da sua tabela real */}
                   {Array.from({ length: 6 }).map((_, index) => (
                     <TableRow key={index} className="h-14">
                       <TableCell className="w-[5%]">
@@ -384,9 +396,21 @@ function ConfigPage() {
           
 
           <Card>
-            <CardHeader>
-              <CardTitle>Origins Configurados</CardTitle>
-              <CardDescription>Lista de todos os origins gerenciados pela CDN</CardDescription>
+            <CardHeader className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 dark:border-zinc-800/50 pb-5 mb-4">
+              <div>
+                <CardTitle>Origins Configurados</CardTitle>
+                <CardDescription>Lista de todos os origins gerenciados pela CDN</CardDescription>
+              </div>
+              
+              <div className="relative w-full md:w-80">
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input 
+                  placeholder="Filtrar origin, domínio ou distribuição..." 
+                  className="pl-9"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
             </CardHeader>
             <CardContent>
               <Table>
@@ -402,59 +426,68 @@ function ConfigPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {origins.map((origin) => (
-                    <TableRow key={origin.id} className="hover:bg-muted/50 transition-colors">
-                      <TableCell className="w-[5%]">
-                        <Badge className="px-2 py-1.5 bg-blue-400 rounded">
-                          {origin.id}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[22%]">
-                        <Badge variant="secondary" className="px-5 py-1 rounded">
-                          {distributions.find(dist => dist.id === origin.distribution_id)?.name || 'Não encontrada'}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[15%]">
-                        <Badge variant="secondary" className="px-5 py-1 truncate text-blue-800 rounded">
-                          {origin.origin_id}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[30%]">
-                        <Badge variant="secondary" className="w-full py-1 text-blue-800 rounded">
-                          {origin.domain_name}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[10%]">
-                        <Badge variant="secondary" className="px-5 py-1 uppercase w-20 rounded">
-                          {origin.protocol}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[8%]">
-                        <Badge  className="px-2 py-1.5 bg-blue-400/70 rounded">
-                          {origin.port}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[10%]">
-                        <div className="flex justify-end gap-2">
-                          <Button 
-                            variant="ghost" 
-                            size="icon"
-                            onClick={() => {
-                              setSelectedOrigin(origin); // Guarda o origin clicado no estado
-                              setIsDialogOpen(true);     // Abre o dialog
-                            }}
-                            className="cursor-pointer hover:bg-neutral-300"
-                            disabled={isViewer}
-                          >
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" onClick={() => openDeleteDialog(origin)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
-                            <Trash2 className="h-4 w-4 text-destructive" />
-                          </Button>
-                        </div>
+                  {/* === USANDO filteredOrigins AQUI EM VEZ DE origins === */}
+                  {filteredOrigins.length > 0 ? (
+                    filteredOrigins.map((origin) => (
+                      <TableRow key={origin.id} className="hover:bg-muted/50 transition-colors">
+                        <TableCell className="w-[5%]">
+                          <Badge className="px-2 py-1.5 bg-blue-400 rounded">
+                            {origin.id}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[22%]">
+                          <Badge variant="secondary" className="px-5 py-1 rounded">
+                            {distributions.find(dist => dist.id === origin.distribution_id)?.name || 'Não encontrada'}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[15%]">
+                          <Badge variant="secondary" className="px-5 py-1 truncate text-blue-800 rounded">
+                            {origin.origin_id}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[30%]">
+                          <Badge variant="secondary" className="w-full py-1 text-blue-800 rounded">
+                            {origin.domain_name}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[10%]">
+                          <Badge variant="secondary" className="px-5 py-1 uppercase w-20 rounded">
+                            {origin.protocol}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[8%]">
+                          <Badge  className="px-2 py-1.5 bg-blue-400/70 rounded">
+                            {origin.port}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[10%]">
+                          <div className="flex justify-end gap-2">
+                            <Button 
+                              variant="ghost" 
+                              size="icon"
+                              onClick={() => {
+                                setSelectedOrigin(origin);
+                                setIsDialogOpen(true);     
+                              }}
+                              className="cursor-pointer hover:bg-neutral-300"
+                              disabled={isViewer}
+                            >
+                              <Edit className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="icon" onClick={() => openDeleteDialog(origin)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
+                              <Trash2 className="h-4 w-4 text-destructive" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  ) : (
+                    <TableRow>
+                      <TableCell colSpan={7} className="h-24 text-center text-muted-foreground">
+                        Nenhum origin encontrado na busca.
                       </TableCell>
                     </TableRow>
-                  ))}
+                  )}
                 </TableBody>
               </Table>
             </CardContent>
@@ -498,9 +531,6 @@ function ConfigPage() {
         </AlertDialogContent>
       </AlertDialog>
 
-        
-
-        {/* Behaviors Tab */}
         <TabsContent value="behaviors" className="space-y-4">
           <BehaviorsTab distributions={distributions} origins={origins} />
         </TabsContent>

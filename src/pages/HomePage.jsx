@@ -32,14 +32,14 @@ export default function HomePage() {
   
   const [distributions, setDistributions] = useState([]);
   const [origins, setOrigins] = useState([]);
+  const [nodes, setNodes] = useState([]);
+
+  const [stats, setStats] = useState({
+    pendingChanges: 0 
+  });
   
   // Estado para controlar o loading da verificação de status
   const [isLoadingStatus, setIsLoadingStatus] = useState(true);
-
-  const [stats, setStats] = useState({
-    functions: 8, 
-    pendingChanges: 0 
-  });
 
   useEffect(() => {
     const fetchDistributionsAndStatus = async () => {
@@ -96,8 +96,23 @@ export default function HomePage() {
       }
     };
 
+    const fetchNodes = async () => {
+      try {
+        const response = await fetch('/api/edge-servers');
+        if (!response.ok) throw new Error('Falha ao buscar nodes');
+        
+        const data = await response.json();
+        const nodesList = Array.isArray(data) ? data : (data.data || []);
+        
+        setNodes(nodesList);
+      } catch (error) {
+        console.error("Erro ao carregar nodes na Home:", error);
+      }
+    };
+
     fetchDistributionsAndStatus();
     fetchOrigins();
+    fetchNodes();
 
   }, []);
 
@@ -238,7 +253,7 @@ export default function HomePage() {
           </CardHeader>
           <CardContent className="relative z-10">
             <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white">
-              {stats.functions}
+              {nodes.length}
             </div>
             <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-amber-100">
               Nós cadastrados na CDN - N1 à N3

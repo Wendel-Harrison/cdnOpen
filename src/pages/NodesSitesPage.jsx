@@ -41,7 +41,7 @@ function NodesSitesPage() {
   useEffect(() => {
     const fetchNodes = async () => {
       try {
-        const response = await fetch('http://10.127.254.87:3000/edge-servers');
+        const response = await fetch('/api/edge-servers');
         
         if (!response.ok) throw new Error('Falha ao buscar dados');
         

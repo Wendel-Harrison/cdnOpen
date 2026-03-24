@@ -1,11 +1,12 @@
 // BehaviorsTab.jsx
 import { useState, useEffect, useCallback } from 'react';
 import { Button } from '@/components/ui/button.jsx';
+import { Input } from '@/components/ui/input.jsx';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx';
 import { Select, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from '@/components/ui/badge.jsx';
-import { Edit, Plus, Trash2 } from 'lucide-react';
+import { Edit, Plus, Trash2, Search } from 'lucide-react';
 import { toast } from "sonner";
 import { BehaviorFormDialog } from './BehaviorFormDialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '../ui/alert-dialog';
@@ -27,6 +28,7 @@ function BehaviorsTab({ distributions, origins }) {
   const [originPolicies, setOriginPolicies] = useState([]);
 
   const [functionsList, setFunctionsList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const { user } = useAuth();
 
@@ -121,6 +123,18 @@ function BehaviorsTab({ distributions, origins }) {
 
   const filteredOrigins = origins.filter(o => o.distribution_id === parseInt(selectedDistId, 10));
 
+  const filteredBehaviors = behaviors.filter((behavior) => {
+    const searchLower = searchTerm.toLowerCase();
+    
+    // Precisamos buscar o nome do origin para poder filtrar pelo texto dele
+    const originName = origins.find(o => o.id === behavior.origin_id)?.origin_id || '';
+
+    return (
+      behavior.path_pattern?.toLowerCase().includes(searchLower) ||
+      originName.toLowerCase().includes(searchLower)
+    );
+  });
+
   return (
     <div className="space-y-4">
       <Card>
@@ -155,11 +169,23 @@ function BehaviorsTab({ distributions, origins }) {
       {selectedDistId && (
         <>
           <Card>
-            <CardHeader>
-              <CardTitle>Behaviors Configurados</CardTitle>
-              <CardDescription>
-                Políticas de cache aplicadas à distribuição selecionada, ordenadas por prioridade.
-              </CardDescription>
+            <CardHeader className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-gray-100 dark:border-zinc-800/50 pb-5 mb-4">
+              <div>
+                <CardTitle>Behaviors Configurados</CardTitle>
+                <CardDescription>
+                  Políticas de cache aplicadas à distribuição selecionada, ordenadas por prioridade.
+                </CardDescription>
+              </div>
+              
+              <div className="relative w-full md:w-80">
+                <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input 
+                  placeholder="Filtrar por path ou origin..." 
+                  className="pl-9"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+              </div>
             </CardHeader>
             <CardContent>
               {/* 1. Lógica de renderização condicional */}
@@ -180,9 +206,9 @@ function BehaviorsTab({ distributions, origins }) {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {/* 3. Verifica se a lista de behaviors está vazia */}
-                    {behaviors.length > 0 ? (
-                      behaviors.map((behavior) => (
+                    {/* === 3. USANDO filteredBehaviors AQUI EM VEZ DE behaviors === */}
+                    {filteredBehaviors.length > 0 ? (
+                      filteredBehaviors.map((behavior) => (
                         <TableRow key={behavior.id} className="hover:bg-muted/50 transition-colors">
                           <TableCell className=" w-[5%]">
                             <Badge className="bg-blue-400 px-2.5 py-1.5 rounded">{behavior.priority}</Badge>
@@ -219,7 +245,8 @@ function BehaviorsTab({ distributions, origins }) {
                     ) : (
                       <TableRow>
                         <TableCell colSpan={6} className="text-center h-24 text-muted-foreground">
-                          Nenhum behavior encontrado para esta distribuição.
+                           {/* Mudança no texto vazio caso seja filtro ou sem cadastro */}
+                          {behaviors.length === 0 ? "Nenhum behavior cadastrado para esta distribuição." : "Nenhum behavior encontrado na busca."}
                         </TableCell>
                       </TableRow>
                     )}

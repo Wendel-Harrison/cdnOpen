@@ -629,3 +629,1699 @@ Instead of /public/Claro.png, use /Claro.png.
       at MessagePort.handleMessage (node:internal/modules/esm/worker:199:24)
       at [nodejs.internal.kHybridDispatch] (node:internal/event_target:827:20)
       at MessagePort.<anonymous> (node:internal/per_context/messageport:23:28)
+
+> cdn@0.0.0 dev
+> vite --host
+
+
+  VITE v7.2.4  ready in 393 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://201.17.21.186:5173/
+  ➜  Network: http://10.127.254.87:5173/
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:35:49 [vite] (client) hmr update /src/index.css, /src/App.css
+10:35:49 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+10:35:49 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+10:35:49 [vite] (client) hmr update /src/index.css, /src/App.css
+10:35:49 [vite] http proxy error: /cache-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:49 [vite] http proxy error: /origin-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:49 [vite] (client) hmr update /src/index.css, /src/App.css
+10:35:49 [vite] http proxy error: /cache-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:49 [vite] http proxy error: /origin-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:35:54 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:35:54 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:35:54 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+10:35:55 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+10:35:55 [vite] (client) hmr update /src/index.css, /src/App.css
+10:35:55 [vite] http proxy error: /cache-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:55 [vite] http proxy error: /origin-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:55 [vite] http proxy error: /origin-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:55 [vite] http proxy error: /cache-policies
+Error: connect ECONNREFUSED 201.17.21.186:3000
+    at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1637:16)
+10:35:55 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:36:12 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+10:36:12 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+10:36:12 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:36:23 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+10:36:24 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+10:36:24 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/404.jpeg, use /404.jpeg.
+10:36:26 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+11:29:18 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+15:29:41 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+15:29:41 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+15:29:42 [vite] (client) hmr update /src/index.css, /src/App.css
+
+> cdn@0.0.0 dev
+> vite --host
+
+
+  VITE v7.2.4  ready in 1081 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://201.17.21.186:5173/
+  ➜  Network: http://10.127.254.87:5173/
+  ➜  Network: http://172.17.0.1:5173/
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+10:42:39 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+10:42:40 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+10:42:42 [vite] (client) hmr update /src/index.css, /src/App.css
+11:39:23 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:39:23 [vite] (client) hmr update /src/index.css, /src/App.css
+11:39:27 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:39:27 [vite] (client) hmr update /src/index.css, /src/App.css
+11:39:29 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:39:29 [vite] (client) hmr update /src/index.css, /src/App.css
+11:52:31 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:52:31 [vite] (client) hmr update /src/index.css, /src/App.css
+11:52:34 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:52:34 [vite] (client) hmr update /src/index.css, /src/App.css
+11:52:35 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:52:35 [vite] (client) hmr update /src/index.css, /src/App.css
+11:52:37 [vite] (client) hmr update /src/pages/ReviewChangesPage.jsx, /src/index.css, /src/App.css
+11:52:37 [vite] (client) hmr update /src/index.css, /src/App.css
+
+> cdn@0.0.0 dev
+> vite --host
+
+
+  VITE v7.2.4  ready in 383 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://201.17.21.186:5173/
+  ➜  Network: http://10.127.254.87:5173/
+  ➜  Network: http://172.17.0.1:5173/
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:15:43 [vite] (client) hmr update /src/index.css, /src/App.css
+11:15:43 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+11:15:43 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:15:43 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:16:15 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:16:15 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:16:16 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:17:10 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:17:10 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:17:10 [vite] (client) hmr update /src/index.css, /src/App.css
+11:18:43 [vite] (client) hmr update /src/pages/NodesSitesPage.jsx, /src/index.css, /src/App.css
+11:18:43 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:19:02 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+11:19:02 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:19:02 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/404.jpeg, use /404.jpeg.
+11:19:04 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:19:11 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+11:19:11 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:19:11 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/404.jpeg, use /404.jpeg.
+11:20:08 [vite] (client) hmr update /src/index.css, /src/App.css
+11:21:41 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:21:41 [vite] (client) hmr update /src/index.css, /src/App.css
+11:45:12 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:45:12 [vite] (client) hmr update /src/index.css, /src/App.css
+11:45:14 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:45:14 [vite] (client) hmr update /src/index.css, /src/App.css
+11:45:20 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:45:20 [vite] (client) hmr update /src/index.css, /src/App.css
+11:45:41 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:45:41 [vite] (client) hmr update /src/index.css, /src/App.css
+11:46:50 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:46:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:46:52 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:46:52 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:46:53 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:46:58 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+11:46:58 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:46:59 [vite] (client) hmr update /src/index.css, /src/App.css
+11:47:05 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:47:05 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:47:07 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:47:07 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+11:47:09 [vite] (client) ✨ new dependencies optimized: postcss
+11:47:09 [vite] (client) ✨ optimized dependencies changed. reloading
+11:47:09 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:47:10 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:47:10 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:47:11 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:47:11 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:47:11 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:47:12 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:47:12 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:47:13 [vite] (client) hmr update /src/index.css, /src/App.css
+11:47:13 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:47:13 [vite] (client) hmr update /src/index.css, /src/App.css
+11:47:17 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:47:17 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+11:47:18 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+11:47:18 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:47:19 [vite] (client) hmr update /src/index.css, /src/App.css
+11:47:38 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:47:38 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+11:47:39 [vite] (client) hmr update /src/index.css, /src/App.css
+11:48:00 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:48:00 [vite] (client) hmr update /src/index.css, /src/App.css
+11:48:03 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:48:03 [vite] (client) hmr update /src/index.css, /src/App.css
+11:48:41 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:48:41 [vite] (client) hmr update /src/index.css, /src/App.css
+11:49:21 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:49:21 [vite] (client) hmr update /src/index.css, /src/App.css
+11:49:46 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:49:46 [vite] (client) hmr update /src/index.css, /src/App.css
+11:50:03 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:50:03 [vite] (client) hmr update /src/index.css, /src/App.css
+11:50:06 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:50:06 [vite] (client) hmr update /src/index.css, /src/App.css
+11:50:24 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:50:24 [vite] (client) hmr update /src/index.css, /src/App.css
+11:50:29 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:50:29 [vite] (client) hmr update /src/index.css, /src/App.css
+11:50:45 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:50:45 [vite] (client) hmr update /src/index.css, /src/App.css
+11:50:55 [vite] (client) hmr update /src/pages/PoliciesPage.jsx, /src/index.css, /src/App.css
+11:50:55 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:29 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:54:29 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:29 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |   );
+  150 |
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |    );
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:29 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |   );
+  150 |
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |    );
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:29 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:30 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |   );
+  150 |
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |    );
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:30 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:30 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |   );
+  150 |
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |    );
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:30 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:35 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:54:35 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:35 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |
+  150 |     return matchName || matchDomain;
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |  
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:35 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |
+  150 |     return matchName || matchDomain;
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |  
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:35 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |
+  150 |     return matchName || matchDomain;
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |  
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:35 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:35 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (147:4)
+
+  145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |
+> 147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |     ^
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |
+  150 |     return matchName || matchDomain;
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:147:4
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase())
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      |      ^
+  148 |      const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  149 |  
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:41 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:54:41 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:41 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (145:62)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                               ^
+  146 |
+  147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:62
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                                ^
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:41 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (145:62)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                               ^
+  146 |
+  147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:62
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                                ^
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:41 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:41 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (145:62)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                               ^
+  146 |
+  147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:62
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                                ^
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:41 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:42 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token, expected "," (145:62)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                               ^
+  146 |
+  147 |     const matchName = dist.name?.toLowerCase().includes(searchLower);
+  148 |     const matchDomain = dist.domain_name?.toLowerCase().includes(searchLower);
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:62
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      dist.name.toLowerCase().includes(searchTerm.toLowerCase());
+      |                                                                ^
+  146 |  
+  147 |      const matchName = dist.name?.toLowerCase().includes(searchLower);
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.expect (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6924:12)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11307:14)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12174:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12160:10)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13521:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12477:14)
+      at JSXParserMixin.parseFunction (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13520:10)
+      at JSXParserMixin.parseFunctionStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13201:17)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12867:21)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseModuleItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12820:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:36)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseProgram (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12698:10)
+      at JSXParserMixin.parseTopLevel (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12688:25)
+      at JSXParserMixin.parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14568:25)
+      at parse (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:14602:38)
+      at parser (/opt/cdn/cdn/node_modules/@babel/core/lib/parser/index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (/opt/cdn/cdn/node_modules/@babel/core/lib/transformation/index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (/opt/cdn/cdn/node_modules/@babel/core/lib/transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (/opt/cdn/cdn/node_modules/gensync/index.js:261:32)
+11:54:42 [vite] (client) hmr update /src/index.css, /src/App.css
+11:54:49 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:54:49 [vite] (client) hmr update /src/index.css, /src/App.css
+11:55:09 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:55:09 [vite] (client) hmr update /src/index.css, /src/App.css
+11:55:09 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token (145:4)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     const searchLower = searchTerm.toLowerCase();
+      |     ^
+  146 |     
+  147 |     // Verifica se o termo existe no nome OU no domínio.
+  148 |     // O uso do "?." (Optional Chaining) previne que a tela quebre caso alguma 
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:4
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      const searchLower = searchTerm.toLowerCase();
+      |      ^
+  146 |      
+  147 |      // Verifica se o termo existe no nome OU no domínio.
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12167:24)
+      at JSXParserMixin.parseArrowExpression (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11504:25)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseExprListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12249:18)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11316:22)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+11:55:09 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token (145:4)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     const searchLower = searchTerm.toLowerCase();
+      |     ^
+  146 |     
+  147 |     // Verifica se o termo existe no nome OU no domínio.
+  148 |     // O uso do "?." (Optional Chaining) previne que a tela quebre caso alguma 
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:4
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      const searchLower = searchTerm.toLowerCase();
+      |      ^
+  146 |      
+  147 |      // Verifica se o termo existe no nome OU no domínio.
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12167:24)
+      at JSXParserMixin.parseArrowExpression (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11504:25)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseExprListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12249:18)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11316:22)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+11:55:09 [vite] (client) hmr update /src/index.css, /src/App.css
+11:55:09 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token (145:4)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     const searchLower = searchTerm.toLowerCase();
+      |     ^
+  146 |     
+  147 |     // Verifica se o termo existe no nome OU no domínio.
+  148 |     // O uso do "?." (Optional Chaining) previne que a tela quebre caso alguma 
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:4
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      const searchLower = searchTerm.toLowerCase();
+      |      ^
+  146 |      
+  147 |      // Verifica se o termo existe no nome OU no domínio.
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12167:24)
+      at JSXParserMixin.parseArrowExpression (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11504:25)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseExprListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12249:18)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11316:22)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+11:55:09 [vite] Internal server error: /opt/cdn/cdn/src/pages/DistributionsPage.jsx: Unexpected token (145:4)
+
+  143 |
+  144 |   const filteredDistributions = distributions.filter(dist =>
+> 145 |     const searchLower = searchTerm.toLowerCase();
+      |     ^
+  146 |     
+  147 |     // Verifica se o termo existe no nome OU no domínio.
+  148 |     // O uso do "?." (Optional Chaining) previne que a tela quebre caso alguma 
+  Plugin: vite:react-babel
+  File: /opt/cdn/cdn/src/pages/DistributionsPage.jsx:145:4
+  143 |  
+  144 |    const filteredDistributions = distributions.filter(dist =>
+  145 |      const searchLower = searchTerm.toLowerCase();
+      |      ^
+  146 |      
+  147 |      // Verifica se o termo existe no nome OU no domínio.
+      at constructor (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:367:19)
+      at JSXParserMixin.raise (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6624:19)
+      at JSXParserMixin.unexpected (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:6644:16)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11508:22)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at JSXParserMixin.parseFunctionBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12167:24)
+      at JSXParserMixin.parseArrowExpression (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12149:10)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11504:25)
+      at JSXParserMixin.parseExprAtom (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:4793:20)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11145:23)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12500:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12567:17)
+      at JSXParserMixin.parseExprListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12249:18)
+      at JSXParserMixin.parseCallExpressionArguments (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11316:22)
+      at JSXParserMixin.parseCoverCallAndAsyncArrowHead (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11250:29)
+      at JSXParserMixin.parseSubscript (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11184:19)
+      at JSXParserMixin.parseSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11158:19)
+      at JSXParserMixin.parseExprSubscripts (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11149:17)
+      at JSXParserMixin.parseUpdate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11130:21)
+      at JSXParserMixin.parseMaybeUnary (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:11110:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10963:61)
+      at JSXParserMixin.parseExprOps (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10968:23)
+      at JSXParserMixin.parseMaybeConditional (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10945:23)
+      at JSXParserMixin.parseMaybeAssign (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10895:21)
+      at /opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:39
+      at JSXParserMixin.allowInAnd (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12495:16)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:10864:17)
+      at JSXParserMixin.parseVar (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13460:91)
+      at JSXParserMixin.parseVarStatement (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13306:10)
+      at JSXParserMixin.parseStatementContent (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12927:23)
+      at JSXParserMixin.parseStatementLike (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12843:17)
+      at JSXParserMixin.parseStatementListItem (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:12823:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13392:61)
+      at JSXParserMixin.parseBlockBody (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13385:10)
+      at JSXParserMixin.parseBlock (/opt/cdn/cdn/node_modules/@babel/parser/lib/index.js:13373:10)
+11:55:09 [vite] (client) hmr update /src/index.css, /src/App.css
+11:55:20 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:55:20 [vite] (client) hmr update /src/index.css, /src/App.css
+11:55:24 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:55:24 [vite] (client) hmr update /src/index.css, /src/App.css
+11:56:23 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:56:23 [vite] (client) hmr update /src/index.css, /src/App.css
+11:56:31 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:56:31 [vite] (client) hmr update /src/index.css, /src/App.css
+11:56:36 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:56:36 [vite] (client) hmr update /src/index.css, /src/App.css
+11:57:23 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:57:23 [vite] (client) hmr update /src/index.css, /src/App.css
+11:57:41 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+11:57:41 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+12:12:13 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+12:12:13 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+12:12:14 [vite] (client) hmr update /src/index.css, /src/App.css
+12:12:58 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:12:58 [vite] (client) hmr update /src/index.css, /src/App.css
+12:13:00 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:13:00 [vite] (client) hmr update /src/index.css, /src/App.css
+12:13:23 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:13:23 [vite] (client) hmr update /src/index.css, /src/App.css
+12:13:26 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:13:26 [vite] (client) hmr update /src/index.css, /src/App.css
+12:13:29 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:13:29 [vite] (client) hmr update /src/index.css, /src/App.css
+12:17:33 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:17:33 [vite] (client) hmr update /src/index.css, /src/App.css
+12:17:35 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:17:35 [vite] (client) hmr update /src/index.css, /src/App.css
+12:17:39 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:17:39 [vite] (client) hmr update /src/index.css, /src/App.css
+12:17:55 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:17:55 [vite] (client) hmr update /src/index.css, /src/App.css
+12:18:32 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:18:32 [vite] (client) hmr update /src/index.css, /src/App.css
+12:18:35 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:18:35 [vite] (client) hmr update /src/index.css, /src/App.css
+12:18:40 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:18:40 [vite] (client) hmr update /src/index.css, /src/App.css
+12:18:56 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+12:18:56 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+12:24:16 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+12:24:17 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+12:24:18 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+12:29:35 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+12:40:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+12:40:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+12:40:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+12:40:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+12:40:51 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+12:40:51 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+12:41:27 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+12:41:27 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+12:41:28 [vite] (client) hmr update /src/index.css, /src/App.css
+
+> cdn@0.0.0 dev
+> vite --host
+
+
+  VITE v7.2.4  ready in 939 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: http://201.17.21.186:5173/
+  ➜  Network: http://10.127.254.87:5173/
+  ➜  Network: http://172.22.0.1:5173/
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+16:18:44 [vite] (client) hmr update /src/index.css, /src/App.css
+16:18:44 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+16:18:44 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+16:18:45 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+16:18:55 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+16:18:55 [vite] (client) hmr update /src/index.css, /src/App.css
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+16:18:55 [vite] (client) hmr update /src/index.css, /src/App.css
+16:19:11 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:19:11 [vite] (client) hmr update /src/index.css, /src/App.css
+16:19:27 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:19:27 [vite] (client) hmr update /src/index.css, /src/App.css
+16:19:34 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:19:34 [vite] (client) hmr update /src/index.css, /src/App.css
+16:19:37 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:19:37 [vite] (client) hmr update /src/index.css, /src/App.css
+16:21:19 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:21:19 [vite] (client) hmr update /src/index.css, /src/App.css
+16:21:30 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:21:30 [vite] (client) hmr update /src/index.css, /src/App.css
+16:21:34 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:21:34 [vite] (client) hmr update /src/index.css, /src/App.css
+16:21:37 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:21:37 [vite] (client) hmr update /src/index.css, /src/App.css
+16:21:39 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:21:39 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+16:21:48 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+16:21:48 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+16:21:48 [vite] (client) hmr update /src/index.css, /src/App.css
+16:32:27 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:32:27 [vite] (client) hmr update /src/index.css, /src/App.css
+16:32:29 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+16:32:29 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+16:47:49 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/ClaroText.png instead of /public/ClaroText.png.
+If you intend to use the URL of that asset, use /ClaroText.png?url.
+16:47:49 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/404.jpeg instead of /public/404.jpeg.
+If you intend to use the URL of that asset, use /404.jpeg?url.
+Files in the public directory are served at the root path.
+Instead of /public/Claro.png, use /Claro.png.
+16:47:50 [vite] (client) hmr update /src/index.css, /src/App.css
+Assets in public directory cannot be imported from JavaScript.
+If you intend to import that asset, put the file in the src directory, and use /src/Claro.png instead of /public/Claro.png.
+If you intend to use the URL of that asset, use /Claro.png?url.
+17:38:37 [vite] (client) hmr update /src/index.css, /src/App.css
+18:20:08 [vite] (client) hmr update /src/pages/DistributionsPage.jsx, /src/index.css, /src/App.css
+18:20:08 [vite] (client) hmr update /src/index.css, /src/App.css

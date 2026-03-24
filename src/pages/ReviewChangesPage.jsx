@@ -87,28 +87,57 @@ function ReviewChangesPage() {
 
   // 3. Ação: Validar Tudo
   const handleValidateAll = async () => {
-    if (!confirm(`Confirma a validação de ${changedDists.length} distribuições?`)) return;
+    if (!confirm(`Confirma a validação de ${changedDists.length} distribuições em Pré-Produção?`)) return;
 
     setIsValidating(true);
-    let successCount = 0;
+    toast.info("Iniciando validação no OpenResty...", { 
+      description: "Aguardando o retorno do ambiente de Pré-Produção..." 
+    });
 
-    for (const dist of changedDists) {
-      try {
-        await fetch(`${API_URL}/distributions/${dist.id}/validate`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ user_email: user?.email })
+    try {
+      // Pega apenas o Array numérico de IDs (ex: [45, 82])
+      const distIds = changedDists.map(dist => dist.id);
+
+      // Dispara para a nova rota orquestradora que criamos no Node.js
+      const res = await fetch(`${API_URL}/distributions/validate-pre-prod`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          distributionIds: distIds,
+          currentUserEmail: user?.email 
+        })
+      });
+
+      const data = await res.json();
+      console.log(data)
+
+      // Tratamento se o Gatekeeper/Nginx recusar a configuração
+      if (!res.ok) {
+        console.error("Erro retornado do backend:", data);
+        const errorMessage = data.details?.nginx_error || data.error || "Erro de sintaxe no servidor.";
+        
+        toast.error("Deploy Abortado!", { 
+          description: `O OpenResty recusou a configuração: ${errorMessage}`,
+          duration: 8000 // Fica mais tempo na tela para o usuário conseguir ler
         });
-        successCount++;
-      } catch (e) {
-        console.error(`Falha ao validar ${dist.name}`, e);
+        return; // Interrompe o fluxo e não redireciona
       }
-    }
 
-    toast.success(`${successCount} itens validados com sucesso!`);
-    
-    // Redireciona de volta para Dashboard ou Distributions
-    navigate('/distributions'); 
+      // Se deu tudo certo
+      toast.success("Sucesso!", {
+        description: data.message || "Itens validados e aplicados com sucesso."
+      });
+      
+      navigate('/distributions'); 
+
+    } catch (e) {
+      console.error("Erro na comunicação com o backend:", e);
+      toast.error("Erro de conexão", {
+        description: "Não foi possível se comunicar com o servidor de validação."
+      });
+    } finally {
+      setIsValidating(false);
+    }
   };
 
   if (loadingList) {

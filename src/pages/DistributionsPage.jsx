@@ -49,11 +49,11 @@ function DistributionsPage() {
   const isAdmin = user.role === 'admin';
   const isViewer = user.role === 'viewer';
 
-  const fetchDistributions = useCallback(async (page) => {
+  const fetchDistributions = useCallback(async (page, search = '') => {
     try {
       setIsLoading(true);
       await new Promise(resolve => setTimeout(resolve, 500));
-      const response = await fetch(`${API_URL}?page=${page}&limit=${LIMIT}`);
+      const response = await fetch(`${API_URL}?page=${page}&limit=${LIMIT}&search=${encodeURIComponent(search)}`);
       if (!response.ok) {
         throw new Error('Falha ao buscar os dados da API');
       }
@@ -72,8 +72,16 @@ function DistributionsPage() {
   }, []);
 
   useEffect(() => {
-    fetchDistributions(currentPage);
-  }, [currentPage, fetchDistributions]);
+    const delayDebounceFn = setTimeout(() => {
+      fetchDistributions(currentPage, searchTerm);
+    }, 500);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm, currentPage, fetchDistributions]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   const addDistribution = async () => {
     if (!newDistributionName) {
@@ -141,10 +149,6 @@ function DistributionsPage() {
     }
   };
 
-  const filteredDistributions = distributions.filter(dist =>
-    dist.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   const handleUpdateDistribution = async (updatedData) => {
     try {
       const response = await fetch(`${API_URL}/${updatedData.id}`, {
@@ -198,6 +202,7 @@ function DistributionsPage() {
             </CardContent>
           </Card>
         )}
+
 
         {/* Skeleton do Card da Tabela */}
         <Card>
@@ -305,7 +310,7 @@ function DistributionsPage() {
             </div>
             <div className="w-1/3">
               <Input
-                placeholder="Filtrar por nome..."
+                placeholder="Filtrar por nome ou domínio... "
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -324,8 +329,8 @@ function DistributionsPage() {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {filteredDistributions.length > 0 ? (
-                filteredDistributions.map((dist) => (
+              {distributions.length > 0 ? (
+                distributions.map((dist) => (
                   <TableRow key={dist.id} className="hover:bg-muted/50 transition-colors">
                     <TableCell className="font-medium w-[5%]">
                       <Badge variant="secondary" className="px-2 py-1.5 bg-blue-400 text-white rounded">
@@ -356,7 +361,6 @@ function DistributionsPage() {
                                 +{dist.origins.length - 1}
                               </Badge>
                             )}
-                            {console.log(dist.origins)}
                           </div>
                         </Badge>
                         

@@ -63,61 +63,7 @@ import { FloatingDeployer } from './components/shared/FloatingDeployer'
 import { GlobalOperationsWidget } from './components/shared/GlobalOperationsWidget'
 import ReviewChangesPage from './pages/ReviewChangesPage'
 import HomePage from './pages/HomePage'
-
-// Página de Dashboard
-function DashboardPage() {
-  const [distributions, setDistributions] = useState([
-    { id: 1, name: 'STB', domain_name: 'cdn.stb.example.com', status: 'deployed' },
-    { id: 2, name: 'APP', domain_name: 'cdn.app.example.com', status: 'deployed' },
-    { id: 3, name: 'Radio', domain_name: 'cdn.radio.example.com', status: 'deployed' }
-  ])
-
-  return (
-    <div className="space-y-6">
-      {/* Stats Cards */}
-      <div className="grid gap-10 md:grid-cols-3">
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total de Distribuições</CardTitle>
-            <Package className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{distributions.length}</div>
-            <p className="text-xs text-muted-foreground">
-              {distributions.filter(d => d.status === 'deployed').length} ativas
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card className="hover:shadow-lg transition-shadow">
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Taxa de Hit</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">87.5%</div>
-            <p className="text-xs text-muted-foreground">
-              +2.5% desde ontem
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-
-      {/* Gráfico de Métricas */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Métricas de Desempenho</CardTitle>
-          <CardDescription>Visualização de requisições e taxa de hit nas últimas 24 horas</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="h-64 flex items-center justify-center bg-muted/20 rounded-lg">
-            <p className="text-muted-foreground">Gráfico de métricas seria exibido aqui (integração com Recharts)</p>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
+import DashboardPage from './pages/DashboardPage'
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()

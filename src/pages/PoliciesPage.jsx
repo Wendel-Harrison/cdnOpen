@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table.jsx'
 import { Skeleton } from '@/components/ui/skeleton';
-import { Edit, Plus, Trash2 } from 'lucide-react'
+import { Edit, Plus, Search, Trash2 } from 'lucide-react'
 import CreatePolicyDialog from '@/components/shared/CreatePolicyDialog'
 import EditPolicyDialog from '@/components/shared/EditPolicyDialog'
 import CreateOriginPolicyDialog from '@/components/shared/CreateOriginPolicyDialog'
@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { useAuth } from '@/context/AuthContext'
 import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input';
 
 function PoliciesPage() {
   // --- CACHE POLICIES ---
@@ -32,6 +33,7 @@ function PoliciesPage() {
   const [isCacheEditOpen, setIsCacheEditOpen] = useState(false);
   const [selectedCachePolicy, setSelectedCachePolicy] = useState(null);
   const [cachePolicyToDelete, setCachePolicyToDelete] = useState(null);
+  const [cacheSearchTerm, setCacheSearchTerm] = useState("");
   const CACHE_API_URL = '/api/cache-policies';
 
   // --- ORIGIN POLICIES ---
@@ -42,6 +44,7 @@ function PoliciesPage() {
   const [isOriginEditOpen, setIsOriginEditOpen] = useState(false);
   const [selectedOriginPolicy, setSelectedOriginPolicy] = useState(null);
   const [originPolicyToDelete, setOriginPolicyToDelete] = useState(null);
+  const [originSearchTerm, setOriginSearchTerm] = useState("");
   const ORIGIN_API_URL = '/api/origin-policies';
 
   // Novo estado para loading de deleção (UX)
@@ -86,6 +89,16 @@ function PoliciesPage() {
     fetchCachePolicies();
     fetchOriginPolicies();
   }, [fetchCachePolicies, fetchOriginPolicies]);
+
+  const filteredCachePolicies = cachePolicies.filter(policy => 
+    policy.name.toLowerCase().includes(cacheSearchTerm.toLowerCase()) || 
+    (policy.description || '').toLowerCase().includes(cacheSearchTerm.toLowerCase())
+  );
+
+  const filteredOriginPolicies = originPolicies.filter(policy => 
+    policy.name.toLowerCase().includes(originSearchTerm.toLowerCase()) || 
+    (policy.description || '').toLowerCase().includes(originSearchTerm.toLowerCase())
+  );
 
   // --- CREATE / UPDATE / DELETE (CACHE) ---
   const handleCachePolicyCreated = (newPolicy) => setCachePolicies(prev => [...prev, newPolicy]);
@@ -218,13 +231,11 @@ function PoliciesPage() {
                 <Skeleton className="h-4 w-[350px]" />
               </CardHeader>
               <CardContent>
-                {/* Skeleton do botão "Nova Política" */}
                 <Skeleton className="h-10 w-[200px] rounded-md" />
               </CardContent>
             </Card>
           )}
 
-          {/* Skeleton da Tabela de Políticas */}
           <Card>
             <CardHeader>
               <Skeleton className="h-6 w-[150px]" />
@@ -240,7 +251,6 @@ function PoliciesPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {/* Gera 6 linhas com as mesmas proporções da sua tabela de políticas */}
                   {Array.from({ length: 6 }).map((_, index) => (
                     <TableRow key={index} className="h-14">
                       <TableCell className="w-[5%]">
@@ -295,7 +305,19 @@ function PoliciesPage() {
           </Card>
 
           <Card className="mt-4">
-            <CardHeader><CardTitle>Políticas Criadas</CardTitle></CardHeader>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="mt-1">Políticas Criadas</CardTitle>
+              <div className="relative w-72">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Buscar política de cache"
+                  className="pl-9 bg-white"
+                  value={cacheSearchTerm}
+                  onChange={(e) => setCacheSearchTerm(e.target.value)}
+                />
+              </div>
+            </CardHeader>
             <CardContent>
               <Table className="table-fixed w-full">
                 <TableHeader>
@@ -307,35 +329,43 @@ function PoliciesPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {cachePolicies.map(policy => (
-                    <TableRow key={policy.id}>
-                      <TableCell className=" w-[5%]">
-                        <Badge className='h-7 w-8 bg-blue-400'>
-                          {policy.id}
-                        </Badge>
-                      </TableCell >
-                      <TableCell className=" w-[35%]">
-                        <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
-                          {policy.name}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="truncate w-[50%]" title={policy.description}>
-                        <Badge className='py-1.5 px-5 ' variant='secondary'>
-                          {policy.description}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className=" w-[10%]">
-                        <div className="flex justify-end gap-2">
-                          <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" onClick={() => setCachePolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
-                            <Trash2 className="h-4 w-4 text-destructive" />
-                          </Button>
-                        </div>
+                  {filteredCachePolicies.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={4} className="h-24 text-center text-muted-foreground">
+                        Nenhuma política encontrada.
                       </TableCell>
                     </TableRow>
-                  ))}
+                  ) : (
+                    filteredCachePolicies.map(policy => (
+                      <TableRow key={policy.id}>
+                        <TableCell className=" w-[5%]">
+                          <Badge className='h-7 w-8 bg-blue-400'>
+                            {policy.id}
+                          </Badge>
+                        </TableCell >
+                        <TableCell className=" w-[35%]">
+                          <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
+                            {policy.name}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="truncate w-[50%]" title={policy.description}>
+                          <Badge className='py-1.5 px-5 ' variant='secondary'>
+                            {policy.description}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className=" w-[10%]">
+                          <div className="flex justify-end gap-2">
+                            <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
+                              <Edit className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="icon" onClick={() => setCachePolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
+                              <Trash2 className="h-4 w-4 text-destructive" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
                 </TableBody>
               </Table>
             </CardContent>
@@ -405,7 +435,19 @@ function PoliciesPage() {
           </Card>
 
           <Card className="mt-4">
-            <CardHeader><CardTitle>Políticas Criadas</CardTitle></CardHeader>
+            <CardHeader className="flex flex-row items-center justify-between pb-2">
+              <CardTitle className="mt-1">Políticas Criadas</CardTitle>
+              <div className="relative w-72">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Buscar política de origem..."
+                  className="pl-9 bg-white"
+                  value={originSearchTerm}
+                  onChange={(e) => setOriginSearchTerm(e.target.value)}
+                />
+              </div>
+            </CardHeader>
             <CardContent>
               <Table className="table-fixed w-full">
                 <TableHeader>
@@ -417,35 +459,43 @@ function PoliciesPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {originPolicies.map(policy => (
-                    <TableRow key={policy.id}>
-                      <TableCell>
-                        <Badge className='h-7 w-8 bg-blue-400'>
-                          {policy.id}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className='truncate pr-5'>
-                        <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
-                          {policy.name}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="truncate" title={policy.description}>
-                        <Badge className='py-1.5 px-5 ' variant='secondary'>
-                          {policy.description}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex justify-end gap-2">
-                          <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon" onClick={() => setOriginPolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
-                            <Trash2 className="h-4 w-4 text-destructive" />
-                          </Button>
-                        </div>
+                  {filteredOriginPolicies.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={4} className="h-24 text-center text-muted-foreground">
+                        Nenhuma política encontrada.
                       </TableCell>
                     </TableRow>
-                  ))}
+                  ) : (
+                    filteredOriginPolicies.map(policy => (
+                      <TableRow key={policy.id}>
+                        <TableCell>
+                          <Badge className='h-7 w-8 bg-blue-400'>
+                            {policy.id}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className='truncate pr-5'>
+                          <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
+                            {policy.name}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="truncate" title={policy.description}>
+                          <Badge className='py-1.5 px-5 ' variant='secondary'>
+                            {policy.description}
+                          </Badge>
+                        </TableCell>
+                        <TableCell>
+                          <div className="flex justify-end gap-2">
+                            <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
+                              <Edit className="h-4 w-4" />
+                            </Button>
+                            <Button variant="ghost" size="icon" onClick={() => setOriginPolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
+                              <Trash2 className="h-4 w-4 text-destructive" />
+                            </Button>
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    ))
+                  )}
                 </TableBody>
               </Table>
             </CardContent>
