@@ -22,6 +22,19 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''), // Remove /api do caminho final
       },
+      '/grafana': {
+        target: 'http://10.127.226.224:3000',
+        changeOrigin: true,
+        ws: true,
+        configure: (proxy, _options) => {
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            proxyReq.setHeader('X-WEBAUTH-USER', 'viewer-cdn')
+          });
+          proxy.on('proxyReqWs', (proxyReq, req, socket, options, head) => {
+            proxyReq.setHeader('X-WEBAUTH-USER', 'viewer-cdn')
+          })
+        }
+      }
     }
   }
 })

@@ -4,10 +4,12 @@ import { TrendingUp, Package, Activity, Server, Zap, ExternalLink } from "lucide
 import { Button } from '@/components/ui/button';
 
 export default function DashboardPage() {
-  const GRAFANA_BASE = "http://10.127.226.224:3000";
-  const GRAFANA_FULL_DASHBOARD_URL = `${GRAFANA_BASE}/d/hzhXdzznZn/etcd-cluster-overview-1?orgId=1;`
+
+  const API_URL = '/api/distributions'
+  const GRAFANA_BASE = "/grafana";
+  const GRAFANA_FULL_DASHBOARD_URL = `http://10.127.226.224:3000/d/hzhXdzznZn/etcd-cluster-overview-1?orgId=1;`
   return (
-    <div className="space-y-6">
+    <div className="space-y-6">s
     
       <div className="grid gap-6 md:grid-cols-3">
          <Card className="hover:shadow-lg transition-all duration-300 bg-white border-l-4 border-l-blue-500">
