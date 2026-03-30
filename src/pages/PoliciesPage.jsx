@@ -297,7 +297,7 @@ function PoliciesPage() {
             </CardHeader>
             <CardContent>
               {!isViewer&& (
-                <Button onClick={() => setIsCacheCreateOpen(true)} className=" cursor-pointer hover:bg-gray-600 bg-blue-400 hover:shadow">
+                <Button onClick={() => setIsCacheCreateOpen(true)} className=" cursor-pointer hover:bg-gray-600 bg-blue-400 dark:bg-blue-600 dark:hover:bg-gray-700 dark:text-white hover:shadow">
                   <Plus className="mr-1 h-4 w-4 " /> Nova Política de Cache
                 </Button>
               )}
@@ -339,12 +339,12 @@ function PoliciesPage() {
                     filteredCachePolicies.map(policy => (
                       <TableRow key={policy.id}>
                         <TableCell className=" w-[5%]">
-                          <Badge className='h-7 w-8 bg-blue-400'>
+                          <Badge className='h-7 w-8 bg-blue-400 dark:bg-blue-500 dark:text-white'>
                             {policy.id}
                           </Badge>
                         </TableCell >
                         <TableCell className=" w-[35%]">
-                          <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
+                          <Badge className='py-1.5 px-5 text-blue-800 dark:text-blue-200' variant='secondary'>
                             {policy.name}
                           </Badge>
                         </TableCell>
@@ -355,10 +355,10 @@ function PoliciesPage() {
                         </TableCell>
                         <TableCell className=" w-[10%]">
                           <div className="flex justify-end gap-2">
-                            <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
+                            <Button variant="ghost" size="icon" onClick={() => { setSelectedCachePolicy(policy); setIsCacheEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-200">
                               <Edit className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" onClick={() => setCachePolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
+                            <Button variant="ghost" size="icon" onClick={() => setCachePolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200">
                               <Trash2 className="h-4 w-4 text-destructive" />
                             </Button>
                           </div>
@@ -426,7 +426,7 @@ function PoliciesPage() {
             </CardHeader>
             <CardContent>
               {!isViewer && (
-                <Button onClick={() => setIsOriginCreateOpen(true)} className=" cursor-pointer hover:bg-gray-600 bg-blue-400 hover:shadow">
+                <Button onClick={() => setIsOriginCreateOpen(true)} className=" cursor-pointer hover:bg-gray-600 bg-blue-400 dark:bg-blue-600 dark:hover:bg-gray-700 dark:text-white hover:shadow">
                   <Plus className="mr-1 h-4 w-4" /> Nova Política de Origem
                 </Button>
               )}
@@ -469,12 +469,12 @@ function PoliciesPage() {
                     filteredOriginPolicies.map(policy => (
                       <TableRow key={policy.id}>
                         <TableCell>
-                          <Badge className='h-7 w-8 bg-blue-400'>
+                          <Badge className='h-7 w-8 bg-blue-400 dark:bg-blue-500 dark:text-white'>
                             {policy.id}
                           </Badge>
                         </TableCell>
                         <TableCell className='truncate pr-5'>
-                          <Badge className='py-1.5 px-5 text-blue-800' variant='secondary'>
+                          <Badge className='py-1.5 px-5 text-blue-800 dark:text-blue-200' variant='secondary'>
                             {policy.name}
                           </Badge>
                         </TableCell>
@@ -485,10 +485,10 @@ function PoliciesPage() {
                         </TableCell>
                         <TableCell>
                           <div className="flex justify-end gap-2">
-                            <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300">
+                            <Button variant="ghost" size="icon" onClick={() => { setSelectedOriginPolicy(policy); setIsOriginEditOpen(true); }} className="cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-200">
                               <Edit className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" onClick={() => setOriginPolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300">
+                            <Button variant="ghost" size="icon" onClick={() => setOriginPolicyToDelete(policy)} className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200">
                               <Trash2 className="h-4 w-4 text-destructive" />
                             </Button>
                           </div>

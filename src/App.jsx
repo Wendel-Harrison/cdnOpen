@@ -59,11 +59,11 @@ import { ForceChangePasswordDialog } from './components/shared/ForceChangePasswo
 import EditFunctionPage from './pages/EditFunctionPage'
 import NodesSitesPage from './pages/NodesSitesPage'
 import HistoryPage from './pages/HistoryPage'
-import { FloatingDeployer } from './components/shared/FloatingDeployer'
 import { GlobalOperationsWidget } from './components/shared/GlobalOperationsWidget'
 import ReviewChangesPage from './pages/ReviewChangesPage'
 import HomePage from './pages/HomePage'
 import DashboardPage from './pages/DashboardPage'
+import ModeButton from './components/shared/ModeButton'
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()
@@ -137,10 +137,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
                       toggleSidebar();
                     }
                   }}
-                  className={`flex items-center gap-3 px-5 py-3 rounded-lg  text-sm  ${
+                  className={`flex items-center gap-3 px-5 py-3 rounded  text-sm  ${
                     isActive 
-                      ? 'bg-destructive/80 !text-white'
-                      : 'hover:bg-gray-200 hover:text-foreground !text-gray-800'
+                      ? 'bg-red-700 !text-white'
+                      : 'hover:bg-neutral-100 dark:hover:bg-neutral-700 hover:text-foreground dark:!text-gray-300 dark:hover:!text-white !text-gray-800 transition-all duration-200'
                   } ${
                     isLastItem ? 'mt-auto' : 'mb-3' 
                   }`}
@@ -158,13 +158,13 @@ function Sidebar({ isOpen, toggleSidebar }) {
               <span className="text-sm text-muted-foreground">Sistema Online</span>
             </div>
             <Tooltip>
-              <TooltipTrigger asChild>
-                <Badge className="p-1 w-8 h-8 bg-neutral-200 hover:bg-destructive/90 hover:text-white transition-all duration-200 cursor-pointer" variant="outline" onClick={logout} >
+              <TooltipTrigger>
+                <Badge className="p-1 w-8 h-8 bg-neutral-200 hover:bg-destructive/90 hover:text-white dark:bg-neutral-800 transition-all duration-200 cursor-pointer" variant="outline" onClick={logout} >
                   <LogOut className='' />
                 </Badge>
               </TooltipTrigger>
-              <TooltipContent variant="outline">
-                <p>Sair</p>
+              <TooltipContent  variant="">
+                sair
               </TooltipContent>
             </Tooltip>
             
@@ -189,12 +189,12 @@ function Layout() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-300 to-indigo-100 dark:from-slate-900 dark:to-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-neutral-300 to-indigo-100 dark:from-slate-900 dark:to-black">
       <ForceChangePasswordDialog />
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       
       <div className={(!isInicio && sidebarOpen) ? "lg:pl-64 transition-all duration-300" : "transition-all duration-300"}>
-        <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-linear-65 from-gray-900 to-cyan-950">
+        <header className="sticky top-0 z-30 backdrop-blur-sm border-b border-border  bg-linear-65 from-gray-900 to-cyan-950 dark:bg-linear-65 dark:from-slate-900 dark:to-black">
           <div className="flex items-center justify-between p-4 pr-10">
             <Button 
               variant="outline" 
@@ -216,7 +216,7 @@ function Layout() {
               <SheetTrigger asChild>
                 <Badge 
                   variant="outline" 
-                  className="py-2 px-4 rounded sm:flex text-gray-950 bg-neutral-100 cursor-pointer hover:bg-neutral-300 transition-all duration-200 flex gap-2 tracking-wider font-medium"
+                  className="py-2 px-4 rounded sm:flex text-gray-950 bg-neutral-100 cursor-pointer hover:bg-neutral-300 dark:bg-neutral-950 dark:text-white transition-all duration-200 flex gap-2 tracking-wider font-medium"
                 >
                   <p className=''>{user.name?.split(' ')[0]}</p>
                   <User />
@@ -226,6 +226,8 @@ function Layout() {
                 <UserProfileSheet />
               </SheetContent>
             </Sheet>
+
+            <ModeButton  />
             
             
           </div>
@@ -270,8 +272,9 @@ function App() {
           <Route path="/functions/:id" element={<EditFunctionPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/history" element={<HistoryPage />} />
-          <Route path="/review" element={<ReviewChangesPage />} />
+          {/* <Route path="/history" element={<HistoryPage />} /> */}
+          {/* <Route path="/review" element={<ReviewChangesPage />} /> */}
+
           
           {/* Esta rota SÓ permite 'admin' */}
           <Route 
@@ -279,6 +282,23 @@ function App() {
             element={
               <ProtectedRoute allowedRoles={['admin']}>
                 <UsersPage />
+                
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/review" 
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <ReviewChangesPage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="/history" 
+            element={
+              <ProtectedRoute allowedRoles={['admin']}>
+                <HistoryPage />
               </ProtectedRoute>
             } 
           />

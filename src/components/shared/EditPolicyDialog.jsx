@@ -63,30 +63,30 @@ function EditPolicyDialog({ isOpen, onOpenChange, policy, onSave }) {
             <Label htmlFor="description" className="text-right font-semibold">Descrição:</Label>
             <Input id="description" name="description" value={formData.description || ''} onChange={handleChange} className="col-span-8" />
           </div>
-          <Card className='px-5 bg-gray-50'>
+          <Card className='px-5 bg-gray-50 dark:bg-neutral-900'>
             <CardTitle className='text-center font-bold'>Time-to-Live (segundos)</CardTitle>
             <div className="grid grid-cols-3 gap-4">
                 <div className='flex flex-col gap-1'>
                     <Label className='font-semibold'>Mínimo TTL</Label>
-                    <Input name="min_ttl" type="number" className='bg-white' value={formData.min_ttl} onChange={handleChange} />
+                    <Input name="min_ttl" type="number" className='bg-white dark:bg-neutral-800' value={formData.min_ttl} onChange={handleChange} />
                 </div>
                 <div className='flex flex-col gap-1'>
                     <Label className='font-semibold'>Default TTL</Label>
-                    <Input name="default_ttl" type="number" className='bg-white' value={formData.default_ttl} onChange={handleChange} />
+                    <Input name="default_ttl" type="number" className='bg-white dark:bg-neutral-800' value={formData.default_ttl} onChange={handleChange} />
                 </div>
                 <div className='flex flex-col gap-1'>
                     <Label className='font-semibold'>Máximo TTL</Label>
-                    <Input name="max_ttl" type="number" className='bg-white' value={formData.max_ttl} onChange={handleChange} />
+                    <Input name="max_ttl" type="number" className='bg-white dark:bg-neutral-800' value={formData.max_ttl} onChange={handleChange} />
                 </div>
             </div>
           </Card>
             
           <div className="space-y-4">
-            <div className="flex items-center justify-between rounded-lg border p-3 bg-gray-100">
+            <div className="flex items-center justify-between rounded-lg border p-3 bg-gray-100 dark:bg-neutral-900">
               <Label>Encaminhar Query Strings</Label>
               <Switch checked={formData.forward_query_strings} onCheckedChange={(c) => handleSwitchChange('forward_query_strings', c)} />
             </div>
-            <div className="flex items-center justify-between rounded-lg border p-3 bg-gray-100">
+            <div className="flex items-center justify-between rounded-lg border p-3 bg-gray-100 dark:bg-neutral-900">
               <Label>Encaminhar Cookies</Label>
               <Switch checked={formData.forward_cookies} onCheckedChange={(c) => handleSwitchChange('forward_cookies', c)} />
             </div>

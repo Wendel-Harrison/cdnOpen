@@ -297,7 +297,7 @@ function UsersPage() {
               </select>
             </div>
             <div className="flex items-end">
-              <Button onClick={addUser} className="w-full bg-blue-400 hover:bg-gray-700 transition-all duration-150">
+              <Button onClick={addUser} className="w-full bg-blue-400 dark:bg-blue-600 dark:hover:bg-gray-700 dark:text-white hover:bg-gray-700 transition-all duration-150">
                 <Plus className="mr-2 h-4 w-4" />
                 Adicionar Usuário
               </Button>
@@ -335,20 +335,20 @@ function UsersPage() {
                     <Badge variant="secondary" className="w-20 rounded py-1 font-medium">{user.role}</Badge>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'} className={user.status === 'active' ? 'bg-blue-300  rounded py-1.5 w-18' : 'bg-red-400 text-white  w-18 py-1.5 rounded'}>
+                    <Badge variant={user.status === 'active' ? 'default' : 'secondary'} className={user.status === 'active' ? 'bg-blue-300 dark:bg-blue-500 dark:text-white  rounded py-1.5 w-18' : 'bg-red-400 dark:bg-red-500 text-white  w-18 py-1.5 rounded'}>
                       {user.status}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">
                     <div className="flex justify-end gap-2">
-                      <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-neutral-300 transition-all duration-200" onClick={() => {
+                      <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-200" onClick={() => {
                         setUserToEdit(user);
                         setIsEditDialogOpen(true);
                       }}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-red-300 transition-all duration-200" onClick={() => setUserToDelete(user)}>
-                        <Trash2 className="h-4 w-4 text-destructive" />
+                      <Button variant="ghost" size="icon" className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200" onClick={() => setUserToDelete(user)}>
+                        <Trash2 className="h-4 w-4 text-destructive " />
                       </Button>
                     </div>
                   </TableCell>

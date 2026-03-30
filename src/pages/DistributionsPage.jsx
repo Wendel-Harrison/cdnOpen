@@ -11,7 +11,6 @@ import { toast } from "sonner"
 import { useAuth } from '@/context/AuthContext'
 import EditDistributionDialog from '@/components/shared/EditDistributionDialog';
 
-// 1. IMPORTAR OS COMPONENTES DE ALERT DIALOG
 import {
   AlertDialog,
   AlertDialogAction,
@@ -291,7 +290,7 @@ function DistributionsPage() {
                   />
                 </div>
                 <div className="w-1/5">
-                  <Button onClick={addDistribution} className="cursor-pointer hover:bg-gray-600 bg-blue-400 w-full hover:shadow">
+                  <Button onClick={addDistribution} className="cursor-pointer hover:bg-gray-600 bg-blue-400 dark:text-white dark:bg-blue-600 dark:hover:bg-gray-700 w-full hover:shadow">
                     Adicionar
                   </Button>
                 </div>
@@ -333,17 +332,17 @@ function DistributionsPage() {
                 distributions.map((dist) => (
                   <TableRow key={dist.id} className="hover:bg-muted/50 transition-colors">
                     <TableCell className="font-medium w-[5%]">
-                      <Badge variant="secondary" className="px-2 py-1.5 bg-blue-400 text-white rounded">
+                      <Badge variant="secondary" className="px-2 py-1.5 bg-blue-400 dark:bg-blue-600 text-white rounded ">
                         {dist.id}
                       </Badge>
                     </TableCell>
                     <TableCell className="w-[25%]">
-                      <Badge variant="secondary" className="px-5 font-medium tracking-wide max-w-[90%] truncate rounded" >
+                      <Badge variant="secondary" className="px-5 font-medium tracking-wide max-w-[90%] truncate rounded dark:text-blue-200"  >
                         {dist.name}
                       </Badge>
                     </TableCell>
                     <TableCell className="w-[30%]">
-                      <Badge variant='secondary' className='px-5 py-1 text-blue-800 tracking-wider w-full rounded'>
+                      <Badge variant='secondary' className='px-5 py-1 text-blue-800 dark:text-blue-200 tracking-wider w-full rounded'>
                         {dist.domain_name}  
                       </Badge>
                     </TableCell>
@@ -351,7 +350,7 @@ function DistributionsPage() {
                       {dist.origins && dist.origins.length > 0 ? (
                         <Badge variant='secondary' className=" rounded">
                           <div className="flex items-center gap-2">
-                            <span className="truncate  px-5 py-1 text-blue-800 tracking-wider" title={dist.origins[0].origin_id}>
+                            <span className="truncate  px-5 py-1 text-blue-800 tracking-wider dark:text-blue-200" title={dist.origins[0].origin_id}>
                               {dist.origins[0].domain_name}
                             </span>
 
@@ -377,7 +376,7 @@ function DistributionsPage() {
                             setSelectedDistribution(dist); 
                             setIsEditDialogOpen(true);     
                           }}
-                          className="cursor-pointer hover:bg-neutral-300 transition-all duration-200"
+                          className="cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-200"
                           disabled={isViewer}
                         >
                           <Edit className="h-4 w-4" />
@@ -388,7 +387,7 @@ function DistributionsPage() {
                             variant="ghost" 
                             size="icon" 
                             onClick={() => confirmDelete(dist.id)} 
-                            className="cursor-pointer hover:bg-red-300 transition-all duration-200" 
+                            className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200" 
                             disabled={isViewer}
                         >
                           <Trash2 className="h-4 w-4 text-destructive" />

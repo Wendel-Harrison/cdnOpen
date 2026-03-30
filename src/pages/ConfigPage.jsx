@@ -387,7 +387,7 @@ function ConfigPage() {
                     />
                   </div>
                   <div>
-                    <Button onClick={handleAddOrigin} className="w-full cursor-pointer hover:bg-gray-600 bg-blue-400 hover:shadow">Enviar</Button>
+                    <Button onClick={handleAddOrigin} className="w-full cursor-pointer hover:bg-gray-600 bg-blue-400 dark:bg-blue-600 dark:text-white dark:hover:bg-gray-700 hover:shadow">Enviar</Button>
                   </div>
                 </div>
               </CardContent>
@@ -431,7 +431,7 @@ function ConfigPage() {
                     filteredOrigins.map((origin) => (
                       <TableRow key={origin.id} className="hover:bg-muted/50 transition-colors">
                         <TableCell className="w-[5%]">
-                          <Badge className="px-2 py-1.5 bg-blue-400 rounded">
+                          <Badge className="px-2 py-1.5 bg-blue-400 dark:bg-blue-500 dark:text-white rounded">
                             {origin.id}
                           </Badge>
                         </TableCell>
@@ -441,12 +441,12 @@ function ConfigPage() {
                           </Badge>
                         </TableCell>
                         <TableCell className=" w-[15%]">
-                          <Badge variant="secondary" className="px-5 py-1 truncate text-blue-800 rounded">
+                          <Badge variant="secondary" className="px-5 py-1 truncate text-blue-800 dark:text-blue-200 rounded">
                             {origin.origin_id}
                           </Badge>
                         </TableCell>
                         <TableCell className=" w-[30%]">
-                          <Badge variant="secondary" className="w-full py-1 text-blue-800 rounded">
+                          <Badge variant="secondary" className="w-full py-1 text-blue-800 dark:text-blue-200 rounded">
                             {origin.domain_name}
                           </Badge>
                         </TableCell>
@@ -456,7 +456,7 @@ function ConfigPage() {
                           </Badge>
                         </TableCell>
                         <TableCell className=" w-[8%]">
-                          <Badge  className="px-2 py-1.5 bg-blue-400/70 rounded">
+                          <Badge  className="px-2 py-1.5 bg-blue-400/70 dark:text-white rounded">
                             {origin.port}
                           </Badge>
                         </TableCell>
@@ -469,12 +469,12 @@ function ConfigPage() {
                                 setSelectedOrigin(origin);
                                 setIsDialogOpen(true);     
                               }}
-                              className="cursor-pointer hover:bg-neutral-300"
+                              className="cursor-pointer hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-all duration-200"
                               disabled={isViewer}
                             >
                               <Edit className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" onClick={() => openDeleteDialog(origin)} className="cursor-pointer hover:bg-red-300" disabled={isViewer}>
+                            <Button variant="ghost" size="icon" onClick={() => openDeleteDialog(origin)} className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200" disabled={isViewer}>
                               <Trash2 className="h-4 w-4 text-destructive" />
                             </Button>
                           </div>

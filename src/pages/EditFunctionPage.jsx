@@ -8,16 +8,21 @@ import Editor from '@monaco-editor/react';
 import { toast } from "sonner";
 import { ArrowLeft, Save } from 'lucide-react';
 import luaparse from 'luaparse';
+import { useTheme } from '@/context/ThemeProvider'
 
 import { useAuth } from '@/context/AuthContext';
 
 export default function EditFunctionPage() {
+  const { theme } = useTheme();
   const { id } = useParams();
   const navigate = useNavigate();
   const editorRef = useRef(null);
   const monacoRef = useRef(null);
   
   const { user } = useAuth();
+
+  const isDark = theme === "dark" || (theme ==='system' && window.matchMedia("(prefers-colors-scheme:dark)").matches)
+  const editorTheme = isDark ? "vs-dark" : "light";
 
   const [formData, setFormData] = useState({
     name: '',
@@ -213,7 +218,7 @@ export default function EditFunctionPage() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-6 p-6">
-      <Card className="p-4 py-7 bg-[#f9f9f9] border-border/60 shadow-sm">
+      <Card className="p-4 py-7 bg-[#f9f9f9] dark:bg-neutral-900 border-border/60 shadow-sm">
         {/* ... (cabeçalho do card igual ao anterior) ... */}
         <div className="flex items-end gap-4">
            <Button 
@@ -269,10 +274,10 @@ export default function EditFunctionPage() {
               <Editor
                 height="100%"
                 language="lua"
-                theme="light"
+                theme={editorTheme}
                 value={formData.code}
                 onChange={handleCodeChange}
-                onMount={handleEditorDidMount} // <-- CONECTA O INTELLISENSE AQUI
+                onMount={handleEditorDidMount}
                 options={{
                   minimap: { enabled: false },
                   fontSize: 14,

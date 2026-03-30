@@ -159,7 +159,7 @@ function BehaviorsTab({ distributions, origins }) {
             </SelectContent>
           </Select>
           {selectedDistId && !isViewer && (
-          <Button onClick={() => setIsCreateDialogOpen(true)} className="cursor-pointer hover:bg-gray-600 hover:shadow bg-blue-400">
+          <Button onClick={() => setIsCreateDialogOpen(true)} className="cursor-pointer hover:bg-gray-600 hover:shadow bg-blue-400 dark:bg-blue-600 dark:hover:bg-gray-700 dark:text-white">
             <Plus className="mr-2 h-4 w-4" /> Novo Behavior
           </Button>
         )}
@@ -211,13 +211,13 @@ function BehaviorsTab({ distributions, origins }) {
                       filteredBehaviors.map((behavior) => (
                         <TableRow key={behavior.id} className="hover:bg-muted/50 transition-colors">
                           <TableCell className=" w-[5%]">
-                            <Badge className="bg-blue-400 px-2.5 py-1.5 rounded">{behavior.priority}</Badge>
+                            <Badge className="bg-blue-400 dark:bg-blue-500 dark:text-white px-2.5 py-1.5 rounded">{behavior.priority}</Badge>
                           </TableCell>
                           <TableCell className=" w-[10%]">
-                            <code className="text-sm bg-muted px-2 py-1 rounded text-blue-800">{behavior.path_pattern}</code>
+                            <code className="text-sm bg-muted px-2 py-1 rounded text-blue-800 dark:text-blue-200">{behavior.path_pattern}</code>
                           </TableCell>
                           <TableCell className=" w-[35%]">
-                            <Badge className='py-1.5 px-5  text-blue-800 rounded' variant='secondary'>
+                            <Badge className='py-1.5 px-5  text-blue-800 dark:text-blue-200 rounded' variant='secondary'>
                               {origins.find(o => o.id === behavior.origin_id)?.origin_id || <span className="text-muted-foreground font-bold">ID: {behavior.origin_id}</span>}
                             </Badge>
                           </TableCell>
@@ -232,10 +232,10 @@ function BehaviorsTab({ distributions, origins }) {
                           </TableCell>
                           <TableCell className=" w-[10%]">
                             <div className="flex justify-end gap-2">
-                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)} className="cursor-pointer hover:bg-neutral-300 hover:shadow" disabled={isViewer}>
+                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToEdit(behavior)} className="cursor-pointer hover:bg-neutral-300 hover:shadow dark:hover:bg-neutral-700 transition-all duration-200" disabled={isViewer}>
                                 <Edit className="h-4 w-4" />
                               </Button>
-                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToDelete(behavior)} className="cursor-pointer hover:bg-red-300 hover:shadow" disabled={isViewer}>
+                              <Button variant="ghost" size="icon" onClick={() => setBehaviorToDelete(behavior)} className="cursor-pointer hover:bg-red-300 hover:shadow dark:hover:bg-red-500 transition-all duration-200" disabled={isViewer}>
                                 <Trash2 className="h-4 w-4 text-destructive" />
                               </Button>
                             </div>

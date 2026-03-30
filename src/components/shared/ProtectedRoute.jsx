@@ -28,7 +28,7 @@ function ProtectedRoute({ children, allowedRoles }) {
 
   // 4. Se não estiver autorizado, redireciona
   if (!isAuthorized) {
-    return <Navigate to="/distributions" replace />;
+    return <Navigate to="/inicio" replace />;
   }
 
   // Se passou em tudo, mostra a página

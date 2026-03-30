@@ -156,7 +156,7 @@ function NodesSitesPage() {
                 {filteredNodes.map((node) => (
                   <Card 
                     key={node.id} 
-                    className="shadow-none border border-blue-100 bg-gradient-to-br from-white rounded-md to-neutral-100 dark:border-zinc-800 hover:shadow-md transition-all cursor-pointer border-l-4 border-l-blue-300 dark:border-l-gray-700 hover:border-gray-500 group  dark:bg-zinc-900/20 duration-300"
+                    className="shadow-none border border-blue-100 bg-gradient-to-br from-white rounded-md to-neutral-100  dark:from-gray-950  dark:to-neutral-950 dark:border-zinc-800 hover:shadow-md transition-all cursor-pointer border-l-4 border-l-blue-300 dark:border-l-gray-700 hover:border-gray-500 group  dark:bg-zinc-900/20 duration-300"
                     onClick={() => setSelectedNode(node)} 
                   >
                     <CardHeader className="p-4 flex flex-row items-start justify-between space-y-0">
@@ -168,7 +168,7 @@ function NodesSitesPage() {
                           <Power className="h-3 w-3 shrink-0" /> Ping: {formatHeartbeat(node.lastHeartbeat)}
                         </CardDescription>
                       </div>
-                      <Badge variant={getStatusColor(node.status)} className="uppercase text-[10px] tracking-wider shrink-0 mt-0.5">
+                      <Badge variant={getStatusColor(node.status)} className="uppercase text-[10px] tracking-wider rounded  shrink-0 mt-0.5">
                         {getStatusLabel(node.status)}
                       </Badge>
                     </CardHeader>
@@ -209,14 +209,14 @@ function NodesSitesPage() {
 
               <div className="grid gap-4 py-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60  border border-border/50 ">
+                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 dark:from-neutral-950/50 dark:to-blue-950/40   border border-border/50 ">
                     <p className="text-[11px] font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                       <Network className="h-3.5 w-3.5" /> Endereço IP
                     </p>
                     <p className="font-mono font-medium text-sm">{selectedNode.ip}</p>
                   </div>
                   
-                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 border border-border/50">
+                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 dark:from-neutral-950/50 dark:to-blue-950/40  border border-border/50">
                     <p className="text-[11px] font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                       <Server className="h-3.5 w-3.5" /> Camada (Level)
                     </p>
@@ -225,14 +225,14 @@ function NodesSitesPage() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 border border-border/50">
+                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 dark:from-neutral-950/50 dark:to-blue-950/40  border border-border/50">
                     <p className="text-[11px] font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                       <MapPin className="h-3.5 w-3.5" /> Localização
                     </p>
                     <p className="font-medium text-sm">{selectedNode.location}</p>
                   </div>
                   
-                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 border border-border/50">
+                  <div className="space-y-1 p-3 rounded bg-gradient-to-br from-neutral-200/50 to-blue-100/60 dark:from-neutral-950/50 dark:to-blue-950/40  border border-border/50">
                     <p className="text-[11px] font-semibold text-muted-foreground uppercase flex items-center gap-1.5">
                       <HardDrive className="h-3.5 w-3.5" /> Capacidade
                     </p>
@@ -254,7 +254,7 @@ function NodesSitesPage() {
                   {selectedNode.distributions && selectedNode.distributions.length > 0 ? (
                     <div className="space-y-2 max-h-[160px] overflow-y-auto pr-1 custom-scrollbar">
                       {selectedNode.distributions.map((dist, idx) => (
-                        <div key={idx} className="flex items-center justify-between p-2.5 rounded bg-gradient-to-br from-neutral-100/90 to-blue-100/80 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30">
+                        <div key={idx} className="flex items-center justify-between p-2.5 rounded bg-gradient-to-br from-neutral-100/90 to-blue-100/80 dark:from-neutral-950/50 dark:to-blue-950/20  border border-blue-100 dark:border-blue-900/30">
                           <div className="flex items-center gap-2.5 overflow-hidden">
                             <div className="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded-md shrink-0">
                               <Server className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />

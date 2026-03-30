@@ -15,6 +15,8 @@ export function GlobalOperationsWidget() {
   const navigate = useNavigate();
   const location = useLocation();
   const { user } = useAuth();
+
+  const isViewer = user?.role === 'viewer'
   
   const [loading, setLoading] = useState(false);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -26,6 +28,7 @@ export function GlobalOperationsWidget() {
   const API_URL = 'http://10.127.254.87:3000'; 
 
   const fetchGlobalStatus = async () => {
+
     // Evita loading visual se já tiver dados carregados (para não piscar o botão)
     if (!dataLoaded) setLoading(true); 
     
@@ -184,22 +187,22 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   const hasReadyToDeploy = validatedDists.length > 0;
   const isAllClean = !hasChanges && !hasReadyToDeploy;
 
+  const isDisabled = loading || isAllClean || isViewer;
   if (!dataLoaded) return null;
 
   return (
     <div className="z-50 animate-in slide-in-from-bottom-5 mr-2">
       <button 
-        /* Trocamos o 'disabled' nativo por uma trava lógica no clique, 
-           assim o mouse ainda consegue dar o trigger na animação de hover */
         onClick={loading || isAllClean ? undefined : handleMainClick}
+        title={isViewer && !isAllClean ? "Modo leitura: Você não tem permissão para executar ações" : ""}
         className={`
           group relative flex items-center justify-start p-0 h-8.5 rounded-full  shadow-2xl border-2 
           transition-all duration-500 ease-in-out overflow-hidden whitespace-nowrap outline-none
           w-8.5 hover:w-[150px]
           ${hasChanges 
-            ? 'bg-amber-500 hover:bg-amber-600 border-amber-400 text-white shadow-amber-200 cursor-pointer' 
+            ? `bg-amber-500 border-amber-400 text-white shadow-amber-200 ${isViewer ? 'cursor-not-allowed opacity-80' : 'hover:bg-amber-600 cursor-pointer'} `
             : hasReadyToDeploy 
-              ? 'bg-blue-600 hover:bg-blue-700 border-blue-400 text-white shadow-blue-200 cursor-pointer' 
+              ? `bg-blue-600 border-blue-400 text-white shadow-blue-200 ${isViewer ? 'cursor-not-allowed opacity-80' : 'hover:bg-blue-700 cursor-pointer'}`
               : 'bg-emerald-500 hover:bg-emerald-600 border-emerald-400 text-white shadow-emerald-200 cursor-default'
           }
         `}

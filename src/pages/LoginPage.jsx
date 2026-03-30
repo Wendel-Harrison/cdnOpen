@@ -64,7 +64,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-neutral-100 to-indigo-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-neutral-100 to-indigo-100 dark:from-neutral-900 dark:to-blue-950/20">
       <Card 
         className={`w-full max-w-md transition-all duration-300 ${
           hasError 
@@ -108,7 +108,7 @@ function LoginPage() {
             <Button 
               type="submit" 
               disabled={isLoading}
-              className={`w-full !mt-6 ${hasError ? "bg-red-600 hover:bg-red-700" : "bg-destructive hover:bg-destructive/90"}`}
+              className={`w-full !mt-6 ${hasError ? "bg-red-600 hover:bg-red-700 dark:text-white" : "bg-destructive hover:bg-destructive/90 dark:bg-red-600 dark:text-white"}`}
             >
               {isLoading ? "Entrando..." : "Entrar"}
             </Button>
@@ -116,7 +116,7 @@ function LoginPage() {
         </CardContent>
       </Card>
       <p className='absolute bottom-1 text-center text-xs leading-3.5 font-light'>Desenvolvido por Engenharia de Vídeo <br /> ClaroTV+</p>
-      <a href='mailto:wendel.cavalcanti@claro.com' className='absolute bottom-1 right-2 text-center text-xs leading-3.5 !font-light !text-gray-400'>contact: wendel.cavalcanti@claro.com.br</a>
+      <a href='mailto:wendel.cavalcanti@claro.com' className='absolute bottom-1 right-2 text-center text-xs leading-3.5 !font-light !text-gray-400 dark:!text-gray-600'>contact: wendel.cavalcanti@claro.com.br</a>
     </div>
   );
 }

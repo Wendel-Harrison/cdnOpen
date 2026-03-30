@@ -188,10 +188,10 @@ export default function HomePage() {
             <span className="font-medium text-sm">Verificando status do sistema...</span>
           </div>
         ) : stats.pendingChanges > 0 ? (
-          <div className="flex relative items-center gap-3 bg-amber-50 border border-amber-200 text-amber-800 px-4 py-1.5 rounded-lg shadow-sm animate-fade-in-up">
+          <div className="flex relative items-center gap-3 bg-amber-50 border border-amber-200 text-amber-800 px-4 py-1.5 rounded-lg shadow-sm animate-fade-in-up dark:bg-amber-950 dark:text-white dark:border-amber-500">
             <AlertCircle className="h-5 w-5 text-amber-600 animate-pulse" />
             <span className="font-medium text-sm">Você tem {stats.pendingChanges} alteração pendente de deploy.</span>
-            <Button size="sm" variant="outline" className="ml-2 bg-white border-amber-300 hover:bg-amber-100 text-amber-900 text-xs" onClick={() => navigate('/review')}>
+            <Button size="sm" variant="outline" className="ml-2 bg-white border-amber-300 hover:bg-amber-100 text-amber-900 text-xs dark:bg-amber-800 dark:text-white" onClick={() => navigate('/review')}>
               Revisar
             </Button>
           </div>
@@ -207,77 +207,77 @@ export default function HomePage() {
       {/* CARDS DE MÉTRICAS RÁPIDAS */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md cursor-default border-0 bg-white">
+        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md cursor-default border-0 bg-gradient-to-br from-neutral-100/90 to-blue-200/80 dark:from-neutral-950/50 dark:to-blue-900/80">
             <div className="absolute top-0 left-0 h-full w-1 bg-blue-500 transition-all duration-700 ease-in-out group-hover:w-full z-0"></div>
             <CardHeader className="relative z-10 flex flex-row items-center justify-between pb-2">
-                <CardTitle className="text-sm font-medium text-muted-foreground transition-colors duration-700 group-hover:text-blue-100">
+                <CardTitle className="text-sm font-medium text-muted-foreground transition-colors duration-700 group-hover:text-blue-100 dark:text-white">
                 Distribuições Ativas
                 </CardTitle>
-                <Globe className="h-4 w-4 text-muted-foreground transition-colors duration-700 group-hover:text-blue-100" />
+                <Globe className="h-4 w-4 text-muted-foreground transition-colors duration-700 group-hover:text-blue-100 dark:text-white" />
             </CardHeader>
             <CardContent className="relative z-10">
-                <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white">
+                <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white dark:text-white">
                 {distributions.length}
                 </div>
-                <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-blue-100">
+                <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-blue-100 dark:text-white">
                 Domínios gerenciados
                 </p>
             </CardContent>
         </Card>
         
-        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md border-0 bg-white">
+        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md border-0 bg-white bg-gradient-to-br from-neutral-100/90 to-indigo-200/80 dark:from-neutral-950/50 dark:to-indigo-900/80">
           <div className="absolute top-0 left-0 h-full w-1 bg-indigo-500 transition-all duration-700 ease-in-out group-hover:w-full z-0"></div>
           <CardHeader className="relative z-10 flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground transition-colors duration-700 group-hover:text-indigo-100">
+            <CardTitle className="text-sm font-medium text-muted-foreground transition-colors duration-700 group-hover:text-indigo-100 dark:text-white">
               Origins Cadastrados
             </CardTitle>
-            <Server className="h-4 w-4 text-muted-foreground transition-colors duration-700 group-hover:text-indigo-100" />
+            <Server className="h-4 w-4 text-muted-foreground transition-colors duration-700 group-hover:text-indigo-100 dark:text-white" />
           </CardHeader>
           <CardContent className="relative z-10">
-            <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white">
+            <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white dark:text-white">
               {origins.length}
             </div>
-            <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-indigo-100">
+            <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-indigo-100 dark:text-white">
               Servidores mapeados
             </p>
           </CardContent>
         </Card>
 
-        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md border-0 bg-white">
+        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md border-0 bg-white bg-gradient-to-br from-neutral-100/90 to-amber-100/80 dark:from-neutral-950/50 dark:to-amber-900/80">
           <div className="absolute top-0 left-0 h-full w-1 bg-amber-500 transition-all duration-700 ease-in-out group-hover:w-full z-0"></div>
           <CardHeader className="relative z-10 flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground transition-colors duration-700 group-hover:text-amber-100">
+            <CardTitle className="text-sm font-medium text-muted-foreground transition-colors duration-700 group-hover:text-amber-100 dark:text-white">
               Nodes & Edges
             </CardTitle>
-            <Code className="h-4 w-4 text-muted-foreground transition-colors duration-700 group-hover:text-amber-100" />
+            <Code className="h-4 w-4 text-muted-foreground transition-colors duration-700 group-hover:text-amber-100 dark:text-white" />
           </CardHeader>
           <CardContent className="relative z-10">
-            <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white">
+            <div className="text-2xl font-bold text-slate-800 transition-colors duration-700 group-hover:text-white dark:text-white">
               {nodes.length}
             </div>
-            <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-amber-100">
+            <p className="text-xs text-muted-foreground mt-1 transition-colors duration-700 group-hover:text-amber-100 dark:text-white">
               Nós cadastrados na CDN - N1 à N3
             </p>
           </CardContent>
         </Card>
 
-        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md border-0 bg-emerald-50/50">
+        <Card className="relative overflow-hidden group shadow-sm transition-all duration-700 hover:shadow-md border-0 bg-emerald-50/50 bg-gradient-to-br from-neutral-100/90 to-emerald-100/80 dark:from-neutral-950/50 dark:to-emerald-900/80">
           <div className="absolute top-0 left-0 h-full w-1 bg-emerald-500 transition-all duration-700 ease-in-out group-hover:w-full z-0"></div>
           <CardHeader className="relative z-10 flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-emerald-700 transition-colors duration-700 group-hover:text-emerald-100">
+            <CardTitle className="text-sm font-medium text-emerald-700 transition-colors duration-700 group-hover:text-emerald-100 dark:text-emerald-300">
               Status do Sistema
             </CardTitle>
-            <Activity className="h-4 w-4 text-emerald-600 transition-colors duration-700 group-hover:text-emerald-100" />
+            <Activity className="h-4 w-4 text-emerald-600 transition-colors duration-700 group-hover:text-emerald-100 dark:text-emerald-300" />
           </CardHeader>
           <CardContent className="relative z-10">
-            <div className="text-2xl font-bold text-emerald-700 flex items-center gap-2 transition-colors duration-700 group-hover:text-white">
+            <div className="text-2xl font-bold text-emerald-700 flex items-center gap-2 transition-colors duration-700 group-hover:text-white dark:text-emerald-300">
               <span className="relative flex h-3 w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 group-hover:bg-emerald-200 transition-colors duration-700"></span>
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 group-hover:bg-white transition-colors duration-700"></span>
               </span>
               Online
             </div>
-            <p className="text-xs text-emerald-600/80 mt-1 transition-colors duration-300 group-hover:text-emerald-100">
+            <p className="text-xs text-emerald-600/80 mt-1 transition-colors duration-300 group-hover:text-emerald-100 dark:text-emerald-300">
               Todos os nodes operacionais
             </p>
           </CardContent>
@@ -286,7 +286,7 @@ export default function HomePage() {
 
       {/* NAVEGAÇÃO / ACESSO RÁPIDO */}
       <div>
-        <h2 className="text-xl font-bold tracking-wide  text-slate-900 mb-6 mt-24 pt-10 border-t">Acesso Rápido:</h2>
+        <h2 className="text-xl font-bold tracking-wide  text-slate-900 mb-6 mt-24 pt-10 border-t dark:text-white dark:border-neutral-500">Acesso Rápido:</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-28 ">
           {quickLinks.map((link, index) => (
             <Card 

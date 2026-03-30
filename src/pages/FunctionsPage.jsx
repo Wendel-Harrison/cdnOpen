@@ -288,7 +288,7 @@ function FunctionsPage() {
                 </div>
               </div>
               <div className="flex justify-end">
-                <Button variant="secondary" onClick={addFunction} className="w-1/4  bg-blue-400 text-white hover:bg-gray-700 transition-all duration-150">
+                <Button variant="secondary" onClick={addFunction} className="w-1/4  bg-blue-400 text-white dark:bg-blue-600 dark:hover:bg-gray-700 dark:text-white hover:bg-gray-700 transition-all duration-150">
                   Adicionar
                 </Button>
               </div>
@@ -330,7 +330,7 @@ function FunctionsPage() {
                 filteredFunctions.map((func) => (
                   <TableRow key={func.id} className="hover:bg-muted/50 transition-colors">
                     <TableCell className="font-medium">
-                      <Badge variant="secondary" className="px-3">
+                      <Badge variant="secondary" className="px-2 py-1.5 bg-blue-400 dark:bg-blue-600 text-white rounded ">
                         {func.id}
                       </Badge>
                     </TableCell>
@@ -366,7 +366,7 @@ function FunctionsPage() {
                           variant="ghost" 
                           size="icon"
                           onClick={() => navigate(`/functions/${func.id}`)}
-                          className="cursor-pointer hover:bg-neutral-300"
+                          className="cursor-pointer dark:hover:bg-neutral-700 transition-all duration-200"
                           disabled={isViewer}
                         >
                           <Edit className="h-4 w-4" />
@@ -377,7 +377,7 @@ function FunctionsPage() {
                           variant="ghost" 
                           size="icon" 
                           onClick={() => setFunctionToDelete(func)} 
-                          className="cursor-pointer hover:bg-red-300"
+                          className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200"
                           disabled={isViewer}
                         >
                           <Trash2 className="h-4 w-4 text-destructive" />
