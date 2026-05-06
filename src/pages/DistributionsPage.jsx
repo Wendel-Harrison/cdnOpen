@@ -21,6 +21,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
+import { Link, useNavigate } from 'react-router-dom'
 
 function DistributionsPage() {
 
@@ -44,6 +45,8 @@ function DistributionsPage() {
   const LIMIT = 15; 
 
   const { user } = useAuth();
+
+  const navigate = useNavigate();
 
   const isAdmin = user.role === 'admin';
   const isViewer = user.role === 'viewer';
@@ -330,14 +333,17 @@ function DistributionsPage() {
             <TableBody>
               {distributions.length > 0 ? (
                 distributions.map((dist) => (
-                  <TableRow key={dist.id} className="hover:bg-muted/50 transition-colors">
+                  <TableRow key={dist.id} className="hover:bg-muted/50 transition-colors cursor-pointer" onClick={() => navigate(`/distributions/${dist.id}`)} >
                     <TableCell className="font-medium w-[5%]">
                       <Badge variant="secondary" className="px-2 py-1.5 bg-blue-400 dark:bg-blue-600 text-white rounded ">
                         {dist.id}
                       </Badge>
                     </TableCell>
                     <TableCell className="w-[25%]">
-                      <Badge variant="secondary" className="px-5 font-medium tracking-wide max-w-[90%] truncate rounded dark:text-blue-200"  >
+                      <Badge 
+                        variant="secondary" 
+                        className="px-5 font-medium tracking-wide max-w-[90%] truncate rounded dark:text-blue-200 hover:bg-secondary/80 cursor-pointer"
+                      >
                         {dist.name}
                       </Badge>
                     </TableCell>
@@ -372,7 +378,8 @@ function DistributionsPage() {
                         <Button 
                           variant="ghost" 
                           size="icon"
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation(); 
                             setSelectedDistribution(dist); 
                             setIsEditDialogOpen(true);     
                           }}
@@ -382,11 +389,13 @@ function DistributionsPage() {
                           <Edit className="h-4 w-4" />
                         </Button>
                         
-                        {/* 5. BOTÃO DE DELETAR ATUALIZADO PARA CHAMAR confirmDelete */}
                         <Button 
                             variant="ghost" 
                             size="icon" 
-                            onClick={() => confirmDelete(dist.id)} 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              confirmDelete(dist.id);
+                            }}
                             className="cursor-pointer hover:bg-red-300 dark:hover:bg-red-500 transition-all duration-200" 
                             disabled={isViewer}
                         >

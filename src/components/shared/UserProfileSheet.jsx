@@ -94,16 +94,16 @@ export function UserProfileSheet() {
       <div className="space-y-2 mx-5">
         <div className="space-y-1">
           <Label>Nome:</Label>
-          <Input value={user.name} />
+          <Input value={user.name} readOnly   />
         </div>
         <div className="space-y-1">
           <Label>Email:</Label>
-          <Input value={user.email} disabled />
+          <Input value={user.email} readOnly disabled />
         </div>
         <div className="space-y-1">
           <Label>Função:</Label>
           <div className="w-full">
-            <Badge variant="secondary" className="capitalize py-2.5 px-6 mt-1">{user.role}</Badge>
+            <Badge variant='outline' className=" py-2.5 px-6 mt-1">{user.role}</Badge>
           </div>
         </div>
       </div>
@@ -123,9 +123,9 @@ export function UserProfileSheet() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Senha Atual</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="**********" className='pl-4' {...field} />
-                </FormControl>
+                <div>
+                  <input type="password" placeholder="**********" className='pl-4' {...field} />
+                </div>
                 <FormMessage />
               </FormItem>
             )}
@@ -136,9 +136,9 @@ export function UserProfileSheet() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Nova Senha</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="**********" className='pl-4' {...field} />
-                </FormControl>
+                <div>
+                  <input type="password" placeholder="**********" className='pl-4' {...field} />
+                </div>
                 <FormMessage />
               </FormItem>
             )}
@@ -149,9 +149,9 @@ export function UserProfileSheet() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Confirmar Nova Senha</FormLabel>
-                <FormControl>
-                  <Input type="password" placeholder="**********" className='pl-4' {...field} />
-                </FormControl>
+                <div>
+                  <input type="password" placeholder="**********" className='pl-4' {...field} />
+                </div>
                 <FormMessage />
               </FormItem>
             )}

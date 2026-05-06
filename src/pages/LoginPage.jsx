@@ -100,7 +100,7 @@ function LoginPage() {
                 type="password"
                 placeholder="************"
                 value={password}
-                onChange={handlePasswordChange} // <-- Atualizado
+                onChange={handlePasswordChange}
                 required
                 className={hasError ? "border-red-500 focus-visible:ring-red-500" : ""}
               />

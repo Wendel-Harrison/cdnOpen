@@ -14,7 +14,7 @@ export default function DashboardPage() {
   const GRAFANA_BASE = "/grafana";
   const GRAFANA_FULL_DASHBOARD_URL = `http://10.127.226.224:3000/d/hzhXdzznZn/etcd-cluster-overview-1?orgId=1;`
   return (
-    <div className="space-y-6">s
+    <div className="space-y-6">
     
       <div className="grid gap-6 md:grid-cols-3">
          <Card className="hover:shadow-lg transition-all duration-300  bg-gradient-to-br from-neutral-100 to-white dark:from-neutral-950/50 dark:to-blue-950/20 border-l-4 border-l-blue-500">

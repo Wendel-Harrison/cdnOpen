@@ -64,6 +64,8 @@ import ReviewChangesPage from './pages/ReviewChangesPage'
 import HomePage from './pages/HomePage'
 import DashboardPage from './pages/DashboardPage'
 import ModeButton from './components/shared/ModeButton'
+import DistributionDetailsPage from './pages/DistributionDetailsPage'
+import VersionHistoryPage from './pages/VersionHistoryPage'
 
 function Sidebar({ isOpen, toggleSidebar }) {
   const location = useLocation()
@@ -214,13 +216,15 @@ function Layout() {
 
             <Sheet>
               <SheetTrigger asChild>
-                <Badge 
-                  variant="outline" 
-                  className="py-2 px-4 rounded sm:flex text-gray-950 bg-neutral-100 cursor-pointer hover:bg-neutral-300 dark:bg-neutral-950 dark:text-white transition-all duration-200 flex gap-2 tracking-wider font-medium"
-                >
-                  <p className=''>{user.name?.split(' ')[0]}</p>
-                  <User />
-                </Badge>
+                <div>
+                  <Badge 
+                    variant="outline" 
+                    className="py-2 px-4 rounded sm:flex text-gray-950 bg-neutral-100 cursor-pointer hover:bg-neutral-300 dark:bg-neutral-950 dark:text-white transition-all duration-200 flex gap-2 tracking-wider font-medium"
+                  >
+                    <p className=''>{user.name?.split(' ')[0]}</p>
+                    <User />
+                  </Badge>
+                </div>
               </SheetTrigger>
               <SheetContent>
                 <UserProfileSheet />
@@ -272,6 +276,10 @@ function App() {
           <Route path="/functions/:id" element={<EditFunctionPage />} />
           <Route path="/certificates" element={<CertificatesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/distributions/:id" element={<DistributionDetailsPage />} />
+          <Route path="/distributions/:id/versions" element={<VersionHistoryPage />} />
+          
+
           {/* <Route path="/history" element={<HistoryPage />} /> */}
           {/* <Route path="/review" element={<ReviewChangesPage />} /> */}
 
