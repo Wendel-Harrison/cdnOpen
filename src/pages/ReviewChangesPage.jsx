@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ReactDiffViewer from 'react-diff-viewer-continued';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Loader2, CheckCircle2, AlertTriangle, ArrowLeft, ArrowRight, Check } from 'lucide-react';
+import { Loader2, CheckCircle2, AlertTriangle, ArrowLeft, ArrowRight, Check, RotateCcw } from 'lucide-react';
 import { toast } from "sonner";
 import { useAuth } from '@/context/AuthContext';
 import { useTheme } from '@/context/ThemeProvider';
@@ -19,8 +19,6 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
-
-
 
 const API_URL = '/api'; // Ajuste conforme env
 
@@ -40,8 +38,9 @@ function ReviewChangesPage() {
   const [diffData, setDiffData] = useState(null);
   const [loadingDiff, setLoadingDiff] = useState(false);
   
-  // Estado da Ação
+  // Estados de Ação
   const [isValidating, setIsValidating] = useState(false);
+  const [isUndoing, setIsUndoing] = useState(false); // Novo estado para o Desfazer
 
   // 1. Ao abrir a página, busca tudo que está pendente (CHANGED)
   useEffect(() => {
@@ -103,9 +102,9 @@ function ReviewChangesPage() {
     fetchDiff();
   }, [selectedDistId]);
 
+  // Função para Aprovar/Validar
   const executeValidation = async () => {
     const selectedDist = changedDists.find(d => d.id === selectedDistId);
-    
     if (!selectedDist) return;
 
     setIsValidating(true);
@@ -117,60 +116,90 @@ function ReviewChangesPage() {
       const res = await fetch(`${API_URL}/distributions/${selectedDistId}/validate-pre-prod`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          currentUserEmail: user?.email 
-        })
+        body: JSON.stringify({ currentUserEmail: user?.email })
       });
 
       const data = await res.json();
 
       if (!res.ok) {
-        console.error("Erro retornado do backend:", data);
         const errorMessage = data.details?.nginx_error || data.error || "Erro de sintaxe no servidor.";
-        
-        toast.error("Validação Abortada!", { 
-          description: errorMessage,
-          duration: 8000 
-        });
+        toast.error("Validação Abortada!", { description: errorMessage, duration: 8000 });
         return; 
       }
 
-      toast.success("Sucesso!", {
-        description: `Distribuição ${selectedDist.name} validada com sucesso.`
-      });
-      
-      // Remove o item aprovado da lista lateral
-      const remainingDists = changedDists.filter(d => d.id !== selectedDistId);
-      setChangedDists(remainingDists);
-
-      // Se ainda houver itens, seleciona o próximo automaticamente. Se não, limpa.
-      if (remainingDists.length > 0) {
-        setSelectedDistId(remainingDists[0].id);
-      } else {
-        setSelectedDistId(null);
-        // O React vai renderizar a tela "Tudo limpo" sozinho na próxima verificação!
-      }
+      toast.success("Sucesso!", { description: `Distribuição ${selectedDist.name} validada com sucesso.` });
+      removeDistFromList(selectedDistId);
 
     } catch (e) {
-      console.error("Erro na comunicação com o backend:", e);
-      toast.error("Erro de conexão", {
-        description: "Não foi possível se comunicar com o servidor de validação."
-      });
+      toast.error("Erro de conexão", { description: "Não foi possível se comunicar com o servidor." });
     } finally {
       setIsValidating(false);
     }
   };
 
-  // Encontra os dados da distribuição atualmente selecionada (para usar no botão)
+  // NOVA FUNÇÃO: Desfazer as alterações usando a rota de Rollback
+  const executeUndo = async () => {
+    const selectedDist = changedDists.find(d => d.id === selectedDistId);
+    if (!selectedDist) return;
+
+    setIsUndoing(true);
+    toast.info("Descartando alterações...");
+
+    try {
+      // 1. Busca qual é o último deploy feito para essa dist
+      const verRes = await fetch(`${API_URL}/distributions/${selectedDistId}/versions`);
+      const versions = await verRes.json();
+
+      if (!versions || versions.length === 0) {
+        toast.error("Impossível desfazer: não há versão anterior.", {
+          description: "Se esta for uma distribuição nova, você precisará excluí-la manualmente na aba de configurações."
+        });
+        setIsUndoing(false);
+        return;
+      }
+
+      // O índice 0 é a versão atualmente ativa em produção
+      const lastActiveVersionId = versions[0].id;
+
+      // 2. Executa o rollback no backend para sobrescrever o rascunho com a versão de produção
+      const rollbackRes = await fetch(`${API_URL}/distributions/${selectedDistId}/rollback/${lastActiveVersionId}`, {
+        method: 'POST'
+      });
+
+      if (!rollbackRes.ok) throw new Error("Falha ao desfazer alterações.");
+
+      toast.success("Mudanças descartadas!", { 
+        description: `O rascunho de ${selectedDist.name} foi revertido para a versão original.` 
+      });
+      removeDistFromList(selectedDistId);
+
+    } catch (e) {
+      toast.error("Erro ao desfazer", { description: "Houve um problema ao restaurar a configuração anterior." });
+    } finally {
+      setIsUndoing(false);
+    }
+  };
+
+  // Helper para atualizar a UI após Aprovar ou Desfazer
+  const removeDistFromList = (idToRemove) => {
+    const remainingDists = changedDists.filter(d => d.id !== idToRemove);
+    setChangedDists(remainingDists);
+    if (remainingDists.length > 0) {
+      setSelectedDistId(remainingDists[0].id);
+    } else {
+      setSelectedDistId(null);
+    }
+  };
+
   const activeDist = changedDists.find(d => d.id === selectedDistId);
 
   const diffStyles = {
     variables: isDark ? {
       dark: {
-        diffViewerBackground: '#09090b', // dark:bg-card
-        gutterBackground: '#18181b',    // dark:bg-muted
-        diffViewerTitleColor: '#fafafa', // dark:text-foreground
-        diffViewerColor: '#a1a1aa',       // dark:text-muted-foreground
+        diffViewerBackground: '#09090b', 
+        gutterBackground: '#18181b',    
+        diffViewerTitleColor: '#fafafa', 
+        diffViewerColor: '#a1a1aa',       
         gutterColor: '#71717a',          
         addedBackground: '#052e16',       
         addedColor: '#4ade80',
@@ -182,7 +211,6 @@ function ReviewChangesPage() {
       }
     } : {
       light: {
-        // Cores padrão claras que já estavam funcionando
         diffViewerBackground: '#ffffff',
         gutterBackground: '#f9fafb',
       }
@@ -208,7 +236,6 @@ function ReviewChangesPage() {
 
   return (
     <div className="flex flex-col h-screen bg-gray-50 dark:bg-background">
-      {/* HEADER DA PÁGINA */}
       <header className="bg-white dark:bg-card border-b dark:border-border px-6 py-4 flex justify-between items-center shadow-sm z-10">
         <div className="flex items-center gap-4">
           <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
@@ -226,15 +253,52 @@ function ReviewChangesPage() {
         </div>
         
         <div className="flex gap-3">
-          <Button variant="outline" onClick={() => navigate(-1)}>
+          <Button variant="ghost" onClick={() => navigate(-1)}>
             Cancelar
           </Button>
 
+          {/* BOTÃO DESFAZER (Com Alert Dialog para segurança) */}
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button 
-                disabled={isValidating || !selectedDistId}
-                className="bg-blue-800 hover:bg-blue-900  dark:hover:bg-gray-800 text-white min-w-[200px] duration-300"
+                variant="outline"
+                disabled={isUndoing || isValidating || !selectedDistId}
+                className="text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 dark:text-red-400 border-red-200 dark:border-red-900 duration-300"
+              >
+                {isUndoing ? <Loader2 className="w-4 h-4 animate-spin mr-2" /> : <RotateCcw className="w-4 h-4 mr-2" />}
+                Desfazer Mudanças
+              </Button>
+            </AlertDialogTrigger>
+            
+            <AlertDialogContent className="sm:max-w-[425px]">
+              <AlertDialogHeader>
+                <AlertDialogTitle className="text-red-600 flex items-center gap-2">
+                  <AlertTriangle className="w-5 h-5" /> Confirmar Descarte
+                </AlertDialogTitle>
+                <AlertDialogDescription>
+                  Você tem certeza que deseja descartar todas as alterações não validadas da distribuição <span className="font-bold text-foreground">{activeDist?.name}</span>?
+                  <br /><br />
+                  Isso apagará o rascunho atual e restaurará a última configuração válida em produção. Esta ação não pode ser desfeita.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogAction 
+                  onClick={executeUndo} 
+                  className="bg-red-600 hover:bg-red-700 text-white duration-300"
+                >
+                  Sim, Descartar
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
+
+          {/* BOTÃO APROVAR (Já existente) */}
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button 
+                disabled={isValidating || isUndoing || !selectedDistId}
+                className="bg-blue-800 hover:bg-blue-900 dark:hover:bg-gray-800 text-white min-w-[200px] duration-300"
               >
                 {isValidating ? ( <Loader2 className="w-4 h-4 animate-spin mr-2" /> ) : ( <Check className="w-4 h-4 mr-2" /> )}
                 Aprovar: <span className="font-mono ml-1 text-xs opacity-90">{activeDist?.name || '...'}</span>
@@ -254,7 +318,7 @@ function ReviewChangesPage() {
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
                 <AlertDialogAction 
                   onClick={executeValidation} 
-                  className="bg-blue-800 hover:bg-blue-900  dark:hover:bg-gray-800 text-white duration-300"
+                  className="bg-blue-800 hover:bg-blue-900 dark:hover:bg-gray-800 text-white duration-300"
                 >
                   Sim, Validar
                 </AlertDialogAction>
@@ -267,7 +331,6 @@ function ReviewChangesPage() {
       {/* CONTEÚDO PRINCIPAL (SPLIT VIEW) */}
       <div className="flex flex-1 overflow-hidden">
         
-        {/* SIDEBAR: LISTA DE ALTERADOS */}
         <div className="w-80 bg-white dark:bg-card dark:border-border dark:text-muted-foreground border-r flex flex-col z-0">
           <div className="p-4 bg-gray-50 border-b font-semibold text-xs text-gray-500 uppercase dark:bg-muted/80 dark:border-border dark:text-muted-foreground">
             Itens Modificados
@@ -292,7 +355,6 @@ function ReviewChangesPage() {
           </ScrollArea>
         </div>
 
-        {/* AREA PRINCIPAL: DIFF VIEWER */}
         <div className="flex-1 bg-gray-100 overflow-auto relative flex flex-col dark:bg-background">
            <div className="bg-white dark:bg-card dark:border-border border-b px-6 py-2 text-sm font-mono text-gray-500 dark:text-muted-foreground flex justify-between">
               <span>ANTERIOR (Validado)</span>

@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Loader2, GitCommit, User, Clock, Hash, Copy, Code } from 'lucide-react';
+import { ArrowLeft, Loader2, GitCommit, User, Clock, Hash, Copy, Code, RotateCcw, AlertTriangle } from 'lucide-react';
 import { toast } from "sonner";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
 const API_URL = '/api'; // Ajuste seu IP
@@ -15,11 +15,16 @@ export default function VersionHistoryPage() {
   const navigate = useNavigate();
   const [versions, setVersions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [distName, setDistName] = useState("")
+  const [distName, setDistName] = useState("");
 
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
-  const [selectedJson, setSelectedJson] = useState(null)
+  // Estados para o Modal de JSON
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedJson, setSelectedJson] = useState(null);
 
+  // Estados para o Modal de Rollback
+  const [isRollbackDialogOpen, setIsRollbackDialogOpen] = useState(false);
+  const [selectedRollbackVersion, setSelectedRollbackVersion] = useState(null);
+  const [isRollingBack, setIsRollingBack] = useState(false);
 
   useEffect(() => {
     const fetchVersions = async () => {
@@ -48,6 +53,39 @@ export default function VersionHistoryPage() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(JSON.stringify(selectedJson, null, 2));
     toast.success("JSON copiado para a área de transferência!");
+  };
+
+  // Funções do Rollback
+  const handleOpenRollback = (version) => {
+    setSelectedRollbackVersion(version);
+    setIsRollbackDialogOpen(true);
+  };
+
+  const confirmRollback = async () => {
+    if (!selectedRollbackVersion) return;
+    setIsRollingBack(true);
+
+    try {
+      const response = await fetch(`${API_URL}/distributions/${id}/rollback/${selectedRollbackVersion.id}`, {
+        method: 'POST',
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.error || "Erro ao fazer rollback");
+      }
+
+      toast.success("Rollback aplicado com sucesso! Validação necessária.");
+      
+      // Redireciona para a página da distribuição. O status aparecerá como "CHANGED" (Amarelo).
+      navigate(`/distributions/${id}`);
+      
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsRollingBack(false);
+      setIsRollbackDialogOpen(false);
+    }
   };
 
   if (loading) {
@@ -122,14 +160,30 @@ export default function VersionHistoryPage() {
                             <span>{new Date(ver.created_at).toLocaleString('pt-BR')}</span>
                           </div>
                         </div>
-                        <Button 
-                              variant="outline" 
+
+                        {/* Botões Agrupados */}
+                        <div className="flex items-center gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            className="flex gap-2 py-2 text-[10px] font-semibold"
+                            onClick={() => handleOpenJson(ver.config_snapshot)}
+                          >
+                            <Code className="w-3.5 h-3.5" />JSON
+                          </Button>
+                          
+                          {/* Botão de Rollback (só aparece se não for a versão ativa) */}
+                          {!isActive && (
+                            <Button 
+                              variant="destructive" 
                               size="sm" 
-                              className="flex gap-2 py-2 text-[10px] font-semibold"
-                              onClick={() => handleOpenJson(ver.config_snapshot)}
+                              className="flex gap-2 py-2 text-[10px] font-semibold bg-red-600 hover:bg-red-700"
+                              onClick={() => handleOpenRollback(ver)}
                             >
-                              <Code className="w-3.5 h-3.5" />JSON
+                              <RotateCcw className="w-3.5 h-3.5" /> Rollback
                             </Button>
+                          )}
+                        </div>
                       </div>
 
                       {/* Grade de Meta-Dados Alargada */}
@@ -169,39 +223,69 @@ export default function VersionHistoryPage() {
           </div>
         </div>
       </div>
+
+      {/* DIALOG DO JSON */}
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-      <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0 overflow-hidden border-none shadow-2xl">
-        <DialogHeader className="p-6 border-b bg-white dark:bg-card shrink-0">
-          <div className="flex items-center justify-between">
-            <div>
-              <DialogTitle className="text-xl font-bold">Configuração do Snapshot</DialogTitle>
-              <DialogDescription>
-                Representação técnica da v{versions.length - versions.indexOf(versions.find(v => v.config_snapshot === selectedJson))}
-              </DialogDescription>
+        <DialogContent className="max-w-4xl h-[80vh] flex flex-col p-0 overflow-hidden border-none shadow-2xl">
+          <DialogHeader className="p-6 border-b bg-white dark:bg-card shrink-0">
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-xl font-bold">Configuração do Snapshot</DialogTitle>
+                <DialogDescription>
+                  Representação técnica da v{versions.length - versions.indexOf(versions.find(v => v.config_snapshot === selectedJson))}
+                </DialogDescription>
+              </div>
             </div>
-            
+          </DialogHeader>
+          
+          <div className="flex-1 min-h-0 w-full bg-slate-950 relative">
+            <ScrollArea className="h-full w-full">
+              <div className="p-6">
+                 <pre className="text-[11px] text-blue-300 font-mono leading-relaxed whitespace-pre-wrap">
+                  {JSON.stringify(selectedJson, null, 2)}
+                </pre>
+              </div>
+              <Button 
+                variant="secondary" 
+                size="sm" 
+                onClick={copyToClipboard} 
+                className="absolute top-4 right-5"
+              >
+                <Copy className="w-4 h-4" />
+              </Button>
+            </ScrollArea>
           </div>
-        </DialogHeader>
-        
-        <div className="flex-1 min-h-0 w-full bg-slate-950">
-          <ScrollArea className="h-full w-full">
-            <div className="p-6">
-               <pre className="text-[11px] text-blue-300 font-mono leading-relaxed whitespace-pre-wrap">
-                {JSON.stringify(selectedJson, null, 2)}
-              </pre>
+        </DialogContent>
+      </Dialog>
+
+      {/* DIALOG DE CONFIRMAÇÃO DO ROLLBACK */}
+      <Dialog open={isRollbackDialogOpen} onOpenChange={setIsRollbackDialogOpen}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <div className="flex items-center gap-3 text-red-600 mb-2">
+              <AlertTriangle className="w-6 h-6" />
+              <DialogTitle>Confirmar Rollback</DialogTitle>
             </div>
-            <Button 
-              variant="secondary" 
-              size="sm" 
-              onClick={copyToClipboard} 
-              className="absolute top-4 right-5"
-            >
-              <Copy className="w-4 h-4" />
+            <DialogDescription className="text-base text-foreground/80 mt-4 leading-relaxed">
+              Você está prestes a substituir as configurações atuais do banco de dados (Origens e Behaviors) pela versão salva neste histórico.
+              <br /><br />
+              <strong>Atenção:</strong> Isso <span className="underline">não</span> aplica o deploy automaticamente. O ambiente ficará marcado como <strong>Pendente de Validação (Amarelo)</strong> para que você possa testar antes de subir para produção.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="mt-6 flex gap-2 sm:justify-end">
+            <Button variant="outline" onClick={() => setIsRollbackDialogOpen(false)} disabled={isRollingBack}>
+              Cancelar
             </Button>
-          </ScrollArea>
-        </div>
-      </DialogContent>
-    </Dialog>
+            <Button variant="destructive" className="bg-red-600 hover:bg-red-700" onClick={confirmRollback} disabled={isRollingBack}>
+              {isRollingBack ? (
+                <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Aplicando...</>
+              ) : (
+                'Sim, Substituir Configurações'
+              )}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
