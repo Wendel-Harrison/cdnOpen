@@ -79,7 +79,7 @@ function EditOriginDialog({ isOpen, onOpenChange, origin, onSave }) {
     <Dialog open={isOpen} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-[700px]">
         <DialogHeader>
-          <DialogTitle>Editar Origin: {origin.origin_id}</DialogTitle>
+          <DialogTitle>Editar Origin: {origin.origin_name}</DialogTitle>
           <DialogDescription>
             Faça alterações na configuração deste origin.
           </DialogDescription>
@@ -87,8 +87,8 @@ function EditOriginDialog({ isOpen, onOpenChange, origin, onSave }) {
 
         <div className="grid gap-4 py-4">
           <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="origin_id" className="text-right">Origin ID</Label>
-            <Input id="origin_id" name="origin_id" value={formData.origin_id} onChange={handleChange} className="col-span-3" />
+            <Label htmlFor="origin_name" className="text-right">Origin ID</Label>
+            <Input id="origin_name" name="origin_name" value={formData.origin_name} onChange={handleChange} className="col-span-3" />
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="domain_name" className="text-right">Domínio do Origin</Label>

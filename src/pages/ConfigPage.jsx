@@ -1,4 +1,5 @@
 import { useState, useEffect  } from 'react'
+import { useLocation } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card.jsx'
@@ -32,6 +33,7 @@ import { useAuth } from '@/context/AuthContext'
 
 
 function ConfigPage() {
+  const location = useLocation();
 
   const ORIGINS_API_URL = '/api/origins'; // Endpoint para buscar/criar origins
   const DISTRIBUTIONS_API_URL = '/api/distributions/all';
@@ -51,6 +53,23 @@ function ConfigPage() {
   // ... outros states
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [originToDelete, setOriginToDelete] = useState(null);
+
+  const incomingState = location.state || {};
+  const [activeTab, setActiveTab] = useState(incomingState.activeTab || 'origins');
+  const preSelectedDistId = incomingState.targetDistributionId || '';
+  const preSelectedDistName = incomingState.targetDistributionName || ''; 
+
+  useEffect(() => {
+    if (activeTab === 'origins') {
+      if (preSelectedDistName) {
+        setSearchTerm(preSelectedDistName);
+      }
+      
+      if (preSelectedDistId) {
+        setNewOrigin(prev => ({ ...prev, distribution_id: preSelectedDistId }));
+      }
+    }
+  }, [preSelectedDistName, preSelectedDistId, activeTab]);
 
   const { user } = useAuth();
   
@@ -92,7 +111,7 @@ function ConfigPage() {
   const [newOrigin, setNewOrigin] = useState({
     distribution_id: '',
     origin_id: '',
-    domain_name: '',
+    origin_domain: '',
   });
 
   // useEffect para buscar todos os dados necessários da API
@@ -135,7 +154,7 @@ function ConfigPage() {
 
   // Função para adicionar um novo origin
   const handleAddOrigin = async () => {
-    if (!newOrigin.distribution_id || !newOrigin.origin_id || !newOrigin.domain_name) {
+    if (!newOrigin.distribution_id || !newOrigin.origin_name || !newOrigin.origin_domain) {
       alert('Por favor, preencha todos os campos.');
       return;
     }
@@ -147,15 +166,16 @@ function ConfigPage() {
         body: JSON.stringify({
           distribution_id: parseInt(newOrigin.distribution_id), // Garante que o ID seja um número
           distribution_name: newOrigin.distribution_name,
-          origin_id: newOrigin.origin_id,
-          domain_name: newOrigin.domain_name,
+          origin_name: newOrigin.origin_name,
+          origin_domain: newOrigin.origin_domain,
           currentUserEmail: user.email, 
           currentUserName: user.name   
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Falha ao criar o origin');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || errorData.error || 'Falha ao criar o origin');
       }
 
       const createdOrigin = await response.json();
@@ -164,8 +184,8 @@ function ConfigPage() {
       // Limpa os campos do formulário, mantendo o distribution_id selecionado
       setNewOrigin(prev => ({
         ...prev,
-        origin_id: '',
-        domain_name: '',
+        origin_name: '',
+        origin_domain: '',
       }));
 
     } catch (err) {
@@ -180,8 +200,8 @@ function ConfigPage() {
     const distName = distributions.find(d => d.id === origin.distribution_id)?.name || '';
 
     return (
-      origin.origin_id?.toLowerCase().includes(searchLower) ||
-      origin.domain_name?.toLowerCase().includes(searchLower) ||
+      origin.origin_name?.toLowerCase().includes(searchLower) ||
+      origin.origin_domain?.toLowerCase().includes(searchLower) ||
       distName.toLowerCase().includes(searchLower)
     );
   });
@@ -330,7 +350,7 @@ function ConfigPage() {
 
   return (
     <div className="space-y-6">
-      <Tabs defaultValue="origins" className="space-y-4">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
         <TabsList className="grid w-full grid-cols-2 gap-3 bg-transparent">
           <TabsTrigger value="origins" className='py-2.5 cursor-pointer'>Origins</TabsTrigger>
           <TabsTrigger value="behaviors" className='py-2.5 cursor-pointer' >Behaviors</TabsTrigger>
@@ -367,22 +387,22 @@ function ConfigPage() {
                     </Select>
                   </div>
                   <div className="flex-1 gap-2 flex flex-col">
-                    <Label htmlFor="origin_id">Nome do Origin</Label>
+                    <Label htmlFor="origin_name">Nome do Origin</Label>
                     <Input
-                      id="origin_id"
-                      name="origin_id"
+                      id="origin_name"
+                      name="origin_name"
                       placeholder="ex: vos-cluster-lab"
-                      value={newOrigin.origin_id}
+                      value={newOrigin.origin_name}
                       onChange={handleFormChange}
                     />
                   </div>
                   <div className="flex-2 gap-2 flex flex-col">
-                    <Label htmlFor="domain_name">Domínio do Origin</Label>
+                    <Label htmlFor="origin_domain">Domínio do Origin</Label>
                     <Input
-                      id="domain_name"
-                      name="domain_name"
+                      id="origin_domain"
+                      name="origin_domain"
                       placeholder="cdn.stb.example.com"
-                      value={newOrigin.domain_name}
+                      value={newOrigin.origin_domain}
                       onChange={handleFormChange}
                     />
                   </div>
@@ -442,12 +462,12 @@ function ConfigPage() {
                         </TableCell>
                         <TableCell className=" w-[15%]">
                           <Badge variant="secondary" className="px-5 py-1 truncate text-blue-800 dark:text-blue-200 rounded">
-                            {origin.origin_id}
+                            {origin.origin_name}
                           </Badge>
                         </TableCell>
                         <TableCell className=" w-[30%]">
                           <Badge variant="secondary" className="w-full py-1 text-blue-800 dark:text-blue-200 rounded">
-                            {origin.domain_name}
+                            {origin.origin_domain}
                           </Badge>
                         </TableCell>
                         <TableCell className=" w-[10%]">
@@ -493,11 +513,11 @@ function ConfigPage() {
             </CardContent>
           </Card>
         </TabsContent>
-        {formErrors.domain_name && (
+        {formErrors.origin_domain && (
           <Alert variant="destructive" className="mt-2 flex items-center">
             <AlertTriangle className="h-4 w-4" />
             <AlertDescription className="ml-2">
-              {formErrors.domain_name}
+              {formErrors.origin_domain}
             </AlertDescription>
           </Alert>
         )
@@ -532,7 +552,7 @@ function ConfigPage() {
       </AlertDialog>
 
         <TabsContent value="behaviors" className="space-y-4">
-          <BehaviorsTab distributions={distributions} origins={origins} />
+          <BehaviorsTab distributions={distributions} origins={origins} initialDistributionId={preSelectedDistId} />
         </TabsContent>
       </Tabs>
       

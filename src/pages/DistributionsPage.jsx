@@ -356,8 +356,8 @@ function DistributionsPage() {
                       {dist.origins && dist.origins.length > 0 ? (
                         <Badge variant='secondary' className=" rounded">
                           <div className="flex items-center gap-2">
-                            <span className="truncate  px-5 py-1 text-blue-800 tracking-wider dark:text-blue-200" title={dist.origins[0].origin_id}>
-                              {dist.origins[0].domain_name}
+                            <span className="truncate  px-5 py-1 text-blue-800 tracking-wider dark:text-blue-200" title={dist.origins[0].origin_name}>
+                              {dist.origins[0].origin_domain}
                             </span>
 
                             {/* 2. Se tiver mais de 1, mostra o Badge com "+X" */}

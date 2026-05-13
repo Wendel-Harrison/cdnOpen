@@ -81,9 +81,10 @@ function Sidebar({ isOpen, toggleSidebar }) {
     { path: '/policies', icon: Layers2, label: 'Politicas' },
     { path: '/functions', icon: Braces, label: 'Functions' },
     { path: '/nodes', icon: LaptopMinimalCheckIcon, label: 'Nodes/Sites' },
-    { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
+    // { path: '/certificates', icon: ShieldCheck, label: 'Certificados' },
     { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/relatórios', icon: AlignStartVertical, label: 'Relatórios' },
+    // { path: '/relatórios', icon: AlignStartVertical, label: 'Relatórios' },
+    { path: '/history', icon: AlignStartVertical, label: 'Auditoria' },
     { path: '/users', icon: Users, label: 'Usuários' },
     
   ]

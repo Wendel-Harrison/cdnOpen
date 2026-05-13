@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 
 
 const INITIAL_STATE = {
-  path_pattern: '/*',
+  location: '/*',
   priority: 0,
   origin_id: '',
   viewer_protocol_policy: 'REDIRECT_TO_HTTPS',
@@ -33,7 +33,7 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
   useEffect(() => {
     if (isEditMode && behaviorToEdit) {
       setFormData({
-        path_pattern: behaviorToEdit.path_pattern,
+        location: behaviorToEdit.location,
         priority: behaviorToEdit.priority,
         origin_id: behaviorToEdit.origin_id.toString(),
         viewer_protocol_policy: behaviorToEdit.viewer_protocol_policy,
@@ -113,8 +113,8 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
         <form onSubmit={handleSubmit} className="grid gap-4 py-4 max-h-[70vh] overflow-y-auto pr-4">
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="path_pattern">Padrão de Caminho*</Label>
-              <Input id="path_pattern" name="path_pattern" value={formData.path_pattern} onChange={handleInputChange} placeholder="/images/*" required />
+              <Label htmlFor="location">Padrão de Caminho*</Label>
+              <Input id="location" name="location" value={formData.location} onChange={handleInputChange} placeholder="/images/*" required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="priority">Prioridade*</Label>
@@ -129,7 +129,7 @@ export function BehaviorFormDialog({ isOpen, onOpenChange, distributionId, origi
               <SelectTrigger><SelectValue placeholder="Selecione um origin..." /></SelectTrigger>
               <SelectContent>
                 {originsList.map(origin => (
-                  <SelectItem key={origin.id} value={origin.id.toString()}>{origin.origin_id} ({origin.domain_name})</SelectItem>
+                  <SelectItem key={origin.id} value={origin.id.toString()}>{origin.origin_name} ({origin.origin_domain})</SelectItem>
                 ))}
               </SelectContent>
             </Select>

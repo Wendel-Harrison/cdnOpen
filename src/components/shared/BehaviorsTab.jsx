@@ -12,7 +12,7 @@ import { BehaviorFormDialog } from './BehaviorFormDialog';
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from '../ui/alert-dialog';
 import { useAuth } from '@/context/AuthContext';
 
-function BehaviorsTab({ distributions, origins }) {
+function BehaviorsTab({ distributions, origins, initialDistributionId }) {
   const [selectedDistId, setSelectedDistId] = useState('');
   const [behaviors, setBehaviors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +34,12 @@ function BehaviorsTab({ distributions, origins }) {
 
   const isAdmin = user.role === 'admin';
   const isViewer = user.role === 'viewer';
+
+   useEffect(() => {
+    if (initialDistributionId) {
+      setSelectedDistId(initialDistributionId.toString());
+    }
+  }, [initialDistributionId]);
 
   // Função para buscar os dados dos dropdowns (cache e origin policies)
   const fetchDropdownData = useCallback(async () => {
@@ -126,11 +132,10 @@ function BehaviorsTab({ distributions, origins }) {
   const filteredBehaviors = behaviors.filter((behavior) => {
     const searchLower = searchTerm.toLowerCase();
     
-    // Precisamos buscar o nome do origin para poder filtrar pelo texto dele
-    const originName = origins.find(o => o.id === behavior.origin_id)?.origin_id || '';
+    const originName = origins.find(o => o.id === behavior.origin_id)?.origin_name || '';
 
     return (
-      behavior.path_pattern?.toLowerCase().includes(searchLower) ||
+      behavior.location?.toLowerCase().includes(searchLower) ||
       originName.toLowerCase().includes(searchLower)
     );
   });
@@ -214,11 +219,11 @@ function BehaviorsTab({ distributions, origins }) {
                             <Badge className="bg-blue-400 dark:bg-blue-500 dark:text-white px-2.5 py-1.5 rounded">{behavior.priority}</Badge>
                           </TableCell>
                           <TableCell className=" w-[10%]">
-                            <code className="text-sm bg-muted px-2 py-1 rounded text-blue-800 dark:text-blue-200">{behavior.path_pattern}</code>
+                            <code className="text-sm bg-muted px-2 py-1 rounded text-blue-800 dark:text-blue-200">{behavior.location}</code>
                           </TableCell>
                           <TableCell className=" w-[35%]">
                             <Badge className='py-1.5 px-5  text-blue-800 dark:text-blue-200 rounded' variant='secondary'>
-                              {origins.find(o => o.id === behavior.origin_id)?.origin_id || <span className="text-muted-foreground font-bold">ID: {behavior.origin_id}</span>}
+                              {origins.find(o => o.id === behavior.origin_id)?.origin_name || <span className="text-muted-foreground font-bold">ID: {behavior.origin_id}</span>}
                             </Badge>
                           </TableCell>
                           <TableCell className=" w-[20%]">
@@ -287,7 +292,7 @@ function BehaviorsTab({ distributions, origins }) {
               <AlertDialogHeader>
                 <AlertDialogTitle>Confirmar Exclusão</AlertDialogTitle>
                 <AlertDialogDescription>
-                  Tem certeza que deseja excluir o behavior com o Path "{behaviorToDelete?.path_pattern}"? Esta ação não pode ser desfeita.
+                  Tem certeza que deseja excluir o behavior com o Path "{behaviorToDelete?.location}"? Esta ação não pode ser desfeita.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>

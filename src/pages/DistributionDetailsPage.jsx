@@ -72,7 +72,7 @@ function DistributionDetailsPage() {
             </TabsContent>
 
             <TabsContent value="origins" className="m-0 focus-visible:outline-none focus-visible:ring-0">
-              <OriginsTab origins={data.config?.origins} />
+              <OriginsTab origins={data.config?.origins} distributionId={id} distributionName={data.metadata?.name} />
             </TabsContent>
 
             <TabsContent value="behaviors" className="m-0 focus-visible:outline-none focus-visible:ring-0">
